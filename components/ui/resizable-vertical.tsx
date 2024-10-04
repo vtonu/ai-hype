@@ -6,7 +6,6 @@ import { CoBox } from './Companybox';
 import { CollapsibleData } from './collapsible-data';
 import { Badge } from '@/components/ui/badge';
 import { ComponentOne } from './line-chart';
-import { ComponentTwo } from './rank-score';
 
 export function ResizableVertical() {
   return (
@@ -24,7 +23,6 @@ export function ResizableVertical() {
         </span>
       </ResizablePanel>
       <ComponentOne />
-
       <ResizablePanel defaultSize={75} className="flex justify-center items-end">
         <CollapsibleData />
       </ResizablePanel>

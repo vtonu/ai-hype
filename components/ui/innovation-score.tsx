@@ -25,15 +25,15 @@ const chartData = [{ month: 'january', desktop: 1260, mobile: 570 }];
 const chartConfig = {
   desktop: {
     label: 'Desktop',
-    color: 'hsl(var(--chart-1))',
+    color: 'hsl(var(--chart-2))',
   },
   mobile: {
     label: 'Mobile',
-    color: 'hsl(var(--chart-2))',
+    color: 'hsl(var(--chart-1))',
   },
 } satisfies ChartConfig;
 
-export function ComponentTwo() {
+export function ComponentSeven() {
   const totalVisitors = chartData[0].desktop + chartData[0].mobile;
 
   return (
@@ -56,7 +56,7 @@ export function ComponentTwo() {
                       x={viewBox.cx}
                       y={(viewBox.cy || 0) + 4}
                       className="fill-muted-foreground">
-                      Rank
+                      Innovation
                     </tspan>
                   </text>
                 );

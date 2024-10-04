@@ -2,6 +2,11 @@
 import * as React from 'react';
 import { ChevronDown, ChevronUp } from 'lucide-react';
 import { RankCard } from './rankCard';
+import { DoomCard } from './doomCard';
+import { TrustCard } from './trustCard';
+import { AdoptionCard } from './adoptionCard';
+import { EthicsCard } from './ethicsCard';
+import { InnovationCard } from './innovationCard';
 import { Button } from '@/components/ui/button';
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/components/ui/collapsible';
 
@@ -23,11 +28,11 @@ export function CollapsibleData() {
       <CollapsibleContent>
         <div className="p-2 font-mono text-sm grid grid-cols-3 gap-2">
           <RankCard />
-          <RankCard />
-          <RankCard />
-          <RankCard />
-          <RankCard />
-          <RankCard />
+          <DoomCard />
+          <TrustCard />
+          <AdoptionCard />
+          <EthicsCard />
+          <InnovationCard />
         </div>
       </CollapsibleContent>
     </Collapsible>
