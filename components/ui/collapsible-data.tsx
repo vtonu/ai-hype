@@ -1,7 +1,7 @@
 'use client';
 import * as React from 'react';
 import { ChevronDown, ChevronUp } from 'lucide-react';
-import { BlackCard } from './blackCard';
+import { RankCard } from './rankCard';
 import { Button } from '@/components/ui/button';
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/components/ui/collapsible';
 
@@ -22,12 +22,12 @@ export function CollapsibleData() {
 
       <CollapsibleContent>
         <div className="p-2 font-mono text-sm grid grid-cols-3 gap-2">
-          <BlackCard />
-          <BlackCard />
-          <BlackCard />
-          <BlackCard />
-          <BlackCard />
-          <BlackCard />
+          <RankCard />
+          <RankCard />
+          <RankCard />
+          <RankCard />
+          <RankCard />
+          <RankCard />
         </div>
       </CollapsibleContent>
     </Collapsible>

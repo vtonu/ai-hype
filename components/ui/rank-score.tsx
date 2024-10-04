@@ -48,8 +48,8 @@ export function ComponentTwo() {
                   <text x={viewBox.cx} y={viewBox.cy} textAnchor="middle">
                     <tspan
                       x={viewBox.cx}
-                      y={(viewBox.cy || 0) - 16}
-                      className="fill-foreground text-2xl font-bold">
+                      y={(viewBox.cy || 0) - 12}
+                      className="fill-current text-lg font-semibold">
                       {totalVisitors.toLocaleString()}
                     </tspan>
                     <tspan

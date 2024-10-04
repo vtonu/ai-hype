@@ -2,9 +2,9 @@ import * as React from 'react';
 import { Card } from '@/components/ui/card';
 import { ComponentTwo } from './rank-score';
 
-export function BlackCard() {
+export function RankCard() {
   return (
-    <Card className="h-[100px] flex items-center justify-center p-2">
+    <Card className="h-[100px] flex ">
       <ComponentTwo />
     </Card>
   );
