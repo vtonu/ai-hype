@@ -26,13 +26,13 @@ export function CollapsibleData() {
       </div>
 
       <CollapsibleContent>
-        <div className="p-2 font-mono text-sm grid grid-cols-3 gap-2">
+        <div className="p-2 font-mono grid grid-cols-3 gap-2">
           <RankCard />
           <DoomCard />
           <TrustCard />
+          <InnovationCard />
           <AdoptionCard />
           <EthicsCard />
-          <InnovationCard />
         </div>
       </CollapsibleContent>
     </Collapsible>

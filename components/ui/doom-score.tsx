@@ -1,28 +1,19 @@
 'use client';
 
-import { TrendingUp } from 'lucide-react';
 import { Label, PolarGrid, PolarRadiusAxis, RadialBar, RadialBarChart } from 'recharts';
 
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from '@/components/ui/card';
 import { ChartConfig, ChartContainer } from '@/components/ui/chart';
 
-export const description = 'A radial chart with text';
+export const description = 'A radial chart for User Trust';
 
-const chartData = [{ browser: 'safari', visitors: 3, fill: 'var(--color-safari)' }];
+const chartData = [{ browser: 'darkorange', score: 3, fill: 'var(--color-darkorange)' }];
 
 const chartConfig = {
-  visitors: {
-    label: 'Visitors',
+  score: {
+    label: 'Score',
   },
-  safari: {
-    label: 'Safari',
+  darkorange: {
+    label: 'Dark Orange',
     color: 'hsl(var(--chart-3))',
   },
 } satisfies ChartConfig;
@@ -37,7 +28,7 @@ export function ComponentThree() {
         innerRadius={50}
         outerRadius={60}>
         <PolarGrid gridType="circle" radialLines={false} stroke="none" polarRadius={[86, 74]} />
-        <RadialBar dataKey="visitors" background cornerRadius={4} />
+        <RadialBar dataKey="score" background cornerRadius={4} />
         <PolarRadiusAxis tick={false} tickLine={false} axisLine={false}>
           <Label
             content={({ viewBox }) => {
@@ -48,7 +39,7 @@ export function ComponentThree() {
                       x={viewBox.cx}
                       y={(viewBox.cy || 0) - 12}
                       className="fill-current text-lg font-semibold">
-                      {chartData[0].visitors.toLocaleString()}
+                      {chartData[0].score.toLocaleString()}
                     </tspan>
                     <tspan
                       x={viewBox.cx}

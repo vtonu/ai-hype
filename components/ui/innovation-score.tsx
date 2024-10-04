@@ -1,28 +1,34 @@
 'use client';
 
-import { TrendingUp } from 'lucide-react';
 import { Label, PolarGrid, PolarRadiusAxis, RadialBar, RadialBarChart } from 'recharts';
 
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from '@/components/ui/card';
 import { ChartConfig, ChartContainer } from '@/components/ui/chart';
 
-export const description = 'A radial chart with text';
+export const description = 'A radial chart for User Trust';
 
-const chartData = [{ browser: 'safari', visitors: 10, fill: 'var(--color-safari)' }];
+// Map string symbols to numeric values
+const chartData = [{ browser: 'green', score: 10, symbol: 'A+', fill: 'var(--color-green)' }];
+
+// Score to symbol mapping for the grades
+const scoreToSymbolMapping: Record<number, string> = {
+  10: 'A+',
+  9: 'A',
+  8: 'A-',
+  7: 'B+',
+  6: 'B',
+  5: 'B-',
+  4: 'C+',
+  3: 'C',
+  2: 'C-',
+  1: 'D',
+};
 
 const chartConfig = {
-  visitors: {
-    label: 'Visitors',
+  score: {
+    label: 'Score',
   },
-  safari: {
-    label: 'Safari',
+  green: {
+    label: 'Green',
     color: 'hsl(var(--chart-1))',
   },
 } satisfies ChartConfig;
@@ -37,7 +43,7 @@ export function ComponentSeven() {
         innerRadius={50}
         outerRadius={60}>
         <PolarGrid gridType="circle" radialLines={false} stroke="none" polarRadius={[86, 74]} />
-        <RadialBar dataKey="visitors" background cornerRadius={4} />
+        <RadialBar dataKey="score" background cornerRadius={4} />
         <PolarRadiusAxis tick={false} tickLine={false} axisLine={false}>
           <Label
             content={({ viewBox }) => {
@@ -48,7 +54,8 @@ export function ComponentSeven() {
                       x={viewBox.cx}
                       y={(viewBox.cy || 0) - 12}
                       className="fill-current text-lg font-semibold">
-                      {chartData[0].visitors.toLocaleString()}
+                      {/* Display the mapped string symbol */}
+                      {scoreToSymbolMapping[chartData[0].score] || chartData[0].score}
                     </tspan>
                     <tspan
                       x={viewBox.cx}

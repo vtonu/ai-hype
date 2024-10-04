@@ -13,22 +13,19 @@ import {
 import { Badge } from '@/components/ui/badge';
 import { CircleDot } from 'lucide-react';
 
-export const description = 'AI Hype Chart';
+export const description = 'AI Hype Line Chart';
 
 const chartData = [
-  { date: '2024-09-01', hype: 135, rank: 1 },
-  { date: '2024-09-05', hype: 95, rank: 10 },
-  { date: '2024-09-10', hype: 190, rank: 2 },
-  { date: '2024-09-15', hype: 230, rank: 5 },
-  { date: '2024-10-20', hype: 340, rank: 9 },
-  { date: '2024-10-25', hype: 350, rank: 9 },
-  { date: '2024-10-30', hype: 461, rank: 10 },
+  { date: '2024-09-01', hype: 125, rank: 1 },
+  { date: '2024-09-05', hype: 95, rank: 2 },
+  { date: '2024-09-10', hype: 191, rank: 2 },
+  { date: '2024-09-15', hype: 238, rank: 1 },
+  { date: '2024-10-20', hype: 348, rank: 1 },
+  { date: '2024-10-25', hype: 452, rank: 1 },
+  { date: '2024-10-30', hype: 389, rank: 5 },
 ];
 
 const chartConfig = {
-  views: {
-    label: 'Score',
-  },
   hype: {
     label: 'Hype',
     color: 'hsl(var(--chart-1))',
@@ -62,7 +59,7 @@ export function ComponentOne() {
               </Badge>
             </CardTitle>
 
-            <CardDescription>Updating hype data:</CardDescription>
+            <CardDescription>Total hype data:</CardDescription>
           </div>
           <div className="flex">
             {['hype', 'rank'].map((key) => {

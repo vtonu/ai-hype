@@ -8,23 +8,23 @@ import {
   ChartTooltipContent,
 } from '@/components/ui/chart';
 
-export const description = 'A radial chart with stacked sections';
+export const description = 'A radial chart with stacked sections for AI Impact';
 
-const chartData = [{ month: 'january', desktop: 1000, mobile: 50 }];
+const chartData = [{ month: 'january', hype: 16, score: 2 }];
 
 const chartConfig = {
-  desktop: {
-    label: 'Desktop',
+  hype: {
+    label: 'AI Impact',
     color: 'hsl(var(--chart-1))',
   },
-  mobile: {
-    label: 'Mobile',
+  score: {
+    label: 'AI Hype',
     color: 'hsl(var(--chart-2))',
   },
 } satisfies ChartConfig;
 
 export function ComponentTwo() {
-  const totalVisitors = chartData[0].desktop + chartData[0].mobile;
+  const totalVisitors = chartData[0].hype + chartData[0].score;
 
   return (
     <ChartContainer config={chartConfig} className="mx-auto  w-full h-40 max-w-[150px]">
@@ -46,7 +46,7 @@ export function ComponentTwo() {
                       x={viewBox.cx}
                       y={(viewBox.cy || 0) + 4}
                       className="fill-muted-foreground">
-                      Rank
+                      AI Impact
                     </tspan>
                   </text>
                 );
@@ -55,15 +55,15 @@ export function ComponentTwo() {
           />
         </PolarRadiusAxis>
         <RadialBar
-          dataKey="desktop"
+          dataKey="hype"
           stackId="a"
           cornerRadius={4}
-          fill="var(--color-desktop)"
+          fill="hsl(var(--chart-1))"
           className="stroke-transparent stroke-2"
         />
         <RadialBar
-          dataKey="mobile"
-          fill="var(--color-mobile)"
+          dataKey="score"
+          fill="hsl(var(--chart-2))"
           stackId="a"
           cornerRadius={5}
           className="stroke-transparent stroke-2"

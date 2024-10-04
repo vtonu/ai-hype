@@ -1,35 +1,40 @@
 'use client';
 
-import { TrendingUp } from 'lucide-react';
 import { Label, PolarGrid, PolarRadiusAxis, RadialBar, RadialBarChart } from 'recharts';
 
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from '@/components/ui/card';
 import { ChartConfig, ChartContainer } from '@/components/ui/chart';
 
-export const description = 'A radial chart with text';
+export const description = 'A radial chart for User Trust';
 
-const chartData = [{ browser: 'safari', visitors: 7, fill: 'var(--color-safari)' }];
+const chartData = [{ browser: 'green', score: 9, fill: 'var(--color-green)' }];
+
+// Score to symbol mapping
+const scoreToSymbolMapping: Record<number, string> = {
+  10: 'A+',
+  9: 'A',
+  8: 'A-',
+  7: 'B+',
+  6: 'B',
+  5: 'B-',
+  4: 'C+',
+  3: 'C',
+  2: 'C-',
+  1: 'D',
+};
 
 const chartConfig = {
-  visitors: {
-    label: 'Visitors',
+  score: {
+    label: 'Score',
   },
-  safari: {
-    label: 'Safari',
-    color: 'hsl(var(--chart-2))',
+  green: {
+    label: 'Green',
+    color: 'hsl(var(--chart-1))',
   },
 } satisfies ChartConfig;
 
 export function ComponentSix() {
   return (
-    <ChartContainer config={chartConfig} className="mx-auto  w-full h-40 max-w-[150px]">
+    <ChartContainer config={chartConfig} className="mx-auto w-full h-40 max-w-[150px]">
       <RadialBarChart
         data={chartData}
         startAngle={0}
@@ -37,7 +42,7 @@ export function ComponentSix() {
         innerRadius={50}
         outerRadius={60}>
         <PolarGrid gridType="circle" radialLines={false} stroke="none" polarRadius={[86, 74]} />
-        <RadialBar dataKey="visitors" background cornerRadius={4} />
+        <RadialBar dataKey="score" background cornerRadius={4} />
         <PolarRadiusAxis tick={false} tickLine={false} axisLine={false}>
           <Label
             content={({ viewBox }) => {
@@ -48,7 +53,8 @@ export function ComponentSix() {
                       x={viewBox.cx}
                       y={(viewBox.cy || 0) - 12}
                       className="fill-current text-lg font-semibold">
-                      {chartData[0].visitors.toLocaleString()}
+                      {/* Use the mapped symbol for the score */}
+                      {scoreToSymbolMapping[chartData[0].score] || chartData[0].score}
                     </tspan>
                     <tspan
                       x={viewBox.cx}
