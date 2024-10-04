@@ -1,16 +1,6 @@
 'use client';
 
-import { TrendingUp } from 'lucide-react';
 import { Label, PolarRadiusAxis, RadialBar, RadialBarChart } from 'recharts';
-
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from '@/components/ui/card';
 import {
   ChartConfig,
   ChartContainer,
@@ -20,7 +10,7 @@ import {
 
 export const description = 'A radial chart with stacked sections';
 
-const chartData = [{ month: 'january', desktop: 1260, mobile: 570 }];
+const chartData = [{ month: 'january', desktop: 1000, mobile: 50 }];
 
 const chartConfig = {
   desktop: {

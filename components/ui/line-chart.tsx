@@ -16,12 +16,13 @@ import { CircleDot } from 'lucide-react';
 export const description = 'AI Hype Chart';
 
 const chartData = [
-  { date: '2024-09-01', hype: 135, mobile: 125 },
-  { date: '2024-09-10', hype: 95, mobile: 50 },
-  { date: '2024-09-20', hype: 190, mobile: 170 },
-  { date: '2024-09-30', hype: 230, mobile: 260 },
-  { date: '2024-10-01', hype: 340, mobile: 335 },
-  { date: '2024-10-10', hype: 451, mobile: 395 },
+  { date: '2024-09-01', hype: 135, rank: 1 },
+  { date: '2024-09-05', hype: 95, rank: 10 },
+  { date: '2024-09-10', hype: 190, rank: 2 },
+  { date: '2024-09-15', hype: 230, rank: 5 },
+  { date: '2024-10-20', hype: 340, rank: 9 },
+  { date: '2024-10-25', hype: 350, rank: 9 },
+  { date: '2024-10-30', hype: 461, rank: 10 },
 ];
 
 const chartConfig = {
@@ -32,9 +33,9 @@ const chartConfig = {
     label: 'Hype',
     color: 'hsl(var(--chart-1))',
   },
-  mobile: {
+  rank: {
     label: 'Rank',
-    color: 'hsl(var(--chart-2))',
+    color: 'hsl(var(--chart-1))',
   },
 } satisfies ChartConfig;
 
@@ -44,7 +45,7 @@ export function ComponentOne() {
   const total = React.useMemo(
     () => ({
       hype: chartData.reduce((acc, curr) => acc + curr.hype, 0),
-      mobile: chartData.reduce((acc, curr) => acc + curr.mobile, 0),
+      rank: chartData.reduce((acc, curr) => acc + curr.rank, 0),
     }),
     [],
   );
@@ -55,16 +56,16 @@ export function ComponentOne() {
         <CardHeader className="flex-row">
           <div className="flex flex-1 flex-col justify-center gap-2 sm:py-2">
             <CardTitle>
-              <Badge variant="outline">
+              <Badge variant="secondary">
                 Live
-                <CircleDot className="w-3 h-3 pl-1" />
+                <CircleDot className="w-3 h-3 pl-1 fill-chart-1" />
               </Badge>
             </CardTitle>
 
-            <CardDescription>Showing total hype:</CardDescription>
+            <CardDescription>Updating hype data:</CardDescription>
           </div>
           <div className="flex">
-            {['hype', 'mobile'].map((key) => {
+            {['hype', 'rank'].map((key) => {
               const chart = key as keyof typeof chartConfig;
               return (
                 <button

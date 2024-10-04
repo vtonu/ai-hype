@@ -12,7 +12,7 @@ export function ResizableVertical() {
     <ResizablePanelGroup direction="vertical" className="max-w-lg rounded-sm border ">
       <ResizablePanel defaultSize={15} className="flex justify-center items-center gap-1">
         <span className="flex gap-1">
-          <h6 className="font-semibold">Today's AI hype</h6>
+          <h6 className="font-semibold">Today's AI hype: </h6>
           <Badge variant="outline">NotebookLM</Badge>
         </span>
         <span className="flex gap-1 items-center">

@@ -1,7 +1,7 @@
 'use client';
 
 import { TrendingUp } from 'lucide-react';
-import { Label, PolarRadiusAxis, RadialBar, RadialBarChart } from 'recharts';
+import { Label, PolarGrid, PolarRadiusAxis, RadialBar, RadialBarChart } from 'recharts';
 
 import {
   Card,
@@ -11,50 +11,48 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card';
-import {
-  ChartConfig,
-  ChartContainer,
-  ChartTooltip,
-  ChartTooltipContent,
-} from '@/components/ui/chart';
+import { ChartConfig, ChartContainer } from '@/components/ui/chart';
 
-export const description = 'A radial chart with stacked sections';
+export const description = 'A radial chart with text';
 
-const chartData = [{ month: 'january', desktop: 1260, mobile: 570 }];
+const chartData = [{ browser: 'safari', visitors: 10, fill: 'var(--color-safari)' }];
 
 const chartConfig = {
-  desktop: {
-    label: 'Desktop',
-    color: 'hsl(var(--chart-2))',
+  visitors: {
+    label: 'Visitors',
   },
-  mobile: {
-    label: 'Mobile',
+  safari: {
+    label: 'Safari',
     color: 'hsl(var(--chart-1))',
   },
 } satisfies ChartConfig;
 
 export function ComponentSeven() {
-  const totalVisitors = chartData[0].desktop + chartData[0].mobile;
-
   return (
     <ChartContainer config={chartConfig} className="mx-auto  w-full h-40 max-w-[150px]">
-      <RadialBarChart data={chartData} endAngle={180} innerRadius={50} outerRadius={80}>
-        <ChartTooltip cursor={false} content={<ChartTooltipContent hideLabel />} />
+      <RadialBarChart
+        data={chartData}
+        startAngle={0}
+        endAngle={180}
+        innerRadius={50}
+        outerRadius={60}>
+        <PolarGrid gridType="circle" radialLines={false} stroke="none" polarRadius={[86, 74]} />
+        <RadialBar dataKey="visitors" background cornerRadius={4} />
         <PolarRadiusAxis tick={false} tickLine={false} axisLine={false}>
           <Label
             content={({ viewBox }) => {
               if (viewBox && 'cx' in viewBox && 'cy' in viewBox) {
                 return (
-                  <text x={viewBox.cx} y={viewBox.cy} textAnchor="middle">
+                  <text x={viewBox.cx} y={viewBox.cy} textAnchor="middle" dominantBaseline="middle">
                     <tspan
                       x={viewBox.cx}
                       y={(viewBox.cy || 0) - 12}
                       className="fill-current text-lg font-semibold">
-                      {totalVisitors.toLocaleString()}
+                      {chartData[0].visitors.toLocaleString()}
                     </tspan>
                     <tspan
                       x={viewBox.cx}
-                      y={(viewBox.cy || 0) + 4}
+                      y={(viewBox.cy || 0) + 8}
                       className="fill-muted-foreground">
                       Innovation
                     </tspan>
@@ -64,20 +62,6 @@ export function ComponentSeven() {
             }}
           />
         </PolarRadiusAxis>
-        <RadialBar
-          dataKey="desktop"
-          stackId="a"
-          cornerRadius={4}
-          fill="var(--color-desktop)"
-          className="stroke-transparent stroke-2"
-        />
-        <RadialBar
-          dataKey="mobile"
-          fill="var(--color-mobile)"
-          stackId="a"
-          cornerRadius={5}
-          className="stroke-transparent stroke-2"
-        />
       </RadialBarChart>
     </ChartContainer>
   );
