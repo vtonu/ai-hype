@@ -25,8 +25,17 @@ export function SettingsToggle() {
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end">
-        <DropdownMenuItem onClick={() => setTheme('light')}>Light</DropdownMenuItem>
-        <DropdownMenuItem onClick={() => setTheme('dark')}>Dark</DropdownMenuItem>
+        {/* <DropdownMenuItem onClick={() => setTheme('light')}>Light</DropdownMenuItem>
+        <DropdownMenuItem onClick={() => setTheme('dark')}>Dark</DropdownMenuItem> */}
+        <DropdownMenuItem>OpenAI</DropdownMenuItem>
+        <DropdownMenuItem>Meta</DropdownMenuItem>
+        <DropdownMenuItem>Google</DropdownMenuItem>
+        <DropdownMenuItem>Anthropic</DropdownMenuItem>
+        <DropdownMenuItem>Mistral</DropdownMenuItem>
+        <DropdownMenuItem>Cohere</DropdownMenuItem>
+        <DropdownMenuItem>Perplexity</DropdownMenuItem>
+        <DropdownMenuItem>Stability</DropdownMenuItem>
+        <DropdownMenuItem>DeepSeek</DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
   );
