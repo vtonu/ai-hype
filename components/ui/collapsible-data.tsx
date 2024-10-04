@@ -4,14 +4,12 @@ import { ChevronDown, ChevronUp } from 'lucide-react';
 import { BlackCard } from './blackCard';
 import { Button } from '@/components/ui/button';
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/components/ui/collapsible';
-import { Separator } from '@/components/ui/separator';
 
 export function CollapsibleData() {
   const [isOpen, setIsOpen] = React.useState(true);
 
   return (
     <Collapsible open={isOpen} onOpenChange={setIsOpen} className="w-[500px] space-y-2">
-      <Separator />
       <div className="flex items-center justify-end p-2">
         <h4 className="text-sm font-mono px-2">{isOpen ? 'Hide hype info' : 'Show hype info'}</h4>
         <CollapsibleTrigger asChild>
