@@ -49,9 +49,9 @@ body {
     --ring: 240 10% 3.9%;
     --radius: 0.5rem;
     --chart-1: 120 110% 40%; /* bright green*/
-    --chart-2: 70 110% 40%; /* lime yellow*/
+    --chart-2: 80 110% 40%; /* lime yellow*/
     --chart-3: 5 120% 40%; /* dark red */
-    --chart-4: 40 110% 50%; /* lighter orange */
+    --chart-4: 40 100% 50%; /* lighter orange */
   }
   .dark {
     --background: 240 10% 3.9%;
@@ -75,9 +75,9 @@ body {
     --ring: 240 4.9% 83.9%;
     --radius: 0.5rem;
     --chart-1: 120 110% 40%; /* bright green*/
-    --chart-2: 70 110% 40%; /* lime yellow*/
+    --chart-2: 80 110% 40%; /* lime yellow*/
     --chart-3: 5 120% 40%; /* dark red */
-    --chart-4: 40 110% 50%; /* lighter orange */
+    --chart-4: 40 100% 50%; /* lighter orange */
   }
 }
 

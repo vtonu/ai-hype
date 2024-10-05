@@ -17,14 +17,14 @@ import { Cover } from '@/components/ui/cover';
 export const description = 'AI Hype Line Chart';
 
 const chartData = [
-  { date: '2024-08-01', hype: 105, rank: 1 },
-  { date: '2024-09-01', hype: 125, rank: 1 },
-  { date: '2024-09-05', hype: 95, rank: 2 },
-  { date: '2024-09-10', hype: 191, rank: 2 },
-  { date: '2024-09-15', hype: 238, rank: 1 },
-  { date: '2024-10-20', hype: 348, rank: 1 },
-  { date: '2024-10-25', hype: 452, rank: 1 },
-  { date: '2024-10-30', hype: 389, rank: 5 },
+  { date: '2024-07-01', hype: 1100, rank: 6 },
+  { date: '2024-07-15', hype: 1115, rank: 5 },
+  { date: '2024-08-01', hype: 1125, rank: 4 },
+  { date: '2024-08-15', hype: 1105, rank: 4 },
+  { date: '2024-09-01', hype: 1125, rank: 3 },
+  { date: '2024-09-15', hype: 910, rank: 2 },
+  { date: '2024-09-25', hype: 1191, rank: 2 },
+  { date: '2024-10-05', hype: 3148, rank: 1 },
 ];
 
 const chartConfig = {
@@ -48,6 +48,10 @@ export function ComponentOne() {
     }),
     [],
   );
+
+  const formatNumber = (num: number): string => {
+    return num >= 10000 ? (num / 1000).toFixed(1) + 'K' : num.toLocaleString();
+  };
 
   return (
     <div className="px-2 pt-6">
@@ -77,8 +81,10 @@ export function ComponentOne() {
                     <span className="text-xs text-muted-foreground">
                       {chartConfig[chart].label}
                     </span>
-                    <span className="text-lg font-bold leading-none sm:text-2xl">
-                      {total[key as keyof typeof total].toLocaleString()}
+                    <span className="text-lg font-bold leading-none sm:text-xl">
+                      {key === 'hype'
+                        ? formatNumber(total[key as keyof typeof total])
+                        : total[key as keyof typeof total].toLocaleString()}
                     </span>
                   </button>
                 );

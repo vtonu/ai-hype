@@ -19,7 +19,7 @@ const getColorByLevel = (level: string) => {
     case 'High':
       return 'hsl(5, 110%, 50%)'; // High Level
     case 'Medium':
-      return 'hsl(30, 100%, 50%)'; // Medium Level
+      return 'hsl(40, 100%, 50%)'; // Medium Level
     case 'Low':
       return 'hsl(55, 130%, 50%)'; // Low Level
     default:
@@ -35,7 +35,7 @@ const chartConfig = {
 } satisfies ChartConfig;
 
 export function DoomCard() {
-  const currentData = chartData[0]; // 0, 1, 2 to select High, Medium, Low
+  const currentData = chartData[1]; // 0, 1, 2 to select High, Medium, Low
 
   return (
     <Card className="h-[100px] flex">
