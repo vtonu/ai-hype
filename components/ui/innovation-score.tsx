@@ -57,14 +57,14 @@ export function InnovationCard() {
                       dominantBaseline="middle">
                       <tspan
                         x={viewBox.cx}
-                        y={(viewBox.cy || 0) - 12}
+                        y={(viewBox.cy || 0) - 18}
                         className="fill-current text-lg font-semibold">
                         {/* Display the mapped string symbol */}
                         {scoreToSymbolMapping[chartData[0].score] || chartData[0].score}
                       </tspan>
                       <tspan
                         x={viewBox.cx}
-                        y={(viewBox.cy || 0) + 8}
+                        y={(viewBox.cy || 0) + 4}
                         className="fill-muted-foreground">
                         Innovation
                       </tspan>

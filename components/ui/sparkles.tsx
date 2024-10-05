@@ -31,14 +31,27 @@ export const SparklesCore = (props: ParticlesProps) => {
   }, []);
   const controls = useAnimation();
 
-  const particlesLoaded = async (container?: Container) => {
-    if (container) {
+  useEffect(() => {
+    initParticlesEngine(async (engine) => {
+      await loadSlim(engine);
+    }).then(() => {
+      setInit(true);
+    });
+  }, []);
+
+  useEffect(() => {
+    if (init) {
       controls.start({
         opacity: 1,
         transition: {
           duration: 1,
         },
       });
+    }
+  }, [init, controls]);
+
+  const particlesLoaded = async (container?: Container) => {
+    if (container) {
     }
   };
 

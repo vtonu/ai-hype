@@ -40,8 +40,8 @@ export function RankCard() {
                     <text x={viewBox.cx} y={viewBox.cy} textAnchor="middle">
                       <tspan
                         x={viewBox.cx}
-                        y={(viewBox.cy || 0) - 12}
-                        className="fill-current text-lg font-semibold">
+                        y={(viewBox.cy || 0) - 18}
+                        className="fill-current text-md font-semibold">
                         {totalVisitors.toLocaleString()}
                       </tspan>
                       <tspan

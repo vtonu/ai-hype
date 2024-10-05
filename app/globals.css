@@ -48,11 +48,10 @@ body {
     --input: 240 5.9% 90%;
     --ring: 240 10% 3.9%;
     --radius: 0.5rem;
-    --chart-1: 119 100% 40%; /*green*/
-    --chart-2: 55 130% 50%; /*yellow*/
-    --chart-3: 5 110% 50%; /* dark orange - doom*/
-    --chart-4: 38 100% 50%; /* lighter orange */
-    --chart-5: 10 100% 50%; /* red */
+    --chart-1: 120 110% 40%; /* bright green*/
+    --chart-2: 70 110% 40%; /* lime yellow*/
+    --chart-3: 5 120% 40%; /* dark red */
+    --chart-4: 40 110% 50%; /* lighter orange */
   }
   .dark {
     --background: 240 10% 3.9%;
@@ -75,11 +74,10 @@ body {
     --input: 240 3.7% 15.9%;
     --ring: 240 4.9% 83.9%;
     --radius: 0.5rem;
-    --chart-1: 119 100% 40%; /*green*/
-    --chart-2: 55 130% 50%; /*yellow*/
-    --chart-3: 5 110% 50%; /* dark orange - doom*/
-    --chart-4: 38 100% 50%; /* lighter orange */
-    --chart-5: 10 100% 50%; /* red */
+    --chart-1: 120 110% 40%; /* bright green*/
+    --chart-2: 70 110% 40%; /* lime yellow*/
+    --chart-3: 5 120% 40%; /* dark red */
+    --chart-4: 40 110% 50%; /* lighter orange */
   }
 }
 

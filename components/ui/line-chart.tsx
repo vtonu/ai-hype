@@ -17,6 +17,7 @@ import { Cover } from '@/components/ui/cover';
 export const description = 'AI Hype Line Chart';
 
 const chartData = [
+  { date: '2024-08-01', hype: 105, rank: 1 },
   { date: '2024-09-01', hype: 125, rank: 1 },
   { date: '2024-09-05', hype: 95, rank: 2 },
   { date: '2024-09-10', hype: 191, rank: 2 },

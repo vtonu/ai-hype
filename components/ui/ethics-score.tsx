@@ -56,14 +56,14 @@ export function EthicsCard() {
                       dominantBaseline="middle">
                       <tspan
                         x={viewBox.cx}
-                        y={(viewBox.cy || 0) - 12}
+                        y={(viewBox.cy || 0) - 18}
                         className="fill-current text-lg font-semibold">
                         {/* Use the mapped symbol for the score */}
                         {scoreToSymbolMapping[chartData[0].score] || chartData[0].score}
                       </tspan>
                       <tspan
                         x={viewBox.cx}
-                        y={(viewBox.cy || 0) + 8}
+                        y={(viewBox.cy || 0) + 4}
                         className="fill-muted-foreground">
                         Ethics
                       </tspan>
