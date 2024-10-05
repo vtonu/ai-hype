@@ -79,6 +79,10 @@ body {
     --chart-3: 5 110% 50%; /* dark orange - doom*/
     --chart-4: 38 100% 50%; /* lighter orange */
     --chart-5: 10 100% 50%; /* red */
+
+    --doom-1: 5 110% 50%;
+    --doom-2: 38 100% 50%;
+    --doom-3: 55 130% 50%;
   }
 }
 
