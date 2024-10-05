@@ -6,6 +6,7 @@ import { CoBox } from './Companybox';
 import { CollapsibleData } from './collapsible-data';
 import { Badge } from '@/components/ui/badge';
 import { ComponentOne } from './line-chart';
+import { SparklesAI } from './aihypesparkles';
 
 export function ResizableVertical() {
   return (
@@ -13,9 +14,10 @@ export function ResizableVertical() {
       <ResizablePanel
         defaultSize={25}
         className="flex justify-center items-center gap-1 flex-col sm:flex-row pt-4">
-        <span className="flex sm:flex-row gap-1">
+        <span className="flex sm:flex-row gap-1 items-center">
           <h6 className="font-semibold">Today's AI hype: </h6>
-          <Badge variant="outline">NotebookLM</Badge>
+          {/* <Badge variant="outline">NotebookLM</Badge> */}
+          <SparklesAI />
         </span>
         <span className="flex gap-1 items-center">
           <Button variant="secondary" size="sm" onClick={() => window.location.reload()}>
