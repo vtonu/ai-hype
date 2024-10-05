@@ -12,6 +12,7 @@ import {
 } from '@/components/ui/chart';
 import { Badge } from '@/components/ui/badge';
 import { CircleDot } from 'lucide-react';
+import { Cover } from '@/components/ui/cover';
 
 export const description = 'AI Hype Line Chart';
 
@@ -61,24 +62,30 @@ export function ComponentOne() {
 
             <CardDescription>Total hype data:</CardDescription>
           </div>
-          <div className="flex">
-            {['hype', 'rank'].map((key) => {
-              const chart = key as keyof typeof chartConfig;
-              return (
-                <button
-                  key={chart}
-                  data-active={activeChart === chart}
-                  className="flex flex-1 flex-col justify-center gap-1  px-2 py-2 text-left even:border-l data-[active=true]:bg-muted/50 sm:border-l sm:border-t-0 sm:px-8 sm:py-6"
-                  onClick={() => setActiveChart(chart)}>
-                  <span className="text-xs text-muted-foreground">{chartConfig[chart].label}</span>
-                  <span className="text-lg font-bold leading-none sm:text-3xl">
-                    {total[key as keyof typeof total].toLocaleString()}
-                  </span>
-                </button>
-              );
-            })}
-          </div>
+
+          <Cover>
+            <div className="flex">
+              {['hype', 'rank'].map((key) => {
+                const chart = key as keyof typeof chartConfig;
+                return (
+                  <button
+                    key={chart}
+                    data-active={activeChart === chart}
+                    className="flex flex-1 flex-col justify-center gap-1  px-2 py-2 text-left even:border-l data-[active=true]:bg-muted/50 sm:border-l sm:border-t-0 sm:px-8 sm:py-6"
+                    onClick={() => setActiveChart(chart)}>
+                    <span className="text-xs text-muted-foreground">
+                      {chartConfig[chart].label}
+                    </span>
+                    <span className="text-lg font-bold leading-none sm:text-2xl">
+                      {total[key as keyof typeof total].toLocaleString()}
+                    </span>
+                  </button>
+                );
+              })}
+            </div>
+          </Cover>
         </CardHeader>
+
         <CardContent>
           <ChartContainer config={chartConfig} className="aspect-video h-[180px] w-full">
             <LineChart
