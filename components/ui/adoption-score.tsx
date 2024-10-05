@@ -8,7 +8,7 @@ export const description = 'A radial chart for User Trust';
 
 // Updated chart data to display a symbol instead of numeric score
 const chartData = [
-  { browser: 'lightorange', score: 5, symbol: 'B', fill: 'var(--color-lightorange)' },
+  { browser: 'lightorange', score: 4, symbol: 'B', fill: 'var(--color-lightorange)' },
 ];
 
 // Score to symbol mapping
