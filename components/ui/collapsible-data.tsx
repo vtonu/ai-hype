@@ -1,7 +1,7 @@
 'use client';
 import * as React from 'react';
 import { ChevronDown, ChevronUp } from 'lucide-react';
-import { RankCard } from './rank-score';
+import { ImpactCard } from './impact-score';
 import { DoomCard } from './doom-score';
 import { TrustCard } from './trust-score';
 import { InnovationCard } from './innovation-score';
@@ -15,6 +15,7 @@ export function CollapsibleData() {
 
   return (
     <Collapsible open={isOpen} onOpenChange={setIsOpen} className="w-[500px] ">
+      {/* Hide hype info button, text & icon */}
       <div className="flex items-center justify-end p-2">
         <h4 className="text-sm font-mono px-2">{isOpen ? 'Hide hype info' : 'Show hype info'}</h4>
         <CollapsibleTrigger asChild>
@@ -24,10 +25,10 @@ export function CollapsibleData() {
           </Button>
         </CollapsibleTrigger>
       </div>
-
+      {/* Show hype info content (Cards) */}
       <CollapsibleContent>
         <div className="p-2 font-mono grid grid-cols-3 gap-2 ">
-          <RankCard />
+          <ImpactCard />
           <DoomCard />
           <TrustCard />
           <InnovationCard />

@@ -4,11 +4,10 @@ import { Button } from '@/components/ui/button';
 import { SettingsToggle } from './settings-button';
 import { CoBox } from './Companybox';
 import { CollapsibleData } from './collapsible-data';
-import { Badge } from '@/components/ui/badge';
 import { ComponentOne } from './line-chart';
 import { SparklesAI } from './aihypesparkles';
 
-export function ResizableVertical() {
+export function ResizableVerticalPanel() {
   return (
     <ResizablePanelGroup direction="vertical" className="max-w-lg rounded-sm border">
       <ResizablePanel
@@ -16,7 +15,6 @@ export function ResizableVertical() {
         className="flex justify-center items-center gap-1 flex-col sm:flex-row pt-4">
         <span className="flex sm:flex-row gap-1 items-center">
           <h6 className="font-semibold">Today's AI hype: </h6>
-          {/* <Badge variant="outline">NotebookLM</Badge> */}
           <SparklesAI />
         </span>
         <span className="flex gap-1 items-center">

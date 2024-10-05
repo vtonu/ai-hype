@@ -34,7 +34,7 @@ const chartConfig = {
   },
 } satisfies ChartConfig;
 
-export function RankCard() {
+export function ImpactCard() {
   const currentData = chartData[0]; // 0, 1, 2 to select High, Medium, Low
 
   return (
