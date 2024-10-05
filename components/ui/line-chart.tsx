@@ -48,10 +48,10 @@ export function ComponentOne() {
   );
 
   return (
-    <div className="px-2">
+    <div className="px-2 pt-6">
       <Card>
         <CardHeader className="flex-row">
-          <div className="flex flex-1 flex-col justify-center gap-2 sm:py-2">
+          <div className="flex flex-1 flex-col justify-center gap-2 ">
             <CardTitle>
               <Badge variant="secondary">
                 Live
@@ -80,7 +80,7 @@ export function ComponentOne() {
           </div>
         </CardHeader>
         <CardContent>
-          <ChartContainer config={chartConfig} className="aspect-auto h-[250px] w-full">
+          <ChartContainer config={chartConfig} className="aspect-video h-[180px] w-full">
             <LineChart
               accessibilityLayer
               data={chartData}

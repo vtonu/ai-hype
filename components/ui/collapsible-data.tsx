@@ -14,7 +14,7 @@ export function CollapsibleData() {
   const [isOpen, setIsOpen] = React.useState(true);
 
   return (
-    <Collapsible open={isOpen} onOpenChange={setIsOpen} className="w-[500px] space-y-2">
+    <Collapsible open={isOpen} onOpenChange={setIsOpen} className="w-[500px] ">
       <div className="flex items-center justify-end p-2">
         <h4 className="text-sm font-mono px-2">{isOpen ? 'Hide hype info' : 'Show hype info'}</h4>
         <CollapsibleTrigger asChild>
