@@ -1,7 +1,7 @@
 'use client';
 
 import * as React from 'react';
-import { SunMoon, Sparkle } from 'lucide-react';
+import { SunMoon } from 'lucide-react';
 import { useTheme } from 'next-themes';
 import { Button } from '@/components/ui/button';
 import { TooltipHype } from './toolTipHype';

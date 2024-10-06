@@ -38,37 +38,6 @@ const chartConfig = {
   },
 } satisfies ChartConfig;
 
-const HypeRankLabel = ({ hypeChange, rankChange }: { hypeChange: number; rankChange: number }) => {
-  const getIconAndColor = (change: number) => {
-    if (change > 0) {
-      return { Icon: ArrowUp, color: 'text-green-500' }; // Positive change, green arrow-up
-    } else if (change < 0) {
-      return { Icon: ArrowDown, color: 'text-red-500' }; // Negative change, red arrow-down
-    } else {
-      return { Icon: CircleDot, color: 'text-gray-500' }; // No change, gray dot
-    }
-  };
-
-  const hypeIcon = getIconAndColor(hypeChange);
-  const rankIcon = getIconAndColor(rankChange);
-
-  return (
-    <div className="flex items-center space-x-4">
-      {/* Hype label with percentage change */}
-      <div className="flex items-center">
-        <hypeIcon.Icon className={`w-4 h-4 ${hypeIcon.color}`} />
-        <span className="ml-1 text-xs">{hypeChange}%</span>
-      </div>
-
-      {/* Rank label with percentage change */}
-      <div className="flex items-center">
-        <rankIcon.Icon className={`w-4 h-4 ${rankIcon.color}`} />
-        <span className="ml-1 text-xs">{rankChange}%</span>
-      </div>
-    </div>
-  );
-};
-
 export function ComponentOne() {
   const [activeChart, setActiveChart] = React.useState<keyof typeof chartConfig>('hype');
 
@@ -115,13 +84,24 @@ export function ComponentOne() {
 
           <Cover>
             <div className="flex flex-col gap-4">
-              {/* <HypeRankLabel hypeChange={40} rankChange={-10} /> */}
               <div className="flex">
                 {['hype', 'rank'].map((key) => {
                   const chart = key as keyof typeof chartConfig;
                   const isHype = key === 'hype'; // Determine if it's 'hype'
-                  const isRank = key === 'rank'; // Determine if it's 'rank'
-                  const changeValue = isHype ? 77 : -33; // Example values for hype and rank changes
+                  const changeValue = isHype ? 71 : -33; // Dynamic values for hype and rank changes
+
+                  // Determine the icon and color based on the change value
+                  const getIconAndColor = (change: number) => {
+                    if (change > 0) {
+                      return { Icon: ArrowUp, color: 'text-green-500' }; // Positive change, green arrow-up
+                    } else if (change < 0) {
+                      return { Icon: ArrowDown, color: 'text-red-500' }; // Negative change, red arrow-down
+                    } else {
+                      return { Icon: CircleDot, color: 'text-gray-500' }; // No change, gray dot
+                    }
+                  };
+
+                  const iconInfo = getIconAndColor(changeValue);
 
                   return (
                     <button
@@ -133,45 +113,13 @@ export function ComponentOne() {
                       <span className="text-xs text-muted-foreground flex items-center justify-center gap-4">
                         {chartConfig[chart].label}
 
-                        {/* Conditionally show the arrow and percentage next to the label */}
-                        {isHype && (
-                          <span className="flex items-center text-green-500">
-                            <svg
-                              xmlns="http://www.w3.org/2000/svg"
-                              fill="none"
-                              viewBox="0 0 24 24"
-                              stroke="currentColor"
-                              className="w-3 h-3" // Small size for the arrow
-                            >
-                              <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                strokeWidth="2"
-                                d="M5 15l7-7 7 7"
-                              />
-                            </svg>
-                            {changeValue}%
+                        {/* Icon and Percentage display */}
+                        <span className="flex items-center">
+                          <iconInfo.Icon className={`w-4 h-4 ${iconInfo.color}`} />
+                          <span className={`ml-1 text-xs ${iconInfo.color}`}>
+                            {changeValue}% {/* Display dynamic change value */}
                           </span>
-                        )}
-                        {isRank && (
-                          <span className="flex items-center text-red-500 ">
-                            <svg
-                              xmlns="http://www.w3.org/2000/svg"
-                              fill="none"
-                              viewBox="0 0 24 24"
-                              stroke="currentColor"
-                              className="w-3 h-3" // Small size for the arrow
-                            >
-                              <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                strokeWidth="2"
-                                d="M19 9l-7 7-7-7"
-                              />
-                            </svg>
-                            {changeValue}%
-                          </span>
-                        )}
+                        </span>
                       </span>
 
                       {/* Number display */}
