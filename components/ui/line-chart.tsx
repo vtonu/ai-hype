@@ -84,6 +84,18 @@ export function ComponentOne() {
     return num >= 10000 ? (num / 1000).toFixed(1) + 'K' : num.toLocaleString();
   };
 
+  // Function to get the current date and time
+  const getCurrentDateTime = () => {
+    const now = new Date();
+    return now.toLocaleDateString('en-US', {
+      month: 'long',
+      day: 'numeric',
+      year: 'numeric',
+      hour: '2-digit',
+      minute: '2-digit',
+    });
+  };
+
   return (
     <div className="px-2 pt-6">
       <Card>
@@ -95,7 +107,10 @@ export function ComponentOne() {
                 <CircleDot className="w-3 h-3 pl-1 fill-chart-1" />
               </Badge>
             </CardTitle>
-            <CardDescription>Total hype data:</CardDescription>
+            <CardDescription className="text-xs">
+              {' '}
+              Hype data: {getCurrentDateTime()} {/* Displaying current date and time */}
+            </CardDescription>
           </div>
 
           <Cover>
