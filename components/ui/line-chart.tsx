@@ -99,27 +99,76 @@ export function ComponentOne() {
           </div>
 
           <Cover>
-            <HypeRankLabel hypeChange={40} rankChange={-10} />
-            <div className="flex">
-              {['hype', 'rank'].map((key) => {
-                const chart = key as keyof typeof chartConfig;
-                return (
-                  <button
-                    key={chart}
-                    data-active={activeChart === chart}
-                    className="flex flex-1 flex-col justify-center gap-1  px-2 py-2 text-left even:border-l data-[active=true]:bg-muted/50  sm:p-2"
-                    onClick={() => setActiveChart(chart)}>
-                    <span className="text-xs text-muted-foreground">
-                      {chartConfig[chart].label}
-                    </span>
-                    <span className="text-lg font-bold leading-none sm:text-xl">
-                      {key === 'hype'
-                        ? formatNumber(total[key as keyof typeof total])
-                        : total[key as keyof typeof total].toLocaleString()}
-                    </span>
-                  </button>
-                );
-              })}
+            <div className="flex flex-col gap-4">
+              {/* <HypeRankLabel hypeChange={40} rankChange={-10} /> */}
+              <div className="flex">
+                {['hype', 'rank'].map((key) => {
+                  const chart = key as keyof typeof chartConfig;
+                  const isHype = key === 'hype'; // Determine if it's 'hype'
+                  const isRank = key === 'rank'; // Determine if it's 'rank'
+                  const changeValue = isHype ? 77 : -33; // Example values for hype and rank changes
+
+                  return (
+                    <button
+                      key={chart}
+                      data-active={activeChart === chart}
+                      className="flex flex-1 flex-col justify-center gap-1 px-2 py-2 text-left even:border-l data-[active=true]:bg-muted/50 sm:p-2"
+                      onClick={() => setActiveChart(chart)}>
+                      {/* Label and Arrow */}
+                      <span className="text-xs text-muted-foreground flex items-center justify-center gap-8">
+                        {chartConfig[chart].label}
+
+                        {/* Conditionally show the arrow and percentage next to the label */}
+                        {isHype && (
+                          <span className="flex items-center text-green-500">
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              fill="none"
+                              viewBox="0 0 24 24"
+                              stroke="currentColor"
+                              className="w-3 h-3" // Small size for the arrow
+                            >
+                              <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth="2"
+                                d="M5 15l7-7 7 7"
+                              />
+                            </svg>
+                            {changeValue}%
+                          </span>
+                        )}
+                        {isRank && (
+                          <span className="flex items-center text-red-500 ">
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              fill="none"
+                              viewBox="0 0 24 24"
+                              stroke="currentColor"
+                              className="w-3 h-3" // Small size for the arrow
+                            >
+                              <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth="2"
+                                d="M19 9l-7 7-7-7"
+                              />
+                            </svg>
+                            {changeValue}%
+                          </span>
+                        )}
+                      </span>
+
+                      {/* Number display */}
+                      <span className="text-lg font-bold leading-none sm:text-xl">
+                        {key === 'hype'
+                          ? formatNumber(total[key as keyof typeof total])
+                          : total[key as keyof typeof total].toLocaleString()}
+                      </span>
+                    </button>
+                  );
+                })}
+              </div>
             </div>
           </Cover>
         </CardHeader>
