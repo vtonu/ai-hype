@@ -1,9 +1,10 @@
 'use client';
 
 import * as React from 'react';
-import { SunMoon } from 'lucide-react';
+import { SunMoon, Sparkle } from 'lucide-react';
 import { useTheme } from 'next-themes';
 import { Button } from '@/components/ui/button';
+import { TooltipHype } from './toolTipHype';
 
 export function SettingsToggle() {
   const { theme, setTheme } = useTheme();
@@ -13,7 +14,8 @@ export function SettingsToggle() {
   };
 
   return (
-    <span className="flex justify-end p-3">
+    <span className="flex justify-end p-3 gap-2">
+      <TooltipHype />
       <Button variant="outline" size="icon" onClick={toggleTheme}>
         <SunMoon className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
         <SunMoon className="absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />

@@ -115,7 +115,7 @@ export function ComponentOne() {
                       className="flex flex-1 flex-col justify-center gap-1 px-2 py-2 text-left even:border-l data-[active=true]:bg-muted/50 sm:p-2"
                       onClick={() => setActiveChart(chart)}>
                       {/* Label and Arrow */}
-                      <span className="text-xs text-muted-foreground flex items-center justify-center gap-8">
+                      <span className="text-xs text-muted-foreground flex items-center justify-center gap-4">
                         {chartConfig[chart].label}
 
                         {/* Conditionally show the arrow and percentage next to the label */}
