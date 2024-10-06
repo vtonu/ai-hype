@@ -14,7 +14,7 @@ export function ResizableVerticalPanel() {
         defaultSize={25}
         className="flex justify-center items-center gap-1 flex-col sm:flex-row pt-4">
         <span className="flex sm:flex-row gap-1 items-center">
-          <h6 className="font-semibold">Today's AI hype: </h6>
+          <h6 className="font-semibold">Today&apos;s AI hype: </h6>
           <SparklesAI />
         </span>
         <span className="flex gap-1 items-center">
