@@ -56,7 +56,7 @@ const frameworks = [
 
 export function CoBox() {
   const [open, setOpen] = React.useState(false);
-  const [value, setValue] = React.useState('');
+  const [value, setValue] = React.useState('google');
 
   return (
     <Popover open={open} onOpenChange={setOpen}>
