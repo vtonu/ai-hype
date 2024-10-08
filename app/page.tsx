@@ -7,7 +7,7 @@ export default function Home() {
     <main className="h-[875px] flex justify-center items-center pt-4 px-2 flex-col">
       <SelectedCompanyProvider>
         <MainPanel />
-        <FooterStuff />
+        {/* <FooterStuff /> */}
       </SelectedCompanyProvider>
     </main>
   );

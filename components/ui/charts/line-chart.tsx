@@ -66,7 +66,7 @@ export function ComponentOne() {
   };
 
   return (
-    <div className="px-2 pt-6">
+    <div className="px-2 pt-2">
       <Card>
         <CardHeader className="flex-row">
           <div className="flex flex-1 flex-col justify-center gap-2 ">
@@ -78,7 +78,7 @@ export function ComponentOne() {
             </CardTitle>
             <CardDescription className="text-xs">
               {' '}
-              Hype data: {getCurrentDateTime()} {/* Displaying current date and time */}
+              Last Update: {getCurrentDateTime()} {/* Displaying current date and time */}
             </CardDescription>
           </div>
 
