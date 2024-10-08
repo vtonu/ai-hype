@@ -9,7 +9,7 @@ import { ComponentOne } from './line-chart';
 import { SparklesAI } from './aihypesparkles';
 import { aiCompanyData } from '@/app/data/aiCompanyData'; // Ensure this import is correct
 
-export function ResizableVerticalPanel() {
+export function MainPanel() {
   return (
     <ResizablePanelGroup direction="vertical" className="max-w-lg rounded-sm border">
       <ResizablePanel
