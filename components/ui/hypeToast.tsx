@@ -1,11 +1,13 @@
+'use client';
+
+import { useToast } from '@/hooks/use-toast';
 import { Button } from '@/components/ui/button';
 import { Sparkle } from 'lucide-react';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
 
-import { useToast } from '@/hooks/use-toast';
-
-export function TooltipHype() {
+export function HypeToast() {
   const { toast } = useToast();
+
   return (
     <Button
       variant="outline"
