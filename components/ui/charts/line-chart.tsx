@@ -13,6 +13,7 @@ import {
 import { Badge } from '@/components/ui/badge';
 import { CircleDot, ArrowUp, ArrowDown } from 'lucide-react';
 import { Cover } from '@/components/ui/cover';
+import { CircleIcon } from '@/components/ui/cover';
 
 export const description = 'AI Hype Line Chart';
 
@@ -73,7 +74,8 @@ export function ComponentOne() {
             <CardTitle>
               <Badge variant="secondary">
                 Live
-                <CircleDot className="w-3 h-3 pl-1 fill-chart-1" />
+                {/* <CircleDot className="w-3 h-3 pl-1 fill-chart-1" /> */}
+                <CircleIcon className="w-2 h-2" />
               </Badge>
             </CardTitle>
             <CardDescription className="text-xs">

@@ -5,6 +5,10 @@ import { useRef } from 'react';
 import { cn } from '@/lib/utils';
 import { SparklesCore } from '@/components/ui/sparkles';
 
+// Component: Cover
+// This component handles a hover effect with sparkles and animated beams.
+// It listens for mouse enter/leave events and triggers animation transitions.
+
 export const Cover = ({
   children,
   className,
@@ -19,17 +23,18 @@ export const Cover = ({
   const [containerWidth, setContainerWidth] = useState(0);
   const [beamPositions, setBeamPositions] = useState<number[]>([]);
 
+  // Effect to calculate container dimensions and beam positions when the component mounts or updates
   useEffect(() => {
     if (ref.current) {
       setContainerWidth(ref.current?.clientWidth ?? 0);
 
       const height = ref.current?.clientHeight ?? 0;
-      const numberOfBeams = Math.floor(height / 10); // Adjust the divisor to control the spacing
+      const numberOfBeams = Math.floor(height / 10); // Controls the number of beams based on container height
       const positions = Array.from(
         { length: numberOfBeams },
         (_, i) => (i + 1) * (height / (numberOfBeams + 1)),
       );
-      setBeamPositions(positions);
+      setBeamPositions(positions); // Set beam positions dynamically
     }
   }, [ref]);
 
@@ -83,6 +88,7 @@ export const Cover = ({
           </motion.div>
         )}
       </AnimatePresence>
+      {/* Render beams dynamically based on calculated positions */}
       {beamPositions.map((position, index) => (
         <Beam
           key={index}
@@ -91,16 +97,16 @@ export const Cover = ({
           delay={Math.random() * 2 + 1}
           width={containerWidth}
           style={{
-            top: `${position}px`,
+            top: `${position}px`, // Position the beam along the Y-axis
           }}
         />
       ))}
       <motion.span
         key={String(hovered)}
         animate={{
-          scale: hovered ? 0.8 : 1,
-          x: hovered ? [0, -30, 30, -30, 30, 0] : 0,
-          y: hovered ? [0, 30, -30, 30, -30, 0] : 0,
+          scale: hovered ? 0.8 : 1, // Scale down when hovered
+          x: hovered ? [0, -30, 30, -30, 30, 0] : 0, // Horizontal shaking effect
+          y: hovered ? [0, 30, -30, 30, -30, 0] : 0, // Vertical shaking effect
         }}
         exit={{
           filter: 'none',
@@ -137,6 +143,8 @@ export const Cover = ({
   );
 };
 
+// Component: Beam
+// Animated SVG line that appears when hovering over the Cover component.
 export const Beam = ({
   className,
   delay,
@@ -151,7 +159,7 @@ export const Beam = ({
   hovered?: boolean;
   width?: number;
 } & React.ComponentProps<typeof motion.svg>) => {
-  const id = useId();
+  const id = useId(); // Unique ID for each SVG to avoid conflicts
 
   return (
     <motion.svg
@@ -162,9 +170,11 @@ export const Beam = ({
       xmlns="http://www.w3.org/2000/svg"
       className={cn('absolute inset-x-0 w-full', className)}
       {...svgProps}>
+      {/* Draws a horizontal line with animated gradient */}
       <motion.path d={`M0 0.5H${width ?? '600'}`} stroke={`url(#svgGradient-${id})`} />
 
       <defs>
+        {/* Define a linear gradient for the stroke animation */}
         <motion.linearGradient
           id={`svgGradient-${id}`}
           key={String(hovered)}
@@ -197,11 +207,13 @@ export const Beam = ({
   );
 };
 
+// Component: CircleIcon
+// Simple animated pulse circle that becomes hidden when hovering over the Cover component.
 export const CircleIcon = ({ className, delay }: { className?: string; delay?: number }) => {
   return (
     <div
       className={cn(
-        `pointer-events-none animate-pulse group-hover/cover:hidden group-hover/cover:opacity-100 group h-2 w-2 rounded-full bg-neutral-600 dark:bg-white opacity-20 group-hover/cover:bg-white`,
+        `pointer-events-none animate-pulse group-hover/cover:hidden group-hover/cover:opacity-100 group rounded-full bg-green-500 dark:bg-green opacity-5 group-hover/cover:bg-green ml-2`,
         className,
         delay,
       )}></div>
