@@ -1,6 +1,5 @@
 // use client is required by React to work
 'use client';
-
 // Import the required dependencies
 import React, { useEffect, useId, useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
@@ -8,8 +7,7 @@ import { useRef } from 'react';
 import { cn } from '@/lib/utils';
 import { SparklesCore } from '@/components/ui/sparkles';
 
-// Component: Cover
-// This component handles an effect with sparkles and animated beams.
+// Cover component handles an effect with sparkles and animated beams.
 // It listens for mouse enter/leave events and triggers animation transitions.
 export const Cover = ({
   children,
@@ -22,7 +20,6 @@ export const Cover = ({
   const ref = useRef<HTMLDivElement>(null); // Ref for accessing the container div
   const [containerWidth, setContainerWidth] = useState(0); // State to store the width of the container
   const [beamPositions, setBeamPositions] = useState<number[]>([]); // State to store the positions of animated beams
-
   // Effect to calculate container dimensions and beam positions when the component mounts or updates
   useEffect(() => {
     if (ref.current) {
@@ -142,8 +139,7 @@ export const Cover = ({
   );
 };
 
-// Component: Beam
-// Animated SVG line that appears with an initial animation.
+// Beam component and animated SVG line that appears with an initial animation.
 export const Beam = ({
   className, // Optional className for custom styling
   delay, // Optional delay for the animation (in seconds)
@@ -204,13 +200,12 @@ export const Beam = ({
   );
 };
 
-// Component: CircleIcon
-// Simple animated pulse circle that becomes hidden when hovering over the Cover component.
+// Animated pulse circle component creating the effect of a live indicator.
 export const CircleIcon = ({ className, delay }: { className?: string; delay?: number }) => {
   return (
     <div
       className={cn(
-        `pointer-events-none animate-pulse group-hover/cover:hidden group-hover/cover:opacity-100 group rounded-full bg-green-500 dark:bg-green opacity-5 group-hover/cover:bg-green ml-2`,
+        `pointer-events-none animate-pulse group rounded-full bg-green-500 dark:bg-green opacity-5  ml-2`,
         className,
         delay,
       )}></div>
