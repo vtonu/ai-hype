@@ -3,11 +3,11 @@
 import { ResizableHandle, ResizablePanel, ResizablePanelGroup } from '@/components/ui/resizable';
 import { Button } from '@/components/ui/button';
 import { SettingsToggle } from './settings-button';
-import { AICompanySelector } from './Companybox'; // Ensure the import matches your file structure
+import { AICompanySelector } from './Companybox';
 import { CollapsibleData } from './collapsible-data';
-import { ComponentOne } from './line-chart';
+import { ComponentOne } from './charts/line-chart';
 import { SparklesAI } from './aihypesparkles';
-import { aiCompanyData } from '@/app/data/aiCompanyData'; // Ensure this import is correct
+import { aiCompanyData } from '@/app/data/aiCompanyData';
 
 export function MainPanel() {
   return (

@@ -1,12 +1,12 @@
 'use client';
 import * as React from 'react';
 import { ChevronDown, ChevronUp } from 'lucide-react';
-import { ImpactCard } from './impact-score';
-import { DoomCard } from './doom-score';
-import { TrustCard } from './trust-score';
-import { InnovationCard } from './innovation-score';
-import { AdoptionCard } from './adoption-score';
-import { EthicsCard } from './ethics-score';
+import { ImpactCard } from './hypeinfo/impact-score';
+import { DoomCard } from './hypeinfo/doom-score';
+import { TrustCard } from './hypeinfo/trust-score';
+import { InnovationCard } from './hypeinfo/innovation-score';
+import { AdoptionCard } from './hypeinfo/adoption-score';
+import { EthicsCard } from './hypeinfo/ethics-score';
 import { Button } from '@/components/ui/button';
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/components/ui/collapsible';
 import { useSelectedCompany } from '@/app/hooks/useSelectedCompany';
