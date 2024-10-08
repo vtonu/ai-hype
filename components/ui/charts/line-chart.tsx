@@ -88,7 +88,7 @@ export function ComponentOne() {
                 {['hype', 'rank'].map((key) => {
                   const chart = key as keyof typeof chartConfig;
                   const isHype = key === 'hype'; // Determine if it's 'hype'
-                  const changeValue = isHype ? 71 : -33; // Dynamic values for hype and rank changes
+                  const changeValue = isHype ? 71 : -23; // Dynamic values for hype and rank changes
 
                   // Determine the icon and color based on the change value
                   const getIconAndColor = (change: number) => {
