@@ -1,4 +1,4 @@
-import { SelectedCompanyProvider } from '@/app/hooks/useSelectedCompany'; // Import the provider
+import { SelectedCompanyProvider } from '@/hooks/useSelectedCompany';
 import { MainPanel } from '@/components/ui/mainPanel';
 import { FooterStuff } from '@/components/ui/footer';
 

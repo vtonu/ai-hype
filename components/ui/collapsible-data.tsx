@@ -9,7 +9,7 @@ import { AdoptionCard } from './hypeinfo/adoption-score';
 import { EthicsCard } from './hypeinfo/ethics-score';
 import { Button } from '@/components/ui/button';
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/components/ui/collapsible';
-import { useSelectedCompany } from '@/app/hooks/useSelectedCompany';
+import { useSelectedCompany } from '@/hooks/useSelectedCompany';
 
 export function CollapsibleData() {
   const [isOpen, setIsOpen] = React.useState(true);
