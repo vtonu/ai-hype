@@ -2,7 +2,6 @@
 
 import * as React from 'react';
 import { Check, ChevronDown } from 'lucide-react';
-
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
 import {
@@ -14,49 +13,17 @@ import {
   CommandList,
 } from '@/components/ui/command';
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
+import { aiCompanyData, AICompanyData } from '@/app/data/aiCompanyData';
 
-const frameworks = [
-  {
-    value: 'openai',
-    label: 'OpenAI',
-  },
-  {
-    value: 'meta',
-    label: 'Meta',
-  },
-  {
-    value: 'google',
-    label: 'Google',
-  },
-  {
-    value: 'anthropic',
-    label: 'Anthropic',
-  },
-  {
-    value: 'mistral',
-    label: 'Mistral',
-  },
-  {
-    value: 'perplexity',
-    label: 'Perplexity',
-  },
-  {
-    value: 'stability',
-    label: 'Stability',
-  },
-  {
-    value: 'deepseek',
-    label: 'DeepSeek',
-  },
-  {
-    value: 'cohere',
-    label: 'Cohere',
-  },
-];
-
-export function CoBox() {
+export function AICompanySelector() {
   const [open, setOpen] = React.useState(false);
-  const [value, setValue] = React.useState('google');
+  const [selectedCompany, setSelectedCompany] = React.useState('Google');
+  const [searchTerm, setSearchTerm] = React.useState('');
+
+  // Filter function for search
+  const filteredCompanies = aiCompanyData.filter((company) =>
+    company.name.toLowerCase().includes(searchTerm.toLowerCase()),
+  );
 
   return (
     <Popover open={open} onOpenChange={setOpen}>
@@ -66,36 +33,40 @@ export function CoBox() {
           role="combobox"
           aria-expanded={open}
           className="w-full justify-between">
-          {value
-            ? frameworks.find((framework) => framework.value === value)?.label
-            : 'Select AI Company'}
+          {selectedCompany || 'Select AI Company'}
           <ChevronDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
         </Button>
       </PopoverTrigger>
       <PopoverContent className="w-[200px] p-0">
         <Command>
-          <CommandInput placeholder="Search ..." />
+          <CommandInput
+            placeholder="Search AI Company..."
+            onValueChange={(value) => setSearchTerm(value)}
+          />
           <CommandList>
-            <CommandEmpty>No company found.</CommandEmpty>
-            <CommandGroup>
-              {frameworks.map((framework) => (
-                <CommandItem
-                  key={framework.value}
-                  value={framework.value}
-                  onSelect={(currentValue) => {
-                    setValue(currentValue === value ? '' : currentValue);
-                    setOpen(false);
-                  }}>
-                  <Check
-                    className={cn(
-                      'mr-2 h-4 w-4',
-                      value === framework.value ? 'opacity-100' : 'opacity-0',
-                    )}
-                  />
-                  {framework.label}
-                </CommandItem>
-              ))}
-            </CommandGroup>
+            {filteredCompanies.length === 0 ? (
+              <CommandEmpty>No company found.</CommandEmpty>
+            ) : (
+              <CommandGroup>
+                {filteredCompanies.map((company: AICompanyData) => (
+                  <CommandItem
+                    key={company.name}
+                    value={company.name}
+                    onSelect={() => {
+                      setSelectedCompany(company.name);
+                      setOpen(false);
+                    }}>
+                    <Check
+                      className={cn(
+                        'mr-2 h-4 w-4',
+                        selectedCompany === company.name ? 'opacity-100' : 'opacity-0',
+                      )}
+                    />
+                    {company.name}
+                  </CommandItem>
+                ))}
+              </CommandGroup>
+            )}
           </CommandList>
         </Command>
       </PopoverContent>

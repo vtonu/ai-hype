@@ -2,7 +2,7 @@
 import { ResizableHandle, ResizablePanel, ResizablePanelGroup } from '@/components/ui/resizable';
 import { Button } from '@/components/ui/button';
 import { SettingsToggle } from './settings-button';
-import { CoBox } from './Companybox';
+import { AICompanySelector } from './Companybox';
 import { CollapsibleData } from './collapsible-data';
 import { ComponentOne } from './line-chart';
 import { SparklesAI } from './aihypesparkles';
@@ -21,7 +21,7 @@ export function ResizableVerticalPanel() {
           <Button variant="secondary" size="sm" onClick={() => window.location.reload()}>
             Refresh
           </Button>
-          <CoBox />
+          <AICompanySelector />
         </span>
       </ResizablePanel>
       <ComponentOne />
