@@ -26,6 +26,7 @@ const chartData = [
   { date: '2024-09-15', hype: 910, rank: 2 },
   { date: '2024-09-25', hype: 1191, rank: 2 },
   { date: '2024-10-05', hype: 3148, rank: 1 },
+  { date: '2024-10-10', hype: 3248, rank: 1 },
 ];
 
 const chartConfig = {
