@@ -9,9 +9,11 @@ import { AdoptionCard } from './adoption-score';
 import { EthicsCard } from './ethics-score';
 import { Button } from '@/components/ui/button';
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/components/ui/collapsible';
+import { useSelectedCompany } from '@/app/hooks/useSelectedCompany';
 
 export function CollapsibleData() {
   const [isOpen, setIsOpen] = React.useState(true);
+  const { selectedCompany } = useSelectedCompany(); // Get the selected company data
 
   return (
     <Collapsible open={isOpen} onOpenChange={setIsOpen} className="w-[500px] ">

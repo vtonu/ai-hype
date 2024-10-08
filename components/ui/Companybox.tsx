@@ -1,3 +1,4 @@
+// Companybox.tsx
 'use client';
 
 import * as React from 'react';
@@ -13,15 +14,19 @@ import {
   CommandList,
 } from '@/components/ui/command';
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
-import { aiCompanyData, AICompanyData } from '@/app/data/aiCompanyData';
+import { AICompanyData } from '@/app/data/aiCompanyData';
 
-export function AICompanySelector() {
+interface AICompanySelectorProps {
+  companies: AICompanyData[]; // Add this line to accept the companies prop
+}
+
+export function AICompanySelector({ companies }: AICompanySelectorProps) {
   const [open, setOpen] = React.useState(false);
   const [selectedCompany, setSelectedCompany] = React.useState('Google');
   const [searchTerm, setSearchTerm] = React.useState('');
 
   // Filter function for search
-  const filteredCompanies = aiCompanyData.filter((company) =>
+  const filteredCompanies = companies.filter((company) =>
     company.name.toLowerCase().includes(searchTerm.toLowerCase()),
   );
 

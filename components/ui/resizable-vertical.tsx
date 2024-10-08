@@ -1,11 +1,13 @@
 'use client';
+
 import { ResizableHandle, ResizablePanel, ResizablePanelGroup } from '@/components/ui/resizable';
 import { Button } from '@/components/ui/button';
 import { SettingsToggle } from './settings-button';
-import { AICompanySelector } from './Companybox';
+import { AICompanySelector } from './Companybox'; // Ensure the import matches your file structure
 import { CollapsibleData } from './collapsible-data';
 import { ComponentOne } from './line-chart';
 import { SparklesAI } from './aihypesparkles';
+import { aiCompanyData } from '@/app/data/aiCompanyData'; // Ensure this import is correct
 
 export function ResizableVerticalPanel() {
   return (
@@ -21,7 +23,7 @@ export function ResizableVerticalPanel() {
           <Button variant="secondary" size="sm" onClick={() => window.location.reload()}>
             Refresh
           </Button>
-          <AICompanySelector />
+          <AICompanySelector companies={aiCompanyData} /> {/* Pass company data here */}
         </span>
       </ResizablePanel>
       <ComponentOne />
