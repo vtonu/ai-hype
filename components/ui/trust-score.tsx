@@ -7,7 +7,7 @@ import { ChartConfig, ChartContainer } from '@/components/ui/chart';
 export const description = 'A radial chart for User Trust';
 
 // Map string symbols to numeric values
-const chartData = [{ browser: 'yellow', score: 6, symbol: 'A-', fill: 'var(--color-yellow)' }];
+const chartData = [{ browser: 'yellow', score: 5, symbol: 'A-', fill: 'var(--color-yellow)' }];
 
 // You can add additional mappings if you need more than just 'A-', 'B+', etc.
 const scoreToSymbolMapping: Record<number, string> = {

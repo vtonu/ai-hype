@@ -21,7 +21,7 @@ const getColorByLevel = (level: string) => {
     case 'Medium':
       return 'hsl(50, 130%, 50%)'; // Medium Impact
     case 'Low':
-      return 'hsl(40 110% 50%)'; // Low Impact
+      return 'hsl(25 110% 50%)'; // Low Impact
     default:
       return 'hsl(0, 0%, 50%)'; // Default fallback color (gray)
   }
