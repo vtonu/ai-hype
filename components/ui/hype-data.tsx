@@ -11,7 +11,7 @@ import { Button } from '@/components/ui/button';
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/components/ui/collapsible';
 import { useSelectedCompany } from '@/hooks/useSelectedCompany';
 
-export function CollapsibleData() {
+export function HypeInfo() {
   const [isOpen, setIsOpen] = React.useState(true);
   const { selectedCompany } = useSelectedCompany(); // Get the selected company data
 

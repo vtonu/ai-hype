@@ -3,9 +3,9 @@ export interface AICompanyData {
   userTrust: string; // Grading: A, A-, A+, B, B-, B+, etc.
   ethics: string; // Grading: A, A-, A+, B, B-, B+, etc.
   innovation: string; // Grading: A, A-, A+, B, B-, B+, etc.
-  doomLevel: 'High' | 'Medium' | 'Low'; // Grading: High, Medium, Low
   adoptionRate: string; // Grading: A, A-, A+, B, B-, B+, etc.
-  impact: 'High' | 'Medium' | 'Low'; // Grading: High, Medium, Low
+  doomLevel: 'High' | 'Medium' | 'Low'; // Grading: High, Medium, Low
+  impactLevel: 'High' | 'Medium' | 'Low'; // Grading: High, Medium, Low
 }
 
 export const aiCompanyData: AICompanyData[] = [
@@ -16,7 +16,7 @@ export const aiCompanyData: AICompanyData[] = [
     innovation: 'A+',
     doomLevel: 'Medium',
     adoptionRate: 'A+',
-    impact: 'High',
+    impactLevel: 'High',
   },
   {
     name: 'Google',
@@ -25,7 +25,7 @@ export const aiCompanyData: AICompanyData[] = [
     innovation: 'A',
     doomLevel: 'Medium',
     adoptionRate: 'A+',
-    impact: 'High',
+    impactLevel: 'High',
   },
   {
     name: 'Microsoft',
@@ -34,7 +34,7 @@ export const aiCompanyData: AICompanyData[] = [
     innovation: 'A',
     doomLevel: 'Low',
     adoptionRate: 'A',
-    impact: 'Medium',
+    impactLevel: 'Medium',
   },
   {
     name: 'Apple',
@@ -43,7 +43,7 @@ export const aiCompanyData: AICompanyData[] = [
     innovation: 'A',
     doomLevel: 'Low',
     adoptionRate: 'A-',
-    impact: 'High',
+    impactLevel: 'High',
   },
   {
     name: 'Amazon',
@@ -52,7 +52,7 @@ export const aiCompanyData: AICompanyData[] = [
     innovation: 'A',
     doomLevel: 'Medium',
     adoptionRate: 'B+',
-    impact: 'Medium',
+    impactLevel: 'Medium',
   },
   {
     name: 'NVIDIA',
@@ -61,7 +61,7 @@ export const aiCompanyData: AICompanyData[] = [
     innovation: 'A+',
     doomLevel: 'Low',
     adoptionRate: 'A',
-    impact: 'High',
+    impactLevel: 'High',
   },
   {
     name: 'Tesla',
@@ -70,7 +70,7 @@ export const aiCompanyData: AICompanyData[] = [
     innovation: 'A',
     doomLevel: 'Medium',
     adoptionRate: 'B',
-    impact: 'Medium',
+    impactLevel: 'Medium',
   },
   {
     name: 'Meta',
@@ -79,7 +79,7 @@ export const aiCompanyData: AICompanyData[] = [
     innovation: 'B+',
     doomLevel: 'High',
     adoptionRate: 'B',
-    impact: 'Low',
+    impactLevel: 'Low',
   },
   {
     name: 'Anthropic',
@@ -88,7 +88,7 @@ export const aiCompanyData: AICompanyData[] = [
     innovation: 'A',
     doomLevel: 'Low',
     adoptionRate: 'B+',
-    impact: 'High',
+    impactLevel: 'High',
   },
   {
     name: 'DeepMind',
@@ -97,7 +97,7 @@ export const aiCompanyData: AICompanyData[] = [
     innovation: 'A+',
     doomLevel: 'Medium',
     adoptionRate: 'A+',
-    impact: 'High',
+    impactLevel: 'High',
   },
   {
     name: 'IBM',
@@ -106,7 +106,7 @@ export const aiCompanyData: AICompanyData[] = [
     innovation: 'B+',
     doomLevel: 'Low',
     adoptionRate: 'A-',
-    impact: 'Medium',
+    impactLevel: 'Medium',
   },
   {
     name: 'Samsung',
@@ -115,7 +115,7 @@ export const aiCompanyData: AICompanyData[] = [
     innovation: 'A',
     doomLevel: 'Low',
     adoptionRate: 'B',
-    impact: 'Medium',
+    impactLevel: 'Medium',
   },
   {
     name: 'Intel',
@@ -124,7 +124,7 @@ export const aiCompanyData: AICompanyData[] = [
     innovation: 'B+',
     doomLevel: 'Low',
     adoptionRate: 'B',
-    impact: 'Medium',
+    impactLevel: 'Medium',
   },
   {
     name: 'AMD',
@@ -133,61 +133,7 @@ export const aiCompanyData: AICompanyData[] = [
     innovation: 'B+',
     doomLevel: 'Medium',
     adoptionRate: 'B',
-    impact: 'Medium',
-  },
-  {
-    name: 'Qualcomm',
-    userTrust: 'B',
-    ethics: 'B-',
-    innovation: 'B+',
-    doomLevel: 'Medium',
-    adoptionRate: 'B+',
-    impact: 'Medium',
-  },
-  {
-    name: 'Alibaba',
-    userTrust: 'C+',
-    ethics: 'B',
-    innovation: 'B+',
-    doomLevel: 'Medium',
-    adoptionRate: 'C+',
-    impact: 'Low',
-  },
-  {
-    name: 'Baidu',
-    userTrust: 'C+',
-    ethics: 'B',
-    innovation: 'B+',
-    doomLevel: 'Medium',
-    adoptionRate: 'C+',
-    impact: 'Low',
-  },
-  {
-    name: 'Tencent',
-    userTrust: 'C+',
-    ethics: 'B',
-    innovation: 'B+',
-    doomLevel: 'Medium',
-    adoptionRate: 'C+',
-    impact: 'Low',
-  },
-  {
-    name: 'SenseTime',
-    userTrust: 'D',
-    ethics: 'C+',
-    innovation: 'B+',
-    doomLevel: 'High',
-    adoptionRate: 'C',
-    impact: 'Low',
-  },
-  {
-    name: 'Huawei',
-    userTrust: 'C',
-    ethics: 'B-',
-    innovation: 'A',
-    doomLevel: 'Medium',
-    adoptionRate: 'C+',
-    impact: 'Medium',
+    impactLevel: 'Medium',
   },
   {
     name: 'Cohere',
@@ -196,7 +142,7 @@ export const aiCompanyData: AICompanyData[] = [
     innovation: 'A',
     doomLevel: 'Low',
     adoptionRate: 'B-',
-    impact: 'Medium',
+    impactLevel: 'Medium',
   },
   {
     name: 'Stability AI',
@@ -205,7 +151,7 @@ export const aiCompanyData: AICompanyData[] = [
     innovation: 'B+',
     doomLevel: 'Medium',
     adoptionRate: 'B',
-    impact: 'Medium',
+    impactLevel: 'Medium',
   },
   {
     name: 'Perplexity AI',
@@ -214,7 +160,7 @@ export const aiCompanyData: AICompanyData[] = [
     innovation: 'B+',
     doomLevel: 'Medium',
     adoptionRate: 'C+',
-    impact: 'Low',
+    impactLevel: 'Low',
   },
   {
     name: 'Anduril',
@@ -223,6 +169,6 @@ export const aiCompanyData: AICompanyData[] = [
     innovation: 'B',
     doomLevel: 'High',
     adoptionRate: 'C',
-    impact: 'Low',
+    impactLevel: 'Low',
   },
 ];
