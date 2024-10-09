@@ -8,7 +8,7 @@ import { HypeInfo } from './hype-data';
 import { ComponentOne } from './charts/line-chart';
 import { SparklesAI } from './aihypesparkles';
 import { aiCompanyData } from '@/app/data/aiCompanyData';
-import { FooterStuff } from '@/components/ui/footer';
+import { BetaAlert } from '@/components/ui/betaAlert';
 import { useSelectedCompany } from '@/hooks/useSelectedCompany'; // Import the hook
 import { AICompanyData } from '@/app/data/aiCompanyData'; // Import AICompanyData type
 
@@ -40,7 +40,7 @@ export function MainPanel() {
           />
         </span>
       </ResizablePanel>
-      <FooterStuff />
+      <BetaAlert />
       <ComponentOne />
       <ResizablePanel defaultSize={75} className="flex justify-center items-end">
         <HypeInfo />
