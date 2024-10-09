@@ -1,11 +1,11 @@
 import * as React from 'react';
 import { ChevronDown, ChevronUp } from 'lucide-react';
-import { ImpactCard } from './hypeinfo/impact-score';
-import { DoomCard } from './hypeinfo/doom-score';
-import { TrustCard } from './hypeinfo/trust-score';
-import { InnovationCard } from './hypeinfo/innovation-score';
-import { AdoptionCard } from './hypeinfo/adoption-score';
-import { EthicsCard } from './hypeinfo/ethics-score';
+import { ImpactCard } from '@/components/ui/hypeinfo/impact-score';
+import { DoomCard } from '@/components/ui/hypeinfo/doom-score';
+import { TrustCard } from '@/components/ui/hypeinfo/trust-score';
+import { InnovationCard } from '@/components/ui/hypeinfo/innovation-score';
+import { AdoptionCard } from '@/components/ui/hypeinfo/adoption-score';
+import { EthicsCard } from '@/components/ui/hypeinfo/ethics-score';
 import { Button } from '@/components/ui/button';
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/components/ui/collapsible';
 import { useSelectedCompany } from '@/hooks/useSelectedCompany';

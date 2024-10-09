@@ -1,6 +1,6 @@
 'use client';
 import React from 'react';
-import { SparklesCore } from '../ui/sparkles';
+import { SparklesCore } from '@/components/ui/sparkles';
 import { Badge } from '@/components/ui/badge';
 
 export function SparklesAI() {

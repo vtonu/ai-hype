@@ -1,5 +1,5 @@
 import { SelectedCompanyProvider } from '@/hooks/useSelectedCompany';
-import { MainPanel } from '@/components/ui/mainPanel';
+import { MainPanel } from '@/components/ui/main/mainPanel';
 
 export default function Home() {
   return (

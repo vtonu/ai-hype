@@ -4,7 +4,7 @@ import * as React from 'react';
 import { SunMoon } from 'lucide-react';
 import { useTheme } from 'next-themes';
 import { Button } from '@/components/ui/button';
-import { TooltipHype } from './toolTipHype';
+import { TooltipHype } from '@/components/ui/toolTipHype';
 
 export function SettingsToggle() {
   const { theme, setTheme } = useTheme();

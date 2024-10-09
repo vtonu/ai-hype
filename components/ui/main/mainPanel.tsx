@@ -5,7 +5,7 @@ import { Button } from '@/components/ui/button';
 import { SettingsToggle } from './settings-button';
 import { AICompanySelector } from './Companybox';
 import { HypeInfo } from './hype-data';
-import { ComponentOne } from './charts/line-chart';
+import { ComponentOne } from './line-chart';
 import { SparklesAI } from './aihypesparkles';
 import { aiCompanyData } from '@/app/data/aiCompanyData';
 import { BetaAlert } from '@/components/ui/betaAlert';
