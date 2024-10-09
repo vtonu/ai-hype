@@ -1,8 +1,7 @@
 'use client';
 
-// src/hooks/useSelectedCompany.ts
 import * as React from 'react';
-import { AICompanyData } from '@/app/data/aiCompanyData'; // Adjust the import according to your structure
+import { AICompanyData } from '@/app/data/aiCompanyData';
 
 // Define the context and provider types
 interface SelectedCompanyContextType {
