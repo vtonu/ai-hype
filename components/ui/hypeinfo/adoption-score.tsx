@@ -5,7 +5,7 @@ import { Card } from '@/components/ui/card';
 import { ChartConfig, ChartContainer } from '@/components/ui/chart';
 import { AICompanyData } from '@/app/data/aiCompanyData'; // Adjust this import according to your project structure
 
-export const description = 'A radial chart for User Adoption';
+export const description = 'A radial chart for User Adoption Rate';
 
 // Default chart data with a dummy score
 const defaultChartData = [{ score: 0, fill: 'var(--color-gray)' }]; // Default values when no company is selected
@@ -22,15 +22,15 @@ const scoreToSymbolMapping: Record<number, string> = {
   3: 'C',
   2: 'C-',
   1: 'D',
-  0: 'N/A', // Added N/A mapping
+  0: 'N/A',
 };
 
 const chartConfig = {
   score: {
     label: 'Score',
   },
-  lightorange: {
-    label: 'Light Orange',
+  mediumorange: {
+    label: 'Medium Orange',
     color: 'hsl(var(--chart-4))',
   },
 } satisfies ChartConfig;
@@ -69,7 +69,7 @@ export function AdoptionCard({ companyData }: AdoptionCardProps) {
               : companyData.adoptionRate === 'N/A'
               ? 0
               : 0, // Default fallback score if not matched
-          fill: 'var(--color-lightorange)', // Customize fill color as needed
+          fill: 'var(--color-mediumorange)', // Medium orange color
         },
       ]
     : defaultChartData; // Use default chart data when no company is selected
