@@ -7,9 +7,6 @@ import { ChartConfig, ChartContainer } from '@/components/ui/chart';
 export const description = 'A radial chart for User Trust';
 
 // Map string symbols to numeric values
-const chartData = [{ browser: 'yellow', score: 5, symbol: 'A-', fill: 'var(--color-yellow)' }];
-
-// You can add additional mappings if you need more than just 'A-', 'B+', etc.
 const scoreToSymbolMapping: Record<number, string> = {
   10: 'A+',
   9: 'A',
@@ -33,10 +30,25 @@ const chartConfig = {
   },
 } satisfies ChartConfig;
 
-export function TrustCard() {
+// Add the score prop
+interface TrustCardProps {
+  score: number; // Define the type of score
+}
+
+export function TrustCard({ score }: TrustCardProps) {
+  // Prepare chart data using the passed score
+  const chartData = [
+    {
+      browser: 'yellow',
+      score,
+      symbol: scoreToSymbolMapping[score] || score,
+      fill: 'var(--color-yellow)',
+    },
+  ];
+
   return (
     <Card className="h-[100px] flex ">
-      <ChartContainer config={chartConfig} className="mx-auto  w-full h-40 max-w-[150px]">
+      <ChartContainer config={chartConfig} className="mx-auto w-full h-40 max-w-[150px]">
         <RadialBarChart
           data={chartData}
           startAngle={0}
@@ -60,7 +72,7 @@ export function TrustCard() {
                         y={(viewBox.cy || 0) - 18}
                         className="fill-current text-lg font-semibold">
                         {/* Display the mapped string symbol */}
-                        {scoreToSymbolMapping[chartData[0].score] || chartData[0].score}
+                        {scoreToSymbolMapping[score] || score}
                       </tspan>
                       <tspan
                         x={viewBox.cx}

@@ -3,15 +3,9 @@
 import { Label, PolarGrid, PolarRadiusAxis, RadialBar, RadialBarChart } from 'recharts';
 import { Card } from '@/components/ui/card';
 import { ChartConfig, ChartContainer } from '@/components/ui/chart';
+import { AICompanyData } from '@/app/data/aiCompanyData';
 
 export const description = 'A radial chart for User Trust';
-
-// Chart data with doom level and a dummy score
-const chartData = [
-  { level: 'High', score: 100 },
-  { level: 'Medium', score: 70 },
-  { level: 'Low', score: 30 },
-];
 
 // Function to map levels to HSL colors
 const getColorByLevel = (level: string) => {
@@ -34,25 +28,39 @@ const chartConfig = {
   },
 } satisfies ChartConfig;
 
-export function ImpactCard() {
-  const currentData = chartData[0]; // 0, 1, 2 to select High, Medium, Low
+// Update ImpactCard to accept companyData as nullable
+interface ImpactCardProps {
+  companyData: AICompanyData | null; // Allow companyData to be null
+}
+
+export function ImpactCard({ companyData }: ImpactCardProps) {
+  // Determine current data based on companyData or use defaults
+  const currentData = companyData
+    ? {
+        level: companyData.impactLevel,
+        score:
+          companyData.impactLevel === 'High' ? 100 : companyData.impactLevel === 'Medium' ? 70 : 30,
+      }
+    : {
+        level: 'None', // Default level when no company is selected
+        score: 0, // Default score when no company is selected
+      };
 
   return (
     <Card className="h-[100px] flex">
       <ChartContainer config={chartConfig} className="mx-auto w-full h-40 max-w-[150px]">
         <RadialBarChart
-          data={[currentData]} // Only pass the current doom level data
+          data={[currentData]} // Pass the current impact level data
           startAngle={0}
           endAngle={180}
           innerRadius={50}
           outerRadius={60}>
           <PolarGrid gridType="circle" radialLines={false} stroke="none" polarRadius={[86, 74]} />
-          {/* Apply the color dynamically by mapping the level to color */}
           <RadialBar
-            dataKey="score" // Use score as the data key for the bar size
+            dataKey="score"
             background
             cornerRadius={4}
-            fill={getColorByLevel(currentData.level)}
+            fill={getColorByLevel(currentData.level)} // Use default color if no company is selected
           />
           <PolarRadiusAxis tick={false} tickLine={false} axisLine={false}>
             <Label

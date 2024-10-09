@@ -1,9 +1,9 @@
 'use client';
 
 import * as React from 'react';
-import { Check, ChevronDown } from 'lucide-react'; // Importing icons
-import { cn } from '@/lib/utils'; // Utility function for conditional classNames
-import { Button } from '@/components/ui/button'; // UI Button component
+import { Check, ChevronDown } from 'lucide-react';
+import { cn } from '@/lib/utils';
+import { Button } from '@/components/ui/button';
 import {
   Command,
   CommandEmpty,
@@ -11,75 +11,63 @@ import {
   CommandInput,
   CommandItem,
   CommandList,
-} from '@/components/ui/command'; // Command components for building the input and results
-import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover'; // Popover UI components
-import { AICompanyData } from '@/app/data/aiCompanyData'; // AI company data structure
+} from '@/components/ui/command';
+import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
+import { AICompanyData } from '@/app/data/aiCompanyData';
 
-// Defining the interface for component props
 interface AICompanySelectorProps {
-  companies: AICompanyData[]; // The list of companies to be passed as a prop
+  companies: AICompanyData[];
+  onCompanySelect: (company: AICompanyData) => void; // Callback to handle company selection
 }
 
-// Component to select an AI company from a list
-export function AICompanySelector({ companies }: AICompanySelectorProps) {
-  const [open, setOpen] = React.useState(false); // State for controlling the popover visibility
-  const [selectedCompany, setSelectedCompany] = React.useState('Google'); // State for the selected company, default is 'Google'
-  const [searchTerm, setSearchTerm] = React.useState(''); // State for the search term in the input field
+export function AICompanySelector({ companies, onCompanySelect }: AICompanySelectorProps) {
+  const [open, setOpen] = React.useState(false);
+  const [selectedCompany, setSelectedCompany] = React.useState<AICompanyData | null>(null);
+  const [searchTerm, setSearchTerm] = React.useState('');
 
-  // Function to filter companies based on the search term
-  const filteredCompanies = companies.filter(
-    (company) => company.name.toLowerCase().includes(searchTerm.toLowerCase()), // Case-insensitive search
+  const filteredCompanies = companies.filter((company) =>
+    company.name.toLowerCase().includes(searchTerm.toLowerCase()),
   );
 
   return (
-    // Popover component that wraps the input and list of companies
     <Popover open={open} onOpenChange={setOpen}>
-      {/* Popover trigger button */}
       <PopoverTrigger asChild>
         <Button
           variant="outline"
           role="combobox"
-          aria-expanded={open} // ARIA attribute for accessibility
+          aria-expanded={open}
           className="w-full justify-between">
-          {/* Display the selected company or placeholder text */}
-          {selectedCompany || 'Select AI Company'}
-          <ChevronDown className="ml-2 h-4 w-4 shrink-0 opacity-50" /> {/* Dropdown arrow icon */}
+          {selectedCompany ? selectedCompany.name : 'Select AI Company'}
+          <ChevronDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
         </Button>
       </PopoverTrigger>
 
-      {/* Popover content that contains the searchable command list */}
       <PopoverContent className="w-[200px] p-0">
         <Command>
-          {/* Search input field */}
           <CommandInput
             placeholder="Search AI Company..."
-            onValueChange={(value) => setSearchTerm(value)} // Updates search term state on input change
+            onValueChange={(value) => setSearchTerm(value)}
           />
-
-          {/* List of filtered companies or an empty state */}
           <CommandList>
             {filteredCompanies.length === 0 ? (
-              // Show message when no company matches the search term
               <CommandEmpty>No company found.</CommandEmpty>
             ) : (
-              // Group and display the filtered company list
               <CommandGroup>
                 {filteredCompanies.map((company: AICompanyData) => (
                   <CommandItem
                     key={company.name}
-                    value={company.name}
                     onSelect={() => {
-                      setSelectedCompany(company.name); // Update selected company
-                      setOpen(false); // Close the popover after selection
+                      setSelectedCompany(company); // Store the full company data
+                      onCompanySelect(company); // Pass the company data back to the parent
+                      setOpen(false);
                     }}>
-                    {/* Check icon to show selected company */}
                     <Check
                       className={cn(
                         'mr-2 h-4 w-4',
-                        selectedCompany === company.name ? 'opacity-100' : 'opacity-0', // Show checkmark only for the selected company
+                        selectedCompany?.name === company.name ? 'opacity-100' : 'opacity-0',
                       )}
                     />
-                    {company.name} {/* Display the company name */}
+                    {company.name}
                   </CommandItem>
                 ))}
               </CommandGroup>
