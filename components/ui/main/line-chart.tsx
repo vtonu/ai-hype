@@ -67,6 +67,26 @@ export function ComponentOne() {
     }
   };
 
+  // Generate fake date and data for the last 6 months
+  const getFakeData = () => {
+    const now = new Date();
+    const fakeData = [];
+
+    let initialRank = aiCompanyData[0]?.rank || 50; // Start from an initial rank (use existing data or set a default)
+
+    for (let i = 0; i < 6; i++) {
+      const fakeDate = new Date(now.getFullYear(), now.getMonth() - i, 1); // Generate a date for the first of each month
+      initialRank += Math.random(); // Increment rank slightly each time
+      fakeData.push({
+        date: fakeDate.toISOString().split('T')[0], // Format date as YYYY-MM-DD
+        hype: aiCompanyData[i]?.hype + Math.random() * 10, // Ensure hype goes up
+        rank: Math.max(initialRank, 0), // Ensure rank does not go below zero
+      });
+    }
+
+    return fakeData.reverse(); // Reverse to show the most recent dates first
+  };
+
   return (
     <div className="px-2 pt-2">
       <Card>
@@ -121,7 +141,7 @@ export function ComponentOne() {
           <ChartContainer config={chartConfig} className="aspect-video h-[180px] w-full">
             <LineChart
               accessibilityLayer
-              data={aiCompanyData} // Use data from aiCompanyData
+              data={getFakeData()} // Use generated fake data
               margin={{ left: 2, right: 2 }}>
               <CartesianGrid vertical={false} />
               <XAxis
