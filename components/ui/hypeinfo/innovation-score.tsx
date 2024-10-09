@@ -24,13 +24,30 @@ const scoreToSymbolMapping: Record<number, string> = {
   1: 'D',
 };
 
+// Function to map scores to HSL colors
+const getColorByScore = (score: number) => {
+  switch (scoreToSymbolMapping[score]) {
+    case 'A+':
+    case 'A':
+    case 'A-':
+      return 'hsl(var(--chart-1))'; // Green for top scores
+    case 'B+':
+    case 'B':
+    case 'B-':
+      return 'hsl(var(--chart-4))'; // Orange for medium scores
+    case 'C+':
+    case 'C':
+    case 'C-':
+    case 'D':
+      return 'hsl(var(--chart-3))'; // Red for lower scores
+    default:
+      return 'hsl(var(--color-gray))'; // Gray for 'N/A'
+  }
+};
+
 const chartConfig = {
   score: {
     label: 'Score',
-  },
-  green: {
-    label: 'Green',
-    color: 'hsl(var(--chart-1))',
   },
 } satisfies ChartConfig;
 
@@ -65,7 +82,27 @@ export function InnovationCard({ companyData }: InnovationCardProps) {
               ? 2
               : 1, // Default fallback score if not matched
           symbol: companyData.innovation,
-          fill: 'var(--color-green)', // You can customize fill color as needed
+          fill: getColorByScore(
+            companyData.innovation === 'A+'
+              ? 10
+              : companyData.innovation === 'A'
+              ? 9
+              : companyData.innovation === 'A-'
+              ? 8
+              : companyData.innovation === 'B+'
+              ? 7
+              : companyData.innovation === 'B'
+              ? 6
+              : companyData.innovation === 'B-'
+              ? 5
+              : companyData.innovation === 'C+'
+              ? 4
+              : companyData.innovation === 'C'
+              ? 3
+              : companyData.innovation === 'C-'
+              ? 2
+              : 1,
+          ), // Use dynamic color based on score
         },
       ]
     : defaultChartData; // Use default chart data when no company is selected

@@ -25,13 +25,30 @@ const scoreToSymbolMapping: Record<number, string> = {
   0: 'N/A',
 };
 
+// Function to map scores to HSL colors
+const getColorByScore = (score: number) => {
+  switch (scoreToSymbolMapping[score]) {
+    case 'A+':
+    case 'A':
+    case 'A-':
+      return 'hsl(var(--chart-1))'; // Green for high adoption rates
+    case 'B+':
+    case 'B':
+    case 'B-':
+      return 'hsl(var(--chart-4))'; // Medium orange for moderate rates
+    case 'C+':
+    case 'C':
+    case 'C-':
+    case 'D':
+      return 'hsl(var(--chart-3))'; // Red for lower adoption rates
+    default:
+      return 'hsl(var(--color-gray))'; // Gray for N/A or missing data
+  }
+};
+
 const chartConfig = {
   score: {
     label: 'Score',
-  },
-  mediumorange: {
-    label: 'Medium Orange',
-    color: 'hsl(var(--chart-4))',
   },
 } satisfies ChartConfig;
 
@@ -69,7 +86,29 @@ export function AdoptionCard({ companyData }: AdoptionCardProps) {
               : companyData.adoptionRate === 'N/A'
               ? 0
               : 0, // Default fallback score if not matched
-          fill: 'var(--color-mediumorange)', // Medium orange color
+          fill: getColorByScore(
+            companyData.adoptionRate === 'A+'
+              ? 10
+              : companyData.adoptionRate === 'A'
+              ? 9
+              : companyData.adoptionRate === 'A-'
+              ? 8
+              : companyData.adoptionRate === 'B+'
+              ? 7
+              : companyData.adoptionRate === 'B'
+              ? 6
+              : companyData.adoptionRate === 'B-'
+              ? 5
+              : companyData.adoptionRate === 'C+'
+              ? 4
+              : companyData.adoptionRate === 'C'
+              ? 3
+              : companyData.adoptionRate === 'C-'
+              ? 2
+              : companyData.adoptionRate === 'D'
+              ? 1
+              : 0, // Default to gray for N/A
+          ), // Use dynamic color based on the score
         },
       ]
     : defaultChartData; // Use default chart data when no company is selected

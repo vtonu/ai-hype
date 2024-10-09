@@ -52,8 +52,6 @@ export function ComponentOne() {
       month: 'long',
       day: 'numeric',
       year: 'numeric',
-      hour: '2-digit',
-      minute: '2-digit',
     });
   };
 
@@ -109,7 +107,7 @@ export function ComponentOne() {
                 {['hype', 'rank'].map((key) => {
                   const chart = key as keyof typeof chartConfig;
                   const isHype = key === 'hype';
-                  const changeValue = isHype ? 71 : -23; // Placeholder for change values
+                  const changeValue = isHype ? 33 : -11; // Placeholder for % change for Hype and Rank
 
                   const iconInfo = getIconAndColor(changeValue);
 

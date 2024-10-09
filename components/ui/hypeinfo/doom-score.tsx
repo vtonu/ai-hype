@@ -11,11 +11,11 @@ export const description = 'A radial chart for Doom Level';
 const getColorByLevel = (level: string) => {
   switch (level) {
     case 'High':
-      return 'hsl(5, 110%, 50%)'; // High Level
+      return 'hsl(0, 120%, 50%)'; // High Level /* Dark Red Error */
     case 'Medium':
-      return 'hsl(40, 100%, 50%)'; // Medium Level
+      return 'hsl(40, 100%, 50%)'; // Medium Level /* Medium Orange */
     case 'Low':
-      return 'hsl(55, 130%, 50%)'; // Low Level
+      return 'hsl(80, 98%, 46%)'; // Low Level /* Lime Green */
     default:
       return 'hsl(0, 0%, 50%)'; // Default fallback color (gray)
   }

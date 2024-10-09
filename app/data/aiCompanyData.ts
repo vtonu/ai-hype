@@ -13,13 +13,13 @@ export interface AICompanyData {
 export const aiCompanyData: AICompanyData[] = [
   {
     name: 'OpenAI',
-    userTrust: 'A',
+    userTrust: 'B-',
     ethics: 'B+',
     innovation: 'A+',
     doomLevel: 'High',
     adoptionRate: 'A+',
     impactLevel: 'High',
-    hype: 1000,
+    hype: 14500,
     rank: 1,
   },
   {

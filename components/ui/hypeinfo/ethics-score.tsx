@@ -25,13 +25,30 @@ const ethicsScoreToSymbolMapping: Record<number, string> = {
   0: 'N/A', // Added N/A mapping
 };
 
+// Function to map scores to HSL colors
+const getColorByEthicsScore = (score: number) => {
+  switch (ethicsScoreToSymbolMapping[score]) {
+    case 'A+':
+    case 'A':
+    case 'A-':
+      return 'hsl(var(--chart-1))'; // Green for high ethics scores
+    case 'B+':
+    case 'B':
+    case 'B-':
+      return 'hsl(var(--chart-4))'; // Orange for moderate scores
+    case 'C+':
+    case 'C':
+    case 'C-':
+    case 'D':
+      return 'hsl(var(--chart-3))'; // Red for low scores
+    default:
+      return 'hsl(var(--color-gray))'; // Gray for N/A or missing data
+  }
+};
+
 const chartConfig = {
   ethics: {
     label: 'Ethics Score',
-  },
-  green: {
-    label: 'Green',
-    color: 'hsl(var(--chart-1))',
   },
 } satisfies ChartConfig;
 
@@ -69,7 +86,29 @@ export function EthicsCard({ companyData }: EthicsCardProps) {
               : companyData.ethics === 'N/A'
               ? 0
               : 0, // Default fallback score if not matched
-          fill: 'var(--color-green)', // Customize fill color as needed
+          fill: getColorByEthicsScore(
+            companyData.ethics === 'A+'
+              ? 10
+              : companyData.ethics === 'A'
+              ? 9
+              : companyData.ethics === 'A-'
+              ? 8
+              : companyData.ethics === 'B+'
+              ? 7
+              : companyData.ethics === 'B'
+              ? 6
+              : companyData.ethics === 'B-'
+              ? 5
+              : companyData.ethics === 'C+'
+              ? 4
+              : companyData.ethics === 'C'
+              ? 3
+              : companyData.ethics === 'C-'
+              ? 2
+              : companyData.ethics === 'D'
+              ? 1
+              : 0, // Default to gray for N/A
+          ), // Use dynamic color based on the score
         },
       ]
     : defaultChartData; // Use default chart data when no company is selected

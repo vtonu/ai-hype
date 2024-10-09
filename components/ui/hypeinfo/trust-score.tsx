@@ -21,13 +21,31 @@ const scoreToSymbolMapping: Record<number, string> = {
   0: 'N/A', // Added N/A mapping for score 0
 };
 
+// Function to map score to HSL colors
+const getColorByScore = (score: number) => {
+  switch (scoreToSymbolMapping[score]) {
+    case 'A+':
+    case 'A':
+    case 'A-':
+      return 'hsl(var(--chart-2))'; // Lime green
+    case 'B+':
+    case 'B':
+    case 'B-':
+      return 'hsl(var(--chart-4))'; // Orange
+    case 'C+':
+      return 'hsl(var(--chart-3))'; // Dark red
+    case 'C':
+    case 'C-':
+    case 'D':
+      return 'hsl(var(--chart-3))'; // Dark red
+    default:
+      return 'hsl(var(--color-gray))'; // Default to gray for 'N/A'
+  }
+};
+
 const chartConfig = {
   score: {
     label: 'Score',
-  },
-  yellow: {
-    label: 'Yellow',
-    color: 'hsl(var(--chart-2))',
   },
 } satisfies ChartConfig;
 
@@ -40,13 +58,13 @@ export function TrustCard({ score }: TrustCardProps) {
   // Use the mapped score or default to the score itself
   const displayScore = scoreToSymbolMapping[score] || score;
 
-  // Prepare chart data, ensure 0 uses the correct fill and display
+  // Prepare chart data and determine the fill color based on score
   const chartData = [
     {
-      browser: 'yellow',
+      browser: 'trust',
       score,
       symbol: displayScore,
-      fill: score === 0 ? 'var(--color-gray)' : 'var(--color-yellow)', // Gray for N/A (0), yellow otherwise
+      fill: getColorByScore(score), // Use the color based on the score
     },
   ];
 
@@ -60,7 +78,7 @@ export function TrustCard({ score }: TrustCardProps) {
           innerRadius={50}
           outerRadius={60}>
           <PolarGrid gridType="circle" radialLines={false} stroke="none" polarRadius={[86, 74]} />
-          <RadialBar dataKey="score" background cornerRadius={4} />
+          <RadialBar dataKey="score" background cornerRadius={4} fill={chartData[0].fill} />
           <PolarRadiusAxis tick={false} tickLine={false} axisLine={false}>
             <Label
               content={({ viewBox }) => {
@@ -75,7 +93,6 @@ export function TrustCard({ score }: TrustCardProps) {
                         x={viewBox.cx}
                         y={(viewBox.cy || 0) - 18}
                         className="fill-current text-lg font-semibold">
-                        {/* Display the mapped string symbol or score */}
                         {displayScore}
                       </tspan>
                       <tspan
