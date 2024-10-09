@@ -4,6 +4,9 @@ export interface AICompanyData {
   ethics: string;
   innovation: string;
   adoptionRate: string;
+  date: string;
+  hype: number;
+  rank: number;
   doomLevel: 'High' | 'Medium' | 'Low';
   impactLevel: 'High' | 'Medium' | 'Low';
 }
@@ -17,6 +20,9 @@ export const aiCompanyData: AICompanyData[] = [
     doomLevel: 'High',
     adoptionRate: 'A+',
     impactLevel: 'High',
+    date: '2024-04-01',
+    hype: 1000,
+    rank: 1,
   },
   {
     name: 'Google',
@@ -26,6 +32,9 @@ export const aiCompanyData: AICompanyData[] = [
     doomLevel: 'Medium',
     adoptionRate: 'A',
     impactLevel: 'High',
+    date: '2024-04-01',
+    hype: 900,
+    rank: 2,
   },
   {
     name: 'Microsoft',
@@ -35,6 +44,9 @@ export const aiCompanyData: AICompanyData[] = [
     doomLevel: 'Medium',
     adoptionRate: 'A+',
     impactLevel: 'High',
+    date: '2024-04-01',
+    hype: 800,
+    rank: 3,
   },
   {
     name: 'NVIDIA',
@@ -44,6 +56,9 @@ export const aiCompanyData: AICompanyData[] = [
     doomLevel: 'Medium',
     adoptionRate: 'A+',
     impactLevel: 'High',
+    date: '2024-04-01',
+    hype: 700,
+    rank: 4,
   },
   {
     name: 'Anthropic',
@@ -53,6 +68,9 @@ export const aiCompanyData: AICompanyData[] = [
     doomLevel: 'Medium',
     adoptionRate: 'A-',
     impactLevel: 'High',
+    date: '2024-04-01',
+    hype: 600,
+    rank: 5,
   },
   {
     name: 'DeepMind',
@@ -62,6 +80,9 @@ export const aiCompanyData: AICompanyData[] = [
     doomLevel: 'High',
     adoptionRate: 'A',
     impactLevel: 'High',
+    date: '2024-04-01',
+    hype: 500,
+    rank: 6,
   },
   {
     name: 'Amazon',
@@ -71,6 +92,9 @@ export const aiCompanyData: AICompanyData[] = [
     doomLevel: 'Medium',
     adoptionRate: 'A-',
     impactLevel: 'High',
+    date: '2024-04-01',
+    hype: 400,
+    rank: 7,
   },
   {
     name: 'Apple',
@@ -80,6 +104,9 @@ export const aiCompanyData: AICompanyData[] = [
     doomLevel: 'Low',
     adoptionRate: 'B+',
     impactLevel: 'Medium',
+    date: '2024-04-01',
+    hype: 300,
+    rank: 8,
   },
   {
     name: 'Meta',
@@ -89,6 +116,9 @@ export const aiCompanyData: AICompanyData[] = [
     doomLevel: 'High',
     adoptionRate: 'B+',
     impactLevel: 'Medium',
+    date: '2024-04-01',
+    hype: 200,
+    rank: 9,
   },
   {
     name: 'IBM',
@@ -98,6 +128,9 @@ export const aiCompanyData: AICompanyData[] = [
     doomLevel: 'Low',
     adoptionRate: 'B+',
     impactLevel: 'Medium',
+    date: '2024-04-01',
+    hype: 100,
+    rank: 10,
   },
   {
     name: 'Cohere',
@@ -107,6 +140,9 @@ export const aiCompanyData: AICompanyData[] = [
     doomLevel: 'Low',
     adoptionRate: 'B',
     impactLevel: 'Medium',
+    date: '2024-04-01',
+    hype: 90,
+    rank: 11,
   },
   {
     name: 'Stability AI',
@@ -116,6 +152,9 @@ export const aiCompanyData: AICompanyData[] = [
     doomLevel: 'Medium',
     adoptionRate: 'B+',
     impactLevel: 'Medium',
+    date: '2024-04-01',
+    hype: 80,
+    rank: 12,
   },
   {
     name: 'Perplexity AI',
@@ -125,6 +164,9 @@ export const aiCompanyData: AICompanyData[] = [
     doomLevel: 'Low',
     adoptionRate: 'B',
     impactLevel: 'Medium',
+    date: '2024-04-01',
+    hype: 70,
+    rank: 13,
   },
   {
     name: 'Tesla',
@@ -134,6 +176,9 @@ export const aiCompanyData: AICompanyData[] = [
     doomLevel: 'Medium',
     adoptionRate: 'B',
     impactLevel: 'Medium',
+    date: '2024-04-01',
+    hype: 60,
+    rank: 14,
   },
   {
     name: 'Hugging Face',
@@ -143,6 +188,9 @@ export const aiCompanyData: AICompanyData[] = [
     doomLevel: 'Low',
     adoptionRate: 'B+',
     impactLevel: 'Medium',
+    date: '2024-04-01',
+    hype: 50,
+    rank: 15,
   },
   {
     name: 'Databricks',
@@ -152,6 +200,9 @@ export const aiCompanyData: AICompanyData[] = [
     doomLevel: 'Low',
     adoptionRate: 'B+',
     impactLevel: 'Medium',
+    date: '2024-04-01',
+    hype: 40,
+    rank: 16,
   },
   {
     name: 'SambaNova',
@@ -161,6 +212,9 @@ export const aiCompanyData: AICompanyData[] = [
     doomLevel: 'Low',
     adoptionRate: 'B-',
     impactLevel: 'Medium',
+    date: '2024-04-01',
+    hype: 30,
+    rank: 17,
   },
   {
     name: 'Scale AI',
@@ -170,6 +224,9 @@ export const aiCompanyData: AICompanyData[] = [
     doomLevel: 'Low',
     adoptionRate: 'B',
     impactLevel: 'Medium',
+    date: '2024-04-01',
+    hype: 20,
+    rank: 18,
   },
   {
     name: 'Alphabet',
@@ -179,6 +236,9 @@ export const aiCompanyData: AICompanyData[] = [
     doomLevel: 'Medium',
     adoptionRate: 'A',
     impactLevel: 'High',
+    date: '2024-04-01',
+    hype: 10,
+    rank: 19,
   },
   {
     name: 'Adobe',
@@ -188,6 +248,9 @@ export const aiCompanyData: AICompanyData[] = [
     doomLevel: 'Low',
     adoptionRate: 'A-',
     impactLevel: 'Medium',
+    date: '2024-04-01',
+    hype: 25,
+    rank: 20,
   },
   {
     name: 'IBM',
@@ -197,6 +260,9 @@ export const aiCompanyData: AICompanyData[] = [
     doomLevel: 'Low',
     adoptionRate: 'B+',
     impactLevel: 'Medium',
+    date: '2024-04-01',
+    hype: 15,
+    rank: 21,
   },
   {
     name: 'Palantir',
@@ -206,6 +272,9 @@ export const aiCompanyData: AICompanyData[] = [
     doomLevel: 'Medium',
     adoptionRate: 'B',
     impactLevel: 'Medium',
+    date: '2024-04-01',
+    hype: 10,
+    rank: 22,
   },
   {
     name: 'Mobileye',
@@ -215,6 +284,9 @@ export const aiCompanyData: AICompanyData[] = [
     doomLevel: 'Low',
     adoptionRate: 'B+',
     impactLevel: 'Medium',
+    date: '2024-04-01',
+    hype: 5,
+    rank: 23,
   },
   {
     name: 'Dynatrace',
@@ -224,6 +296,9 @@ export const aiCompanyData: AICompanyData[] = [
     doomLevel: 'Low',
     adoptionRate: 'B',
     impactLevel: 'Medium',
+    date: '2024-04-01',
+    hype: 5,
+    rank: 24,
   },
   {
     name: 'SentinelOne',
@@ -233,6 +308,9 @@ export const aiCompanyData: AICompanyData[] = [
     doomLevel: 'Low',
     adoptionRate: 'B',
     impactLevel: 'Medium',
+    date: '2024-04-01',
+    hype: 15,
+    rank: 25,
   },
   {
     name: 'UiPath',
@@ -242,6 +320,9 @@ export const aiCompanyData: AICompanyData[] = [
     doomLevel: 'Low',
     adoptionRate: 'B+',
     impactLevel: 'Medium',
+    date: '2024-04-01',
+    hype: 15,
+    rank: 26,
   },
   {
     name: 'Aurora Innovation',
@@ -251,6 +332,9 @@ export const aiCompanyData: AICompanyData[] = [
     doomLevel: 'Medium',
     adoptionRate: 'B-',
     impactLevel: 'Medium',
+    date: '2024-04-01',
+    hype: 150,
+    rank: 27,
   },
   {
     name: 'Tempus AI',
@@ -260,5 +344,8 @@ export const aiCompanyData: AICompanyData[] = [
     doomLevel: 'Low',
     adoptionRate: 'B',
     impactLevel: 'Medium',
+    date: '2024-04-01',
+    hype: 10,
+    rank: 28,
   },
 ];
