@@ -46,7 +46,7 @@ export function HypeInfo() {
       </div>
       {/* Show hype info content (Cards) */}
       <CollapsibleContent>
-        <div className="p-2 font-mono grid grid-cols-3 gap-2 ">
+        <div className="py-4 font-mono grid grid-cols-3 gap-2">
           <ImpactCard companyData={selectedCompany} />
           <DoomCard companyData={selectedCompany} />
           <TrustCard score={trustScore} /> {/* Pass the trust score here */}
