@@ -22,7 +22,7 @@ export function MainPanel() {
   };
 
   return (
-    <ResizablePanelGroup direction="vertical" className="max-w-xl rounded-sm border mb-2">
+    <ResizablePanelGroup direction="vertical" className="max-w-xl rounded-sm border">
       <ResizablePanel
         defaultSize={25}
         className="flex justify-center items-center gap-1 flex-col sm:flex-row ">
@@ -35,7 +35,7 @@ export function MainPanel() {
             Refresh
           </Button>
           <AICompanySelector
-            companies={aiCompanyData}
+            companies={aiCompanyData} // Pass the AI company data
             onCompanySelect={handleCompanySelect} // Pass the onCompanySelect function
           />
         </span>

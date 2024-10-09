@@ -6,7 +6,7 @@ import { ChartConfig, ChartContainer } from '@/components/ui/chart';
 
 export const description = 'A radial chart for User Trust';
 
-// Map string symbols to numeric values
+// Map string symbols to numeric values, including 'N/A' for 0
 const scoreToSymbolMapping: Record<number, string> = {
   10: 'A+',
   9: 'A',
@@ -18,6 +18,7 @@ const scoreToSymbolMapping: Record<number, string> = {
   3: 'C',
   2: 'C-',
   1: 'D',
+  0: 'N/A', // Added N/A mapping for score 0
 };
 
 const chartConfig = {
@@ -30,24 +31,27 @@ const chartConfig = {
   },
 } satisfies ChartConfig;
 
-// Add the score prop
+// Define the props for TrustCard
 interface TrustCardProps {
-  score: number; // Define the type of score
+  score: number; // Score remains required, but can be 0
 }
 
 export function TrustCard({ score }: TrustCardProps) {
-  // Prepare chart data using the passed score
+  // Use the mapped score or default to the score itself
+  const displayScore = scoreToSymbolMapping[score] || score;
+
+  // Prepare chart data, ensure 0 uses the correct fill and display
   const chartData = [
     {
       browser: 'yellow',
       score,
-      symbol: scoreToSymbolMapping[score] || score,
-      fill: 'var(--color-yellow)',
+      symbol: displayScore,
+      fill: score === 0 ? 'var(--color-gray)' : 'var(--color-yellow)', // Gray for N/A (0), yellow otherwise
     },
   ];
 
   return (
-    <Card className="h-[100px] flex ">
+    <Card className="h-[100px] flex">
       <ChartContainer config={chartConfig} className="mx-auto w-full h-40 max-w-[150px]">
         <RadialBarChart
           data={chartData}
@@ -71,8 +75,8 @@ export function TrustCard({ score }: TrustCardProps) {
                         x={viewBox.cx}
                         y={(viewBox.cy || 0) - 18}
                         className="fill-current text-lg font-semibold">
-                        {/* Display the mapped string symbol */}
-                        {scoreToSymbolMapping[score] || score}
+                        {/* Display the mapped string symbol or score */}
+                        {displayScore}
                       </tspan>
                       <tspan
                         x={viewBox.cx}
