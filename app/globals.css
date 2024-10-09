@@ -60,10 +60,10 @@ body {
     --radius: 0.5rem; /* Default border-radius */
 
     /* Light mode chart colors */
-    --chart-1: 120 110% 40%; /* Bright green */
-    --chart-2: 80 110% 40%; /* Lime yellow */
-    --chart-3: 5 120% 40%; /* Dark red */
-    --chart-4: 40 100% 50%; /* Lighter orange */
+    --chart-1: 120 110% 40%; /* Bright Green */
+    --chart-2: 80 98% 46%; /* Lime Green */
+    --chart-3: 0 120% 50%; /* Dark Red Error */
+    --chart-4: 40 100% 50%; /* Medium Orange */
   }
 
   /* Dark mode color scheme */
@@ -90,10 +90,10 @@ body {
     --radius: 0.5rem; /* Border-radius for dark mode */
 
     /* Dark mode chart colors */
-    --chart-1: 120 110% 40%; /* Bright green */
-    --chart-2: 80 110% 40%; /* Lime yellow */
-    --chart-3: 5 120% 40%; /* Dark red */
-    --chart-4: 40 100% 50%; /* Lighter orange */
+    --chart-1: 120 110% 40%; /* Bright Green */
+    --chart-2: 80 98% 46%; /* Lime Green */
+    --chart-3: 0 120% 50%; /* Dark Red Error */
+    --chart-4: 40 100% 50%; /* Medium Orange */
   }
 }
 
