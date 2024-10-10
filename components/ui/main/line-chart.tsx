@@ -47,8 +47,8 @@ export function ComponentOne() {
 	React.useEffect(() => {
 		if (selectedCompany) {
 			setTotals({
-				hype: selectedCompany.hype,
-				rank: selectedCompany.rank,
+				hype: selectedCompany.currentHype,
+				rank: selectedCompany.currentRank,
 			});
 		} else {
 			setTotals({ hype: 0, rank: 0 }); // Set default values when no company is selected
