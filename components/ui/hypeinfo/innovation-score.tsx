@@ -1,7 +1,9 @@
 "use client";
 
+// biome-ignore lint/style/useImportType: <explanation>
 import { AICompanyData } from "@/app/data/aiCompanyData"; // Import your AICompanyData type
 import { Card } from "@/components/ui/card";
+// biome-ignore lint/style/useImportType: <explanation>
 import { ChartConfig, ChartContainer } from "@/components/ui/chart";
 import {
 	Label,
