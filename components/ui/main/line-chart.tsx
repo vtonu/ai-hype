@@ -50,21 +50,13 @@ export function ComponentOne() {
 				hype: selectedCompany.hype,
 				rank: selectedCompany.rank,
 			});
+		} else {
+			setTotals({ hype: 0, rank: 0 }); // Set default values when no company is selected
 		}
 	}, [selectedCompany]);
 
 	const formatNumber = (num: number): string => {
 		return num >= 10000 ? `${(num / 1000).toFixed(1)}K` : num.toLocaleString();
-	};
-
-	// Get the current date and time in a human-readable format
-	const getCurrentDateTime = () => {
-		const now = new Date();
-		return now.toLocaleDateString("en-US", {
-			month: "long",
-			day: "numeric",
-			year: "numeric",
-		});
 	};
 
 	// Get the icon and color based on the change value
@@ -76,6 +68,17 @@ export function ComponentOne() {
 			return { Icon: ArrowDown, color: "text-red-500" };
 		}
 		return { Icon: CircleDot, color: "text-gray-500" };
+	};
+
+	// Calculate percentage changes for hype and rank
+	const calculateHypePercentageChange = (current: number, previous: number) => {
+		if (previous === 0) return 0; // Prevent division by zero
+		return ((current - previous) / previous) * 100; // Percentage change formula
+	};
+
+	const calculateRankPercentageChange = (current: number, previous: number) => {
+		if (previous === 0) return 0; // Prevent division by zero
+		return ((previous - current) / 10) * 100; // Rank change based on scale of 1 out of 10
 	};
 
 	// Define the interface for the fake data
@@ -115,6 +118,21 @@ export function ComponentOne() {
 		return fakeData.reverse(); // Reverse to show the most recent dates first
 	};
 
+	// Calculate changes based on fake data
+	const fakeData = getFakeData();
+	const currentHype = fakeData[0]?.hype || 0; // Latest hype
+	const previousHype = fakeData[1]?.hype || 0; // Hype from the previous month
+	const currentRank = fakeData[0]?.rank || 0; // Latest rank
+	const previousRank = fakeData[1]?.rank || 0; // Rank from the previous month
+
+	// Get percentage changes for hype and rank
+	const hypeChange = calculateHypePercentageChange(currentHype, previousHype);
+	const rankChange = calculateRankPercentageChange(currentRank, previousRank);
+
+	// Get the correct icon and color for the current changes
+	const hypeIconInfo = getIconAndColor(hypeChange);
+	const rankIconInfo = getIconAndColor(rankChange);
+
 	return (
 		<div className="px-2 pt-2">
 			<Card>
@@ -127,7 +145,7 @@ export function ComponentOne() {
 							</Badge>
 						</CardTitle>
 						<CardDescription className="text-xs">
-							Last Update: {getCurrentDateTime()}
+							Last Update: {new Date().toLocaleDateString()}
 						</CardDescription>
 					</div>
 
@@ -137,8 +155,8 @@ export function ComponentOne() {
 								{["hype", "rank"].map((key) => {
 									const chart = key as keyof typeof chartConfig;
 									const isHype = key === "hype";
-									const changeValue = isHype ? 33 : -11; // Placeholder for % change for Hype and Rank
-									const iconInfo = getIconAndColor(changeValue); // Get icon and color based on change value
+									const changeValue = isHype ? hypeChange : rankChange; // Use the calculated change value
+									const iconInfo = isHype ? hypeIconInfo : rankIconInfo; // Get the appropriate icon info
 
 									return (
 										<button
@@ -156,7 +174,7 @@ export function ComponentOne() {
 														className={`w-4 h-4 ${iconInfo.color}`}
 													/>
 													<span className={`ml-1 text-xs ${iconInfo.color}`}>
-														{changeValue}%
+														{Math.round(changeValue)}% {/* Show whole number */}
 													</span>
 												</span>
 											</span>
@@ -179,8 +197,7 @@ export function ComponentOne() {
 					>
 						{/* Display the line chart with the fake data */}
 						<LineChart
-							accessibilityLayer
-							data={getFakeData()} // Use generated fake data
+							data={fakeData} // Use generated fake data
 							margin={{ left: 2, right: 2 }}
 						>
 							<CartesianGrid vertical={false} />
