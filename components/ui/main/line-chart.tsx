@@ -65,22 +65,31 @@ export function ComponentOne() {
     }
   };
 
-  // Generate fake date and data for the last 6 months
-  const getFakeData = () => {
+  // Define the interface above the function
+  interface FakeData {
+    date: string;
+    hype: number;
+    rank: number;
+    name: string;
+  }
+
+  // Generate data for the last 6 months
+  const getFakeData = (): FakeData[] => {
     const now = new Date();
-    const fakeData = [];
+    const fakeData: FakeData[] = []; // Explicitly type the fakeData array
 
-    let initialRank = aiCompanyData[0]?.rank || 50; // Start from an initial rank (use existing data or set a default)
+    aiCompanyData.forEach((company) => {
+      for (let i = 0; i < 6; i++) {
+        const fakeDate = new Date(now.getFullYear(), now.getMonth() - i, 1); // Generate a date for each month
 
-    for (let i = 0; i < 6; i++) {
-      const fakeDate = new Date(now.getFullYear(), now.getMonth() - i, 1); // Generate a date for the first of each month
-      initialRank += Math.random(); // Increment rank slightly each time
-      fakeData.push({
-        date: fakeDate.toISOString().split('T')[0], // Format date as YYYY-MM-DD
-        hype: aiCompanyData[i]?.hype + Math.random() * 10, // Ensure hype goes up
-        rank: Math.max(initialRank, 0), // Ensure rank does not go below zero
-      });
-    }
+        fakeData.push({
+          date: fakeDate.toISOString().split('T')[0], // Format date as YYYY-MM-DD
+          hype: company.monthlyHype[5 - i], // Use monthlyHype array for hype
+          rank: company.monthlyRank[5 - i], // Use monthlyRank array for rank
+          name: company.name, // Include company name for reference
+        });
+      }
+    });
 
     return fakeData.reverse(); // Reverse to show the most recent dates first
   };
