@@ -4,6 +4,7 @@ import { SparklesCore } from "@/components/ui/sparkles";
 import { cn } from "@/lib/utils";
 import { AnimatePresence, motion } from "framer-motion";
 // Import the required dependencies
+// biome-ignore lint/style/useImportType: <explanation>
 import React, { useEffect, useId, useState } from "react";
 import { useRef } from "react";
 
@@ -21,6 +22,7 @@ export const Cover = ({
 	const [containerWidth, setContainerWidth] = useState(0); // State to store the width of the container
 	const [beamPositions, setBeamPositions] = useState<number[]>([]); // State to store the positions of animated beams
 	// Effect to calculate container dimensions and beam positions when the component mounts or updates
+	// biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
 	useEffect(() => {
 		if (ref.current) {
 			setContainerWidth(ref.current?.clientWidth ?? 0); // Set container width using the ref
@@ -63,7 +65,7 @@ export const Cover = ({
 								translateX: {
 									duration: 2, // Duration for the slide
 									ease: "linear", // Linear easing for smooth animation
-									repeat: Infinity, // Repeat indefinitely
+									repeat: Number.POSITIVE_INFINITY, // Repeat indefinitely
 								},
 							}}
 							className="w-[100%] h-full flex"
@@ -89,17 +91,18 @@ export const Cover = ({
 				)}
 			</AnimatePresence>
 			{/* Render beams dynamically based on calculated positions */}
-			{beamPositions.map((position, index) => (
+			{beamPositions.map((position) => (
 				<Beam
-					key={index} // Unique key for each beam
-					duration={Math.random() * 2 + 1} // Random duration for each beam animation
-					delay={Math.random() * 2 + 1} // Random delay for each beam animation
-					width={containerWidth} // Beam width based on container width
+					key={`beam-${position}`} // Unique key using position value
+					duration={Math.random() * 2 + 1}
+					delay={Math.random() * 2 + 1}
+					width={containerWidth}
 					style={{
-						top: `${position}px`, // Position each beam along the Y-axis
+						top: `${position}px`,
 					}}
 				/>
 			))}
+
 			<motion.span
 				key={String(hovered)} // Unique key based on hover state
 				animate={{
@@ -117,12 +120,12 @@ export const Cover = ({
 					duration: 0.2, // Duration for the hover effect
 					x: {
 						duration: 0.2, // Horizontal shake duration
-						repeat: Infinity, // Repeat horizontal shake
+						repeat: Number.POSITIVE_INFINITY, // Repeat horizontal shake
 						repeatType: "loop", // Loop the shake
 					},
 					y: {
 						duration: 0.2, // Vertical shake duration
-						repeat: Infinity, // Repeat vertical shake
+						repeat: Number.POSITIVE_INFINITY, // Repeat vertical shake
 						repeatType: "loop", // Loop the shake
 					},
 					scale: {
@@ -159,6 +162,7 @@ export const Beam = ({
 	const id = useId(); // Unique ID for each SVG to avoid conflicts (useId hook)
 
 	return (
+		// biome-ignore lint/a11y/noSvgWithoutTitle: <explanation>
 		<motion.svg
 			width={width ?? "600"} // Set the width of the SVG (default is 600px)
 			height="1" // Fixed height for the SVG (1px tall)
@@ -168,8 +172,6 @@ export const Beam = ({
 			className={cn("absolute inset-x-0 w-full", className)} // Optional classes for positioning and styling
 			{...svgProps}
 		>
-			{" "}
-			// Spread additional props into the svg element
 			{/* Draws a horizontal line with an animated gradient stroke */}
 			<motion.path
 				d={`M0 0.5H${width ?? "600"}`}
@@ -195,7 +197,7 @@ export const Beam = ({
 					transition={{
 						duration: duration ?? 1, // Set animation duration or default to 1 second
 						ease: "linear", // Linear easing for smooth animation
-						repeat: Infinity, // Loop the animation indefinitely
+						repeat: Number.POSITIVE_INFINITY, // Loop the animation indefinitely
 						delay: delay ?? 1, // Set delay before the animation starts (default 1 second)
 					}}
 				>
@@ -219,10 +221,10 @@ export const CircleIcon = ({
 	return (
 		<div
 			className={cn(
-				`pointer-events-none animate-pulse group rounded-full bg-green-500 dark:bg-green opacity-5  ml-2`,
+				"pointer-events-none animate-pulse group rounded-full bg-green-500 dark:bg-green opacity-5  ml-2",
 				className,
 				delay,
 			)}
-		></div>
+		/>
 	);
 };

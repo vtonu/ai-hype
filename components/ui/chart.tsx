@@ -1,6 +1,7 @@
 "use client";
 
 import * as React from "react";
+import { useEffect } from "react";
 import * as RechartsPrimitive from "recharts";
 
 import { cn } from "@/lib/utils";
@@ -70,34 +71,40 @@ ChartContainer.displayName = "Chart";
 const ChartStyle = ({ id, config }: { id: string; config: ChartConfig }) => {
 	const colorConfig = Object.entries(config).filter(
 		([_, config]) => config.theme || config.color,
-	); // eslint-disable-line @typescript-eslint/no-unused-vars
-
-	if (!colorConfig.length) {
-		return null;
-	}
-
-	return (
-		<style
-			dangerouslySetInnerHTML={{
-				__html: Object.entries(THEMES)
-					.map(
-						([theme, prefix]) => `
-${prefix} [data-chart=${id}] {
-${colorConfig
-	.map(([key, itemConfig]) => {
-		const color =
-			itemConfig.theme?.[theme as keyof typeof itemConfig.theme] ||
-			itemConfig.color;
-		return color ? `  --color-${key}: ${color};` : null;
-	})
-	.join("\n")}
-}
-`,
-					)
-					.join("\n"),
-			}}
-		/>
 	);
+
+	useEffect(() => {
+		if (!colorConfig.length) {
+			return;
+		}
+
+		const styleElement = document.createElement("style");
+		const styleContent = Object.entries(THEMES)
+			.map(([theme, prefix]) => {
+				return `${prefix} [data-chart="${id}"] {
+        ${colorConfig
+					.map(([key, itemConfig]) => {
+						const color =
+							itemConfig.theme?.[theme as keyof typeof itemConfig.theme] ||
+							itemConfig.color;
+						return color ? `--color-${key}: ${color};` : null;
+					})
+					.filter(Boolean)
+					.join("\n")}
+      }`;
+			})
+			.join("\n");
+
+		styleElement.textContent = styleContent;
+		document.head.appendChild(styleElement);
+
+		// Cleanup on unmount
+		return () => {
+			document.head.removeChild(styleElement);
+		};
+	}, [id, colorConfig]);
+
+	return null;
 };
 
 const ChartTooltip = RechartsPrimitive.Tooltip;

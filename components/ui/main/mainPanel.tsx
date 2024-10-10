@@ -1,6 +1,7 @@
 "use client";
 
 import { aiCompanyData } from "@/app/data/aiCompanyData";
+// biome-ignore lint/style/useImportType: <explanation>
 import { AICompanyData } from "@/app/data/aiCompanyData"; // Import AICompanyData type
 import { BetaAlert } from "@/components/ui/betaAlert";
 import { Button } from "@/components/ui/button";

@@ -1,6 +1,7 @@
 "use client";
 
 import { Card } from "@/components/ui/card";
+// biome-ignore lint/style/useImportType: <explanation>
 import { ChartConfig, ChartContainer } from "@/components/ui/chart";
 import {
 	Label,

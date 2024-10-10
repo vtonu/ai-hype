@@ -1,5 +1,6 @@
 "use client";
 
+// biome-ignore lint/style/useImportType: <explanation>
 import { AICompanyData } from "@/app/data/aiCompanyData";
 import * as React from "react";
 

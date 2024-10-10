@@ -9,6 +9,7 @@ import {
 	CardHeader,
 	CardTitle,
 } from "@/components/ui/card";
+// biome-ignore lint/style/useImportType: <explanation>
 import {
 	ChartConfig,
 	ChartContainer,
@@ -53,7 +54,7 @@ export function ComponentOne() {
 	}, [selectedCompany]);
 
 	const formatNumber = (num: number): string => {
-		return num >= 10000 ? (num / 1000).toFixed(1) + "K" : num.toLocaleString();
+		return num >= 10000 ? `${(num / 1000).toFixed(1)}K` : num.toLocaleString();
 	};
 
 	const getCurrentDateTime = () => {
@@ -68,11 +69,11 @@ export function ComponentOne() {
 	const getIconAndColor = (change: number) => {
 		if (change > 0) {
 			return { Icon: ArrowUp, color: "text-green-500" };
-		} else if (change < 0) {
-			return { Icon: ArrowDown, color: "text-red-500" };
-		} else {
-			return { Icon: CircleDot, color: "text-gray-500" };
 		}
+		if (change < 0) {
+			return { Icon: ArrowDown, color: "text-red-500" };
+		}
+		return { Icon: CircleDot, color: "text-gray-500" };
 	};
 
 	// Define the interface above the function
@@ -141,6 +142,7 @@ export function ComponentOne() {
 									return (
 										<button
 											key={chart}
+											type="button"
 											data-active={activeChart === chart}
 											className="flex flex-1 flex-col justify-center gap-1 px-2 py-2 text-left even:border-l data-[active=true]:bg-muted/50 sm:p-2"
 											onClick={() => setActiveChart(chart)}

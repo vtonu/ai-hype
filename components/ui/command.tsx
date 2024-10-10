@@ -1,6 +1,7 @@
 "use client";
 
-import { type DialogProps } from "@radix-ui/react-dialog";
+// biome-ignore lint/style/useImportType: <explanation>
+import { DialogProps } from "@radix-ui/react-dialog";
 import { MagnifyingGlassIcon } from "@radix-ui/react-icons";
 import { Command as CommandPrimitive } from "cmdk";
 import * as React from "react";
