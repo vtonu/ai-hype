@@ -4,20 +4,25 @@ import type { Container, SingleOrMultiple } from "@tsparticles/engine";
 import Particles, { initParticlesEngine } from "@tsparticles/react";
 import { loadSlim } from "@tsparticles/slim";
 import { motion, useAnimation } from "framer-motion";
-import React, { useId } from "react";
-import { useEffect, useState } from "react";
+import React, { useId, useEffect, useState } from "react";
 
+/**
+ * ParticlesProps type definition
+ */
 type ParticlesProps = {
-	id?: string;
-	className?: string;
-	background?: string;
-	particleSize?: number;
-	minSize?: number;
-	maxSize?: number;
-	speed?: number;
-	particleColor?: string;
-	particleDensity?: number;
+	id?: string; // Unique ID for the particle container
+	className?: string; // Additional class names for styling
+	background?: string; // Background color for the particle effect
+	minSize?: number; // Minimum size for the particles
+	maxSize?: number; // Maximum size for the particles
+	speed?: number; // Speed of the particles
+	particleColor?: string; // Color of the particles
+	particleDensity?: number; // Density of the particles
 };
+
+/**
+ * SparklesCore component to render particle effects
+ */
 export const SparklesCore = (props: ParticlesProps) => {
 	const {
 		id,
@@ -29,30 +34,26 @@ export const SparklesCore = (props: ParticlesProps) => {
 		particleColor,
 		particleDensity,
 	} = props;
-	const [init, setInit] = useState(false);
-	useEffect(() => {
-		initParticlesEngine(async (engine) => {
-			await loadSlim(engine);
-		}).then(() => {
-			setInit(true);
-		});
-	}, []);
-	const controls = useAnimation();
 
+	const [init, setInit] = useState(false); // State to track if particles have been initialized
+	const controls = useAnimation(); // Animation controls for framer-motion
+
+	// Initialize particles engine and load slim version
 	useEffect(() => {
 		initParticlesEngine(async (engine) => {
-			await loadSlim(engine);
+			await loadSlim(engine); // Load slim version of the particles engine
 		}).then(() => {
-			setInit(true);
+			setInit(true); // Set initialization state to true once loading is complete
 		});
 	}, []);
 
+	// Animate opacity once particles are initialized
 	useEffect(() => {
 		if (init) {
 			controls.start({
-				opacity: 1,
+				opacity: 1, // Fade in effect for the particles
 				transition: {
-					duration: 1,
+					duration: 1, // Duration of the fade in transition
 				},
 			});
 		}
@@ -60,388 +61,398 @@ export const SparklesCore = (props: ParticlesProps) => {
 
 	const particlesLoaded = async (container?: Container) => {
 		if (container) {
+			// Placeholder for future functionality when particles are loaded
 		}
 	};
 
+	// Generate a unique ID for the particle container
 	const generatedId = useId();
+
 	return (
 		<motion.div animate={controls} className={cn("opacity-0", className)}>
 			{init && (
 				<Particles
-					id={id || generatedId}
-					className={cn("h-full w-full")}
-					particlesLoaded={particlesLoaded}
+					id={id || generatedId} // Unique identifier for the particles component
+					className={cn("h-full w-full")} // Classes to set the height and width of the particles container
+					particlesLoaded={particlesLoaded} // Callback to handle when particles are fully loaded
 					options={{
 						background: {
 							color: {
-								value: background || "#0d47a1",
+								value: background || "#0d47a1", // Background color for the particles container
 							},
 						},
 						fullScreen: {
-							enable: false,
-							zIndex: 1,
+							enable: false, // Disable full-screen mode for the particles
+							zIndex: 1, // Set z-index for the particles layer
 						},
-
-						fpsLimit: 120,
+						fpsLimit: 120, // Set the maximum frames per second for rendering particles
 						interactivity: {
 							events: {
 								onClick: {
-									enable: true,
-									mode: "push",
+									enable: true, // Enable click interactions
+									mode: "push", // Mode for click interaction
 								},
 								onHover: {
-									enable: false,
-									mode: "repulse",
+									enable: false, // Disable hover interactions
+									mode: "repulse", // Mode for hover interaction if enabled
 								},
 								resize: {
-									enable: true, // Enable resize
-								}, // This should be an object, not true
+									enable: true, // Enable resizing of particles on window resize
+								},
 							},
 							modes: {
 								push: {
-									quantity: 4,
+									quantity: 4, // Number of particles to push on click
 								},
 								repulse: {
-									distance: 200,
-									duration: 0.4,
+									distance: 200, // Distance for repulsion effect
+									duration: 0.4, // Duration of the repulsion effect
 								},
 							},
 						},
 						particles: {
 							bounce: {
 								horizontal: {
-									value: 1,
+									value: 1, // Bounce value for horizontal movement
 								},
 								vertical: {
-									value: 1,
+									value: 1, // Bounce value for vertical movement
 								},
 							},
 							collisions: {
 								absorb: {
-									speed: 2,
+									speed: 2, // Speed at which particles absorb each other
 								},
 								bounce: {
 									horizontal: {
-										value: 1,
+										value: 1, // Bounce value for horizontal collisions
 									},
 									vertical: {
-										value: 1,
+										value: 1, // Bounce value for vertical collisions
 									},
 								},
-								enable: false,
-								maxSpeed: 50,
-								mode: "bounce",
+								enable: false, // Disable collision detection
+								maxSpeed: 50, // Maximum speed of particles
+								mode: "bounce", // Mode for particle collision behavior
 								overlap: {
-									enable: true,
-									retries: 0,
+									enable: true, // Allow overlapping of particles
+									retries: 0, // Number of retries for collision detection
 								},
 							},
-
+							/**
+							 * Color properties for particles.
+							 */
 							color: {
-								value: particleColor || "#ffffff",
+								value: particleColor || "#ffffff", // Default color of particles
 								animation: {
 									h: {
-										count: 0,
-										enable: false,
-										speed: 1,
-										decay: 0,
-										delay: 0,
-										sync: true,
-										offset: 0,
+										count: 0, // Number of hue animation iterations
+										enable: false, // Disable hue animation
+										speed: 1, // Speed of hue animation
+										decay: 0, // Decay of hue animation
+										delay: 0, // Delay before starting hue animation
+										sync: true, // Synchronize hue animation across particles
+										offset: 0, // Offset for hue animation
 									},
 									s: {
-										count: 0,
-										enable: false,
-										speed: 1,
-										decay: 0,
-										delay: 0,
-										sync: true,
-										offset: 0,
+										count: 0, // Number of saturation animation iterations
+										enable: false, // Disable saturation animation
+										speed: 1, // Speed of saturation animation
+										decay: 0, // Decay of saturation animation
+										delay: 0, // Delay before starting saturation animation
+										sync: true, // Synchronize saturation animation across particles
+										offset: 0, // Offset for saturation animation
 									},
 									l: {
-										count: 0,
-										enable: false,
-										speed: 1,
-										decay: 0,
-										delay: 0,
-										sync: true,
-										offset: 0,
+										count: 0, // Number of lightness animation iterations
+										enable: false, // Disable lightness animation
+										speed: 1, // Speed of lightness animation
+										decay: 0, // Decay of lightness animation
+										delay: 0, // Delay before starting lightness animation
+										sync: true, // Synchronize lightness animation across particles
+										offset: 0, // Offset for lightness animation
 									},
 								},
 							},
+							/**
+							 * Effect properties for particles.
+							 */
 							effect: {
-								close: true,
-								fill: true,
-								options: {},
-								type: {} as SingleOrMultiple<string> | undefined,
+								close: true, // Enable closing effect for particles
+								fill: true, // Fill the particles with color
+								options: {}, // Additional effect options
+								type: {} as SingleOrMultiple<string> | undefined, // Type of effect (single/multiple)
 							},
-							groups: {},
+							groups: {}, // Particle grouping properties
+							/**
+							 * Particle movement properties.
+							 */
 							move: {
 								angle: {
-									offset: 0,
-									value: 90,
+									offset: 0, // Offset for movement angle
+									value: 90, // Movement angle in degrees
 								},
 								attract: {
-									distance: 200,
-									enable: false,
+									distance: 200, // Distance at which particles attract each other
+									enable: false, // Disable particle attraction
 									rotate: {
-										x: 3000,
-										y: 3000,
+										x: 3000, // Rotation speed around X-axis
+										y: 3000, // Rotation speed around Y-axis
 									},
 								},
 								center: {
-									x: 50,
-									y: 50,
-									mode: "percent",
-									radius: 0,
+									x: 50, // X position for movement center
+									y: 50, // Y position for movement center
+									mode: "percent", // Center mode (percent or pixels)
+									radius: 0, // Radius of the center area
 								},
-								decay: 0,
-								distance: {},
-								direction: "none",
-								drift: 0,
-								enable: true,
+								decay: 0, // Decay value for particle movement
+								distance: {}, // Distance properties for movement
+								direction: "none", // Direction of movement
+								drift: 0, // Drift value for particles
+								enable: true, // Enable particle movement
 								gravity: {
-									acceleration: 9.81,
-									enable: false,
-									inverse: false,
-									maxSpeed: 50,
+									acceleration: 9.81, // Gravity acceleration
+									enable: false, // Disable gravity effect
+									inverse: false, // Inverse gravity effect
+									maxSpeed: 50, // Maximum speed under gravity
 								},
 								path: {
-									clamp: true,
+									clamp: true, // Clamp path movement
 									delay: {
-										value: 0,
+										value: 0, // Delay for path movement
 									},
-									enable: false,
-									options: {},
+									enable: false, // Disable path movement
+									options: {}, // Additional path options
 								},
 								outModes: {
-									default: "out",
+									default: "out", // Default behavior for particles exiting the canvas
 								},
-								random: false,
-								size: false,
+								random: false, // Disable random movement
+								size: false, // Disable size variations in movement
 								speed: {
-									min: 0.1,
-									max: 1,
+									min: 0.1, // Minimum speed of particles
+									max: 1, // Maximum speed of particles
 								},
 								spin: {
-									acceleration: 0,
-									enable: false,
+									acceleration: 0, // Spin acceleration
+									enable: false, // Disable spin effect
 								},
-								straight: false,
+								straight: false, // Disable straight movement
 								trail: {
-									enable: false,
-									length: 10,
-									fill: {},
+									enable: false, // Disable trail effect
+									length: 10, // Length of the trail
+									fill: {}, // Fill options for the trail
 								},
-								vibrate: false,
-								warp: false,
+								vibrate: false, // Disable vibration effect
+								warp: false, // Disable warp effect
 							},
 							number: {
 								density: {
-									enable: true,
-									width: 400,
-									height: 400,
+									enable: true, // Enable density configuration
+									width: 400, // Width of the density area
+									height: 400, // Height of the density area
 								},
 								limit: {
-									mode: "delete",
-									value: 0,
+									mode: "delete", // Mode for limiting particle numbers
+									value: 0, // Maximum number of particles allowed
 								},
-								value: particleDensity || 120,
+								value: particleDensity || 120, // Number of particles to spawn
 							},
 							opacity: {
 								value: {
-									min: 0.1,
-									max: 1,
+									min: 0.1, // Minimum opacity of particles
+									max: 1, // Maximum opacity of particles
 								},
 								animation: {
-									count: 0,
-									enable: true,
-									speed: speed || 4,
-									decay: 0,
-									delay: 0,
-									sync: false,
-									mode: "auto",
-									startValue: "random",
-									destroy: "none",
+									count: 0, // Number of animation iterations for opacity
+									enable: true, // Enable opacity animation
+									speed: speed || 4, // Speed of opacity changes
+									decay: 0, // Decay for opacity animation
+									delay: 0, // Delay before starting opacity animation
+									sync: false, // Disable synchronized animation
+									mode: "auto", // Automatic mode for opacity animation
+									startValue: "random", // Random starting value for opacity
+									destroy: "none", // Action to take on destroy
 								},
 							},
-							reduceDuplicates: false,
+							reduceDuplicates: false, // Disable reduction of duplicate particles
 							shadow: {
-								blur: 0,
+								blur: 0, // Blur effect for shadows
 								color: {
-									value: "#000",
+									value: "#000", // Color of the shadow
 								},
-								enable: false,
+								enable: false, // Disable shadow effect
 								offset: {
-									x: 0,
-									y: 0,
+									x: 0, // X offset of the shadow
+									y: 0, // Y offset of the shadow
 								},
 							},
 							shape: {
-								close: true,
-								fill: true,
-								options: {},
-								type: "circle",
+								close: true, // Enable closing of the shape
+								fill: true, // Enable filling of the shape
+								options: {}, // Shape-specific options
+								type: "circle", // Shape type (e.g., circle, square)
 							},
 							size: {
 								value: {
-									min: minSize || 1,
-									max: maxSize || 3,
+									min: minSize || 1, // Minimum size of particles
+									max: maxSize || 3, // Maximum size of particles
 								},
 								animation: {
-									count: 0,
-									enable: false,
-									speed: 5,
-									decay: 0,
-									delay: 0,
-									sync: false,
-									mode: "auto",
-									startValue: "random",
-									destroy: "none",
+									count: 0, // Number of animation iterations for size
+									enable: false, // Disable size animation
+									speed: 5, // Speed of size changes
+									decay: 0, // Decay for size animation
+									delay: 0, // Delay before starting size animation
+									sync: false, // Disable synchronized animation
+									mode: "auto", // Automatic mode for size animation
+									startValue: "random", // Random starting value for size
+									destroy: "none", // Action to take on destroy
 								},
 							},
 							stroke: {
-								width: 0,
+								width: 0, // Width of the stroke around particles
 							},
 							zIndex: {
-								value: 0,
-								opacityRate: 1,
-								sizeRate: 1,
-								velocityRate: 1,
+								value: 0, // Z-index of particles
+								opacityRate: 1, // Opacity rate based on z-index
+								sizeRate: 1, // Size rate based on z-index
+								velocityRate: 1, // Velocity rate based on z-index
 							},
 							destroy: {
-								bounds: {},
-								mode: "none",
+								bounds: {}, // Boundaries for particle destruction
+								mode: "none", // Mode for particle destruction
 								split: {
-									count: 1,
+									count: 1, // Number of particles to split into
 									factor: {
-										value: 3,
+										value: 3, // Factor for split size
 									},
 									rate: {
 										value: {
-											min: 4,
-											max: 9,
+											min: 4, // Minimum rate of split
+											max: 9, // Maximum rate of split
 										},
 									},
-									sizeOffset: true,
+									sizeOffset: true, // Enable size offset for split particles
 								},
 							},
 							roll: {
 								darken: {
-									enable: false,
-									value: 0,
+									enable: false, // Disable darkening effect on roll
+									value: 0, // Value for darkening
 								},
-								enable: false,
+								enable: false, // Disable roll effect
 								enlighten: {
-									enable: false,
-									value: 0,
+									enable: false, // Disable enlightening effect on roll
+									value: 0, // Value for enlightening
 								},
-								mode: "vertical",
-								speed: 25,
+								mode: "vertical", // Roll mode (e.g., vertical, horizontal)
+								speed: 25, // Speed of roll effect
 							},
 							tilt: {
-								value: 0,
+								value: 0, // Tilt value for particles
 								animation: {
-									enable: false,
-									speed: 0,
-									decay: 0,
-									sync: false,
+									enable: false, // Disable tilt animation
+									speed: 0, // Speed of tilt animation
+									decay: 0, // Decay for tilt animation
+									sync: false, // Disable synchronized animation
 								},
-								direction: "clockwise",
-								enable: false,
+								direction: "clockwise", // Direction of tilt (clockwise or counterclockwise)
+								enable: false, // Disable tilt effect
 							},
 							twinkle: {
 								lines: {
-									enable: false,
-									frequency: 0.05,
-									opacity: 1,
+									enable: false, // Disable twinkle effect on lines
+									frequency: 0.05, // Frequency of twinkle effect
+									opacity: 1, // Opacity of twinkle effect
 								},
 								particles: {
-									enable: false,
-									frequency: 0.05,
-									opacity: 1,
+									enable: false, // Disable twinkle effect on particles
+									frequency: 0.05, // Frequency of twinkle effect
+									opacity: 1, // Opacity of twinkle effect
 								},
 							},
 							wobble: {
-								distance: 5,
-								enable: false,
+								distance: 5, // Distance for wobble effect
+								enable: false, // Disable wobble effect
 								speed: {
-									angle: 50,
-									move: 10,
+									angle: 50, // Speed of angle wobble
+									move: 10, // Speed of movement wobble
 								},
 							},
 							life: {
-								count: 0,
+								count: 0, // Number of life iterations for particles
 								delay: {
-									value: 0,
-									sync: false,
+									value: 0, // Delay before life iteration starts
+									sync: false, // Disable synchronized life iteration
 								},
 								duration: {
-									value: 0,
-									sync: false,
+									value: 0, // Duration of life for particles
+									sync: false, // Disable synchronized duration
 								},
 							},
 							rotate: {
-								value: 0,
+								value: 0, // Rotation value for particles
 								animation: {
-									enable: false,
-									speed: 0,
-									decay: 0,
-									sync: false,
+									enable: false, // Disable rotation animation
+									speed: 0, // Speed of rotation animation
+									decay: 0, // Decay for rotation animation
+									sync: false, // Disable synchronized rotation animation
 								},
-								direction: "clockwise",
-								path: false,
+								direction: "clockwise", // Direction of rotation
+								path: false, // Disable path rotation
 							},
 							orbit: {
 								animation: {
-									count: 0,
-									enable: false,
-									speed: 1,
-									decay: 0,
-									delay: 0,
-									sync: false,
+									count: 0, // Number of orbit animation iterations
+									enable: false, // Disable orbit animation
+									speed: 1, // Speed of orbit animation
+									decay: 0, // Decay for orbit animation
+									delay: 0, // Delay before starting orbit animation
+									sync: false, // Disable synchronized orbit animation
 								},
-								enable: false,
-								opacity: 1,
+								enable: false, // Disable orbit effect
+								opacity: 1, // Opacity of orbit particles
 								rotation: {
-									value: 45,
+									value: 45, // Rotation angle for orbit
 								},
-								width: 1,
+								width: 1, // Width of orbit path
 							},
 							links: {
-								blink: false,
+								blink: false, // Disable blinking effect for links
 								color: {
-									value: "#fff",
+									value: "#fff", // Color of the links
 								},
-								consent: false,
-								distance: 100,
-								enable: false,
-								frequency: 1,
-								opacity: 1,
+								consent: false, // Consent required for link connections
+								distance: 100, // Distance for link connection
+								enable: false, // Disable link connections
+								frequency: 1, // Frequency of link connections
+								opacity: 1, // Opacity of links
 								shadow: {
-									blur: 5,
+									blur: 5, // Blur effect for link shadows
 									color: {
-										value: "#000",
+										value: "#000", // Color of link shadows
 									},
-									enable: false,
+									enable: false, // Disable shadow effect for links
 								},
 								triangles: {
-									enable: false,
-									frequency: 1,
+									enable: false, // Disable triangle link connections
+									frequency: 1, // Frequency of triangle connections
 								},
-								width: 1,
-								warp: false,
+								width: 1, // Width of links
+								warp: false, // Disable warp effect for links
 							},
 							repulse: {
-								value: 0,
-								enabled: false,
-								distance: 1,
-								duration: 1,
-								factor: 1,
-								speed: 1,
+								value: 0, // Repulse value for particles
+								enabled: false, // Disable repulse effect
+								distance: 1, // Distance for repulsion
+								duration: 1, // Duration of repulsion effect
+								factor: 1, // Factor for repulsion strength
+								speed: 1, // Speed of repulsion effect
 							},
 						},
-						detectRetina: true,
+						detectRetina: true, // Enable retina detection for particle rendering
 					}}
 				/>
 			)}
