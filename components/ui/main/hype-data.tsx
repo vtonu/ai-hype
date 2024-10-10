@@ -14,27 +14,9 @@ import { useSelectedCompany } from "@/hooks/useSelectedCompany";
 import { ChevronDown, ChevronUp } from "lucide-react";
 import * as React from "react";
 
-// Function to convert userTrust string to a numeric score
-const trustScoreMapping: Record<string, number> = {
-	"A+": 10,
-	A: 9,
-	"A-": 8,
-	"B+": 7,
-	B: 6,
-	"B-": 5,
-	"C+": 4,
-	C: 3,
-	"C-": 2,
-	D: 1,
-};
-
 export function HypeInfo() {
 	const [isOpen, setIsOpen] = React.useState(true);
 	const { selectedCompany } = useSelectedCompany(); // Get the selected company data
-
-	// Extract userTrust from selectedCompany and convert to a numeric score
-	const userTrust = selectedCompany?.userTrust; // Get the userTrust property
-	const trustScore = userTrust ? trustScoreMapping[userTrust] || 0 : 0; // Convert to a numeric score
 
 	return (
 		<Collapsible open={isOpen} onOpenChange={setIsOpen} className="w-[500px] ">
@@ -59,7 +41,7 @@ export function HypeInfo() {
 				<div className="py-4 font-mono grid grid-cols-3 gap-2">
 					<ImpactCard companyData={selectedCompany} />
 					<DoomCard companyData={selectedCompany} />
-					<TrustCard score={trustScore} /> {/* Pass the trust score here */}
+					<TrustCard companyData={selectedCompany} />
 					<InnovationCard companyData={selectedCompany} />
 					<AdoptionCard companyData={selectedCompany} />
 					<EthicsCard companyData={selectedCompany} />
