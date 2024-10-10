@@ -134,7 +134,7 @@ export const aiCompanyData: AICompanyData[] = [
 		currentHype: 6500,
 		currentRank: 8,
 		monthlyHype: [
-			1234, 2345, 4567, 5643, 6754, 7865, 4200, 4800, 5200, 5600, 6000, 6500,
+			2234, 2345, 4567, 5643, 6754, 7865, 4200, 4800, 5200, 5600, 6000, 6500,
 		],
 		monthlyRank: [8, 8, 8, 8, 8, 8],
 	},
