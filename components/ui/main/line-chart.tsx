@@ -1,6 +1,5 @@
 "use client";
 
-import { aiCompanyData } from "@/app/data/aiCompanyData"; // Import AI company data
 import { Badge } from "@/components/ui/badge";
 import {
 	Card,
@@ -18,7 +17,7 @@ import {
 } from "@/components/ui/chart";
 import { Cover } from "@/components/ui/cover";
 import { CircleIcon } from "@/components/ui/cover";
-import { useSelectedCompany } from "@/hooks/useSelectedCompany"; // Import your custom hook
+import { useSelectedCompany } from "@/hooks/useSelectedCompany";
 import { ArrowDown, ArrowUp, CircleDot } from "lucide-react";
 import * as React from "react";
 import { CartesianGrid, Line, LineChart, XAxis } from "recharts";
@@ -34,8 +33,9 @@ const chartConfig = {
 	},
 } satisfies ChartConfig;
 
+// Define ComponentOne (my hype and rank line chart component)
 export function ComponentOne() {
-	const { selectedCompany } = useSelectedCompany(); // Get the selected company from the context
+	const { selectedCompany } = useSelectedCompany();
 	const [activeChart, setActiveChart] =
 		React.useState<keyof typeof chartConfig>("hype");
 	const [totals, setTotals] = React.useState<{ hype: number; rank: number }>({
@@ -57,6 +57,7 @@ export function ComponentOne() {
 		return num >= 10000 ? `${(num / 1000).toFixed(1)}K` : num.toLocaleString();
 	};
 
+	// Get the current date and time in a human-readable format
 	const getCurrentDateTime = () => {
 		const now = new Date();
 		return now.toLocaleDateString("en-US", {
@@ -66,6 +67,7 @@ export function ComponentOne() {
 		});
 	};
 
+	// Get the icon and color based on the change value
 	const getIconAndColor = (change: number) => {
 		if (change > 0) {
 			return { Icon: ArrowUp, color: "text-green-500" };
@@ -76,7 +78,7 @@ export function ComponentOne() {
 		return { Icon: CircleDot, color: "text-gray-500" };
 	};
 
-	// Define the interface above the function
+	// Define the interface for the fake data
 	interface FakeData {
 		date: string;
 		hype: number;
@@ -84,9 +86,9 @@ export function ComponentOne() {
 		name: string;
 	}
 
-	// Generate data for the last 6 months
+	// Generate fake data for the last 6 months
 	const getFakeData = (): FakeData[] => {
-		const now = new Date();
+		const now = new Date(); // Get the current date
 		const fakeData: FakeData[] = []; // Explicitly type the fakeData array
 
 		if (selectedCompany) {
@@ -136,8 +138,7 @@ export function ComponentOne() {
 									const chart = key as keyof typeof chartConfig;
 									const isHype = key === "hype";
 									const changeValue = isHype ? 33 : -11; // Placeholder for % change for Hype and Rank
-
-									const iconInfo = getIconAndColor(changeValue);
+									const iconInfo = getIconAndColor(changeValue); // Get icon and color based on change value
 
 									return (
 										<button
@@ -147,6 +148,7 @@ export function ComponentOne() {
 											className="flex flex-1 flex-col justify-center gap-1 px-2 py-2 text-left even:border-l data-[active=true]:bg-muted/50 sm:p-2"
 											onClick={() => setActiveChart(chart)}
 										>
+											{/* Display hype and rank text and % and icons */}
 											<span className="text-xs text-muted-foreground flex items-center justify-center gap-4">
 												{chartConfig[chart].label}
 												<span className="flex items-center">
@@ -158,6 +160,7 @@ export function ComponentOne() {
 													</span>
 												</span>
 											</span>
+											{/* Display the total hype or rank numbers (0 0 by default) */}
 											<span className="text-lg font-bold leading-none sm:text-xl">
 												{formatNumber(totals[chart])}
 											</span>
@@ -174,6 +177,7 @@ export function ComponentOne() {
 						config={chartConfig}
 						className="aspect-video h-[180px] w-full"
 					>
+						{/* Display the line chart with the fake data */}
 						<LineChart
 							accessibilityLayer
 							data={getFakeData()} // Use generated fake data
@@ -189,11 +193,12 @@ export function ComponentOne() {
 								tickFormatter={(value) => {
 									const date = new Date(value);
 									return date.toLocaleDateString("en-US", {
-										month: "short",
+										month: "short", // Display month abbreviation
 										year: "numeric", // Change this to display only month and year if needed
 									});
 								}}
 							/>
+							{/* Display the tooltip with the date and the active chart value */}
 							<ChartTooltip
 								content={
 									<ChartTooltipContent
@@ -209,6 +214,7 @@ export function ComponentOne() {
 									/>
 								}
 							/>
+							{/* Display the line for the active chart */}
 							<Line
 								dataKey={activeChart} // Use active chart ('hype' or 'rank')
 								type="monotone"
