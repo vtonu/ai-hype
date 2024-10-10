@@ -11,7 +11,7 @@ export function BetaAlert() {
 				<AlertDescription>
 					<p className="text-xs">
 						This is a beta version. Things may break or not work accordingly.
-						v0.9
+						v1.1
 					</p>
 				</AlertDescription>
 			</Alert>
