@@ -16,6 +16,7 @@ import {
 	PopoverContent,
 	PopoverTrigger,
 } from "@/components/ui/popover";
+import { useSelectedCompany } from "@/hooks/useSelectedCompany"; // Import the hook
 import { cn } from "@/lib/utils";
 import { Check, ChevronDown } from "lucide-react";
 import * as React from "react";
@@ -30,8 +31,8 @@ export function AICompanySelector({
 	onCompanySelect,
 }: AICompanySelectorProps) {
 	const [open, setOpen] = React.useState(false);
-	const [selectedCompany, setSelectedCompany] =
-		React.useState<AICompanyData | null>(null);
+	const { selectedCompany, setSelectedCompany } = useSelectedCompany(); // Use the hook to get selected company
+
 	const [searchTerm, setSearchTerm] = React.useState("");
 
 	const filteredCompanies = companies.filter((company) =>
@@ -68,9 +69,9 @@ export function AICompanySelector({
 									<CommandItem
 										key={company.name}
 										onSelect={() => {
-											setSelectedCompany(company); // Store the full company data
-											onCompanySelect(company); // Pass the company data back to the parent
-											setOpen(false);
+											setSelectedCompany(company); // Store the full company data in context
+											onCompanySelect(company); // Call the parent's callback
+											setOpen(false); // Close the popover
 										}}
 									>
 										<Check

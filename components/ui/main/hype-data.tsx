@@ -15,8 +15,8 @@ import { ChevronDown, ChevronUp } from "lucide-react";
 import * as React from "react";
 
 export function HypeInfo() {
-	const [isOpen, setIsOpen] = React.useState(true);
-	const { selectedCompany } = useSelectedCompany(); // Get the selected company data
+	const [isOpen, setIsOpen] = React.useState(true); // State for collapsible
+	const { selectedCompany } = useSelectedCompany(); // State for selected company
 
 	return (
 		<Collapsible open={isOpen} onOpenChange={setIsOpen} className="w-[500px] ">
