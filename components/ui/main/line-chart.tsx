@@ -78,18 +78,22 @@ export function ComponentOne() {
     const now = new Date();
     const fakeData: FakeData[] = []; // Explicitly type the fakeData array
 
-    aiCompanyData.forEach((company) => {
+    if (selectedCompany) {
+      // Assuming selectedCompany has the necessary data structure
+      const { monthlyHype, monthlyRank, name } = selectedCompany;
+
       for (let i = 0; i < 6; i++) {
         const fakeDate = new Date(now.getFullYear(), now.getMonth() - i, 1); // Generate a date for each month
+        const monthString = fakeDate.toISOString().split('T')[0]; // Format date as YYYY-MM-DD
 
         fakeData.push({
-          date: fakeDate.toISOString().split('T')[0], // Format date as YYYY-MM-DD
-          hype: company.monthlyHype[5 - i], // Use monthlyHype array for hype
-          rank: company.monthlyRank[5 - i], // Use monthlyRank array for rank
-          name: company.name, // Include company name for reference
+          date: monthString,
+          hype: monthlyHype[5 - i], // Ensure this array is ordered from oldest to newest
+          rank: monthlyRank[5 - i], // Ensure this array is ordered from oldest to newest
+          name, // Include company name for reference
         });
       }
-    });
+    }
 
     return fakeData.reverse(); // Reverse to show the most recent dates first
   };
@@ -161,7 +165,7 @@ export function ComponentOne() {
                   const date = new Date(value);
                   return date.toLocaleDateString('en-US', {
                     month: 'short',
-                    day: 'numeric',
+                    year: 'numeric', // Change this to display only month and year if needed
                   });
                 }}
               />
