@@ -185,16 +185,16 @@ export const Beam = ({
 					id={`svgGradient-${id}`} // Use unique ID for each SVG instance
 					gradientUnits="userSpaceOnUse" // Gradient coordinates are relative to the user space
 					initial={{
-						x1: "0%", // Initial X-axis starting position of the gradient
-						x2: "0%", // Initial X-axis ending position of the gradient
-						y1: 0, // Y-axis starting position of the gradient
-						y2: 0, // Y-axis ending position of the gradient
+						x1: "105%", // Initial X-axis starting position of the gradient
+						x2: "100%", // Initial X-axis ending position of the gradient
+						y1: 0,
+						y2: 0,
 					}}
 					animate={{
-						x1: "100%", // X-axis starting position of the gradient for the animation
-						x2: "105%", // X-axis ending position of the gradient for the animation
-						y1: 0, // Y-axis starting position remains constant
-						y2: 0, // Y-axis ending position remains constant
+						x1: "-105%", // X-axis starting position of the gradient for the animation
+						x2: "-100%", // X-axis ending position of the gradient for the animation
+						y1: 0,
+						y2: 0,
 					}}
 					transition={{
 						duration: duration ?? 1, // Set animation duration or default to 1 second
