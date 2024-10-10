@@ -1,3 +1,4 @@
+// Data from Perplexity AI based on current market trends and data.
 export interface AICompanyData {
 	name: string; // Company name
 	userTrust: string; // How much the public trusts the company based on AI models metrics of today.
