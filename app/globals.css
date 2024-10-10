@@ -7,103 +7,103 @@
 
 /* Define custom CSS variables for light mode colors */
 :root {
-  --background: #ffffff; /* Light background color */
-  --foreground: #171717; /* Dark text color */
+	--background: #ffffff; /* Light background color */
+	--foreground: #171717; /* Dark text color */
 }
 
 /* Media query for dark mode */
 @media (prefers-color-scheme: dark) {
-  /* Define dark mode color variables */
-  :root {
-    --background: #0a0a0a; /* Dark background color */
-    --foreground: #ededed; /* Light text color */
-  }
+	/* Define dark mode color variables */
+	:root {
+		--background: #0a0a0a; /* Dark background color */
+		--foreground: #ededed; /* Light text color */
+	}
 }
 
 /* Base styles for the body element */
 body {
-  color: var(--foreground); /* Use the foreground color for text */
-  background: var(--background); /* Use the background color for background */
-  font-family: Arial, Helvetica, sans-serif; /* Set the font family */
+	color: var(--foreground); /* Use the foreground color for text */
+	background: var(--background); /* Use the background color for background */
+	font-family: Arial, Helvetica, sans-serif; /* Set the font family */
 }
 
 /* Add a utility class for balanced text wrapping using @layer utilities */
 @layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+	.text-balance {
+		text-wrap: balance;
+	}
 }
 
 /* Base layer defining custom color scheme and elements */
 @layer base {
-  /* Define HSL variables for color themes */
-  :root {
-    --background: 0 0% 100%; /* White background */
-    --foreground: 240 10% 3.9%; /* Dark foreground (text) color */
-    --card: 0 0% 100%; /* Card background color */
-    --card-foreground: 240 10% 3.9%; /* Card text color */
-    --popover: 0 0% 100%; /* Popover background color */
-    --popover-foreground: 240 10% 3.9%; /* Popover text color */
-    --primary: 240 5.9% 10%; /* Primary color */
-    --primary-foreground: 0 0% 98%; /* Primary text color */
-    --secondary: 240 4.8% 95.9%; /* Secondary color */
-    --secondary-foreground: 240 5.9% 10%; /* Secondary text color */
-    --muted: 240 4.8% 95.9%; /* Muted color */
-    --muted-foreground: 240 3.8% 46.1%; /* Muted text color */
-    --accent: 240 4.8% 95.9%; /* Accent color */
-    --accent-foreground: 240 5.9% 10%; /* Accent text color */
-    --destructive: 0 84.2% 60.2%; /* Destructive (alert) color */
-    --destructive-foreground: 0 0% 98%; /* Destructive text color */
-    --border: 240 5.9% 90%; /* Border color */
-    --input: 240 5.9% 90%; /* Input field background */
-    --ring: 240 10% 3.9%; /* Focus ring color */
-    --radius: 0.5rem; /* Default border-radius */
+	/* Define HSL variables for color themes */
+	:root {
+		--background: 0 0% 100%; /* White background */
+		--foreground: 240 10% 3.9%; /* Dark foreground (text) color */
+		--card: 0 0% 100%; /* Card background color */
+		--card-foreground: 240 10% 3.9%; /* Card text color */
+		--popover: 0 0% 100%; /* Popover background color */
+		--popover-foreground: 240 10% 3.9%; /* Popover text color */
+		--primary: 240 5.9% 10%; /* Primary color */
+		--primary-foreground: 0 0% 98%; /* Primary text color */
+		--secondary: 240 4.8% 95.9%; /* Secondary color */
+		--secondary-foreground: 240 5.9% 10%; /* Secondary text color */
+		--muted: 240 4.8% 95.9%; /* Muted color */
+		--muted-foreground: 240 3.8% 46.1%; /* Muted text color */
+		--accent: 240 4.8% 95.9%; /* Accent color */
+		--accent-foreground: 240 5.9% 10%; /* Accent text color */
+		--destructive: 0 84.2% 60.2%; /* Destructive (alert) color */
+		--destructive-foreground: 0 0% 98%; /* Destructive text color */
+		--border: 240 5.9% 90%; /* Border color */
+		--input: 240 5.9% 90%; /* Input field background */
+		--ring: 240 10% 3.9%; /* Focus ring color */
+		--radius: 0.5rem; /* Default border-radius */
 
-    /* Light mode chart colors */
-    --chart-1: 120 110% 40%; /* Bright Green */
-    --chart-2: 80 98% 46%; /* Lime Green */
-    --chart-3: 0 120% 50%; /* Dark Red Error */
-    --chart-4: 40 100% 50%; /* Medium Orange */
-  }
+		/* Light mode chart colors */
+		--chart-1: 120 110% 40%; /* Bright Green */
+		--chart-2: 80 98% 46%; /* Lime Green */
+		--chart-3: 0 120% 50%; /* Dark Red Error */
+		--chart-4: 40 100% 50%; /* Medium Orange */
+	}
 
-  /* Dark mode color scheme */
-  .dark {
-    --background: 240 10% 3.9%; /* Dark background */
-    --foreground: 0 0% 98%; /* Light text */
-    --card: 240 10% 3.9%; /* Dark card background */
-    --card-foreground: 0 0% 98%; /* Light card text */
-    --popover: 240 10% 3.9%; /* Dark popover background */
-    --popover-foreground: 0 0% 98%; /* Light popover text */
-    --primary: 0 0% 98%; /* Light primary color */
-    --primary-foreground: 240 5.9% 10%; /* Dark primary text */
-    --secondary: 240 3.7% 15.9%; /* Darker secondary color */
-    --secondary-foreground: 0 0% 98%; /* Light secondary text */
-    --muted: 240 3.7% 15.9%; /* Muted dark color */
-    --muted-foreground: 240 5% 64.9%; /* Muted text color */
-    --accent: 240 3.7% 15.9%; /* Darker accent color */
-    --accent-foreground: 0 0% 98%; /* Light accent text */
-    --destructive: 0 82% 30%; /* Destructive red color */
-    --destructive-foreground: 0 0% 98%; /* Light destructive text */
-    --border: 240 3.7% 15.9%; /* Dark border color */
-    --input: 240 3.7% 15.9%; /* Dark input background */
-    --ring: 240 4.9% 83.9%; /* Dark focus ring */
-    --radius: 0.5rem; /* Border-radius for dark mode */
+	/* Dark mode color scheme */
+	.dark {
+		--background: 240 10% 3.9%; /* Dark background */
+		--foreground: 0 0% 98%; /* Light text */
+		--card: 240 10% 3.9%; /* Dark card background */
+		--card-foreground: 0 0% 98%; /* Light card text */
+		--popover: 240 10% 3.9%; /* Dark popover background */
+		--popover-foreground: 0 0% 98%; /* Light popover text */
+		--primary: 0 0% 98%; /* Light primary color */
+		--primary-foreground: 240 5.9% 10%; /* Dark primary text */
+		--secondary: 240 3.7% 15.9%; /* Darker secondary color */
+		--secondary-foreground: 0 0% 98%; /* Light secondary text */
+		--muted: 240 3.7% 15.9%; /* Muted dark color */
+		--muted-foreground: 240 5% 64.9%; /* Muted text color */
+		--accent: 240 3.7% 15.9%; /* Darker accent color */
+		--accent-foreground: 0 0% 98%; /* Light accent text */
+		--destructive: 0 82% 30%; /* Destructive red color */
+		--destructive-foreground: 0 0% 98%; /* Light destructive text */
+		--border: 240 3.7% 15.9%; /* Dark border color */
+		--input: 240 3.7% 15.9%; /* Dark input background */
+		--ring: 240 4.9% 83.9%; /* Dark focus ring */
+		--radius: 0.5rem; /* Border-radius for dark mode */
 
-    /* Dark mode chart colors */
-    --chart-1: 120 110% 40%; /* Bright Green */
-    --chart-2: 80 98% 46%; /* Lime Green */
-    --chart-3: 0 120% 50%; /* Dark Red Error */
-    --chart-4: 40 100% 50%; /* Medium Orange */
-  }
+		/* Dark mode chart colors */
+		--chart-1: 120 110% 40%; /* Bright Green */
+		--chart-2: 80 98% 46%; /* Lime Green */
+		--chart-3: 0 120% 50%; /* Dark Red Error */
+		--chart-4: 40 100% 50%; /* Medium Orange */
+	}
 }
 
 /* Additional base styles */
 @layer base {
-  * {
-    @apply border-border; /* Apply border color from variables */
-  }
+	* {
+		@apply border-border; /* Apply border color from variables */
+	}
 
-  body {
-    @apply bg-background text-foreground; /* Apply background and text color */
-  }
+	body {
+		@apply bg-background text-foreground; /* Apply background and text color */
+	}
 }
