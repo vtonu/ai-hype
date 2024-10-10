@@ -10,8 +10,8 @@ export function SparklesAI() {
 				<SparklesCore
 					id="tsparticlesfullpage"
 					background="transparent"
-					minSize={0.2}
-					maxSize={1.2}
+					minSize={0.1}
+					maxSize={1.5}
 					particleDensity={1000}
 					className="w-full h-full"
 					particleColor="#228B22"

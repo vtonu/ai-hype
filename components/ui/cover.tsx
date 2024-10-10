@@ -43,6 +43,7 @@ export const Cover = ({
 			ref={ref} // Assign the ref to this div
 			className="relative group/cover transition duration-200 rounded-lg"
 		>
+			{/* Animate sparkles when hovered */}
 			<AnimatePresence>
 				{hovered && (
 					<motion.div
@@ -90,7 +91,7 @@ export const Cover = ({
 					</motion.div>
 				)}
 			</AnimatePresence>
-			{/* Render beams dynamically based on calculated positions */}
+			{/* Render beams (sparkles droplets moving from left to right) dynamically based on calculated positions */}
 			{beamPositions.map((position) => (
 				<Beam
 					key={`beam-${position}`} // Unique key using position value
@@ -103,10 +104,11 @@ export const Cover = ({
 				/>
 			))}
 
+			{/* Scale on hover effect */}
 			<motion.span
 				key={String(hovered)} // Unique key based on hover state
 				animate={{
-					scale: hovered ? 0.8 : 1, // Scale down when hovered
+					scale: hovered ? 0.9 : 1, // Scale down when hovered
 					x: hovered ? [0, -10, 10, -10, 10, 0] : 0, // Shake horizontally when hovered
 					y: hovered ? [0, 10, -10, 10, -10, 0] : 0, // Shake vertically when hovered
 				}}

@@ -78,7 +78,7 @@ export const SparklesCore = (props: ParticlesProps) => {
 					options={{
 						background: {
 							color: {
-								value: background || "#0d47a1", // Background color for the particles container
+								value: background || "none", // Background color for the particles container
 							},
 						},
 						fullScreen: {
@@ -97,16 +97,16 @@ export const SparklesCore = (props: ParticlesProps) => {
 									mode: "repulse", // Mode for hover interaction if enabled
 								},
 								resize: {
-									enable: true, // Enable resizing of particles on window resize
+									enable: false, // Disable resizing of particles on window resize
 								},
 							},
 							modes: {
 								push: {
-									quantity: 4, // Number of particles to push on click
+									quantity: 30, // Number of particles to push on click
 								},
 								repulse: {
-									distance: 200, // Distance for repulsion effect
-									duration: 0.4, // Duration of the repulsion effect
+									distance: 500, // Distance for repulsion effect
+									duration: 0.5, // Duration of the repulsion effect
 								},
 							},
 						},
@@ -143,7 +143,7 @@ export const SparklesCore = (props: ParticlesProps) => {
 							 * Color properties for particles.
 							 */
 							color: {
-								value: particleColor || "#ffffff", // Default color of particles
+								value: particleColor || "#00FF7F", // spring green
 								animation: {
 									h: {
 										count: 0, // Number of hue animation iterations
@@ -190,7 +190,7 @@ export const SparklesCore = (props: ParticlesProps) => {
 							move: {
 								angle: {
 									offset: 0, // Offset for movement angle
-									value: 90, // Movement angle in degrees
+									value: 0, // Movement angle in degrees
 								},
 								attract: {
 									distance: 200, // Distance at which particles attract each other
@@ -292,12 +292,12 @@ export const SparklesCore = (props: ParticlesProps) => {
 								close: true, // Enable closing of the shape
 								fill: true, // Enable filling of the shape
 								options: {}, // Shape-specific options
-								type: "circle", // Shape type (e.g., circle, square)
+								type: "square", // Shape type (e.g., circle, square)
 							},
 							size: {
 								value: {
 									min: minSize || 1, // Minimum size of particles
-									max: maxSize || 3, // Maximum size of particles
+									max: maxSize || 2, // Maximum size of particles
 								},
 								animation: {
 									count: 0, // Number of animation iterations for size
