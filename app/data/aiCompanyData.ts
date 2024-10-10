@@ -1,15 +1,15 @@
 export interface AICompanyData {
-	name: string;
-	userTrust: string;
-	ethics: string;
-	innovationScore: string;
-	adoptionRate: string;
-	hype: number;
-	rank: number;
-	doomLevel: "High" | "Medium" | "Low";
-	impactLevel: "High" | "Medium" | "Low";
-	monthlyHype: number[]; // Hype for each month (last 6 months)
-	monthlyRank: number[]; // Rank for each month (last 6 months)
+	name: string; // Company name
+	userTrust: string; // How much the public trusts the company based on AI models metrics of today.
+	ethics: string; // How ethical (LLM censorship) the company is based on AI models metrics of today.
+	innovationScore: string; // How innovative the company is based on AI models metrics of today.
+	adoptionRate: string; // The rate of the public and customers adopting their AI products.
+	hype: number; // Current hype number
+	rank: number; // Current rank number
+	doomLevel: "High" | "Medium" | "Low"; // Perceived likelihood of AI-related threats to humanity, influencing the call for increased AI regulation.
+	impactLevel: "High" | "Medium" | "Low"; // Impact of the company's AI products on society and the environment based on AI models metrics of today.
+	monthlyHype: number[]; // Hype score for each month (last 6 months)
+	monthlyRank: number[]; // Rank score for each month (last 6 months)
 }
 
 export const aiCompanyData: AICompanyData[] = [
