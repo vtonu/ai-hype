@@ -222,22 +222,18 @@ export function ComponentOne() {
 										className="w-[150px]"
 										nameKey="views"
 										labelFormatter={(value) => {
-											return new Date(value).toLocaleDateString("en-US", {
-												month: "short",
-												day: "numeric",
-												year: "numeric",
-											});
+											return new Date(value).toLocaleDateString();
 										}}
 									/>
 								}
 							/>
-							{/* Display the line for the active chart */}
+							{/* Plot the respective chart line based on activeChart state */}
 							<Line
-								dataKey={activeChart} // Use active chart ('hype' or 'rank')
 								type="monotone"
-								stroke={`var(--color-${activeChart})`}
+								dataKey={activeChart}
+								stroke={chartConfig[activeChart].color}
 								strokeWidth={2}
-								dot={false}
+								dot={false} // Small dots on the line or none
 							/>
 						</LineChart>
 					</ChartContainer>
