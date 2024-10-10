@@ -10,7 +10,7 @@ export function BetaAlert() {
         <AlertTitle>Heads up!</AlertTitle>
         <AlertDescription>
           <p className="text-xs">
-            This is a beta version. Things may break or not work accordingly.
+            This is a beta version. Things may break or not work accordingly. v0.9
           </p>
         </AlertDescription>
       </Alert>
