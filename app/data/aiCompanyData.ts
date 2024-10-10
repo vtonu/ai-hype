@@ -1,30 +1,30 @@
 // Data from Perplexity AI based on current market trends and data.
 export interface AICompanyData {
 	name: string; // Company name
-	userTrust: string; // How much the public trusts the company based on AI models metrics of today.
-	ethics: string; // How ethical (LLM censorship) the company is based on AI models metrics of today.
-	innovationScore: string; // How innovative the company is based on AI models metrics of today.
-	adoptionRate: string; // The rate of the public and customers adopting their AI products.
-	hype: number; // Current hype number
-	rank: number; // Current rank number
-	doomLevel: "High" | "Medium" | "Low"; // Perceived likelihood of AI-related threats to humanity, influencing the call for increased AI regulation.
-	impactLevel: "High" | "Medium" | "Low"; // Impact of the company's AI products on society and the environment based on AI models metrics of today.
-	monthlyHype: number[]; // Hype score for each month (last 6 months)
-	monthlyRank: number[]; // Rank score for each month (last 6 months)
+	userTrust: string; // Public trust level based on AI model metrics
+	ethics: string; // Ethical evaluation based on AI model metrics
+	innovationScore: string; // Innovation rating based on AI model metrics
+	adoptionRate: string; // Public adoption rate of AI products
+	hype: number; // Current hype score
+	rank: number; // Current rank among companies
+	doomLevel: "High" | "Medium" | "Low"; // Perceived risk of AI-related threats
+	impactLevel: "High" | "Medium" | "Low"; // Social and environmental impact of AI products
+	monthlyHype: number[]; // Hype score over the last 6 months
+	monthlyRank: number[]; // Rank score over the last 6 months
 }
 
 export const aiCompanyData: AICompanyData[] = [
 	{
 		name: "OpenAI",
-		userTrust: "B",
-		ethics: "B",
+		userTrust: "A-",
+		ethics: "B+",
 		innovationScore: "A+",
 		doomLevel: "High",
 		adoptionRate: "A+",
 		impactLevel: "High",
-		hype: 19000,
+		hype: 20000,
 		rank: 1,
-		monthlyHype: [12000, 14000, 16000, 17500, 18500, 19000],
+		monthlyHype: [14000, 16000, 17500, 18500, 19000, 20000],
 		monthlyRank: [1, 1, 1, 1, 1, 1],
 	},
 	{
@@ -35,9 +35,9 @@ export const aiCompanyData: AICompanyData[] = [
 		doomLevel: "Medium",
 		adoptionRate: "A",
 		impactLevel: "High",
-		hype: 13000,
+		hype: 14000,
 		rank: 2,
-		monthlyHype: [9500, 10500, 11500, 12000, 12500, 13000],
+		monthlyHype: [10500, 11500, 12000, 12500, 13000, 14000],
 		monthlyRank: [2, 2, 2, 2, 2, 2],
 	},
 	{
@@ -48,9 +48,9 @@ export const aiCompanyData: AICompanyData[] = [
 		doomLevel: "Medium",
 		adoptionRate: "A+",
 		impactLevel: "High",
-		hype: 12000,
+		hype: 13000,
 		rank: 3,
-		monthlyHype: [8500, 9500, 10500, 11000, 11500, 12000],
+		monthlyHype: [9500, 10500, 11000, 11500, 12000, 13000],
 		monthlyRank: [3, 3, 3, 3, 3, 3],
 	},
 	{
@@ -61,9 +61,9 @@ export const aiCompanyData: AICompanyData[] = [
 		doomLevel: "Medium",
 		adoptionRate: "A+",
 		impactLevel: "High",
-		hype: 11000,
+		hype: 12000,
 		rank: 4,
-		monthlyHype: [7500, 8500, 9500, 10000, 10500, 11000],
+		monthlyHype: [8500, 9500, 10000, 10500, 11000, 12000],
 		monthlyRank: [4, 4, 4, 4, 4, 4],
 	},
 	{
@@ -74,10 +74,10 @@ export const aiCompanyData: AICompanyData[] = [
 		doomLevel: "Medium",
 		adoptionRate: "A",
 		impactLevel: "High",
-		hype: 9000,
+		hype: 10000,
 		rank: 5,
-		monthlyHype: [5500, 6500, 7500, 8000, 8500, 9000],
-		monthlyRank: [6, 6, 5, 5, 5, 5],
+		monthlyHype: [6500, 7500, 8000, 8500, 9000, 10000],
+		monthlyRank: [6, 5, 5, 5, 5, 5],
 	},
 	{
 		name: "DeepMind",
@@ -87,10 +87,10 @@ export const aiCompanyData: AICompanyData[] = [
 		doomLevel: "High",
 		adoptionRate: "A",
 		impactLevel: "High",
-		hype: 8500,
+		hype: 9500,
 		rank: 6,
-		monthlyHype: [5000, 6000, 7000, 7500, 8000, 8500],
-		monthlyRank: [5, 5, 6, 6, 6, 6],
+		monthlyHype: [6000, 7000, 7500, 8000, 8500, 9500],
+		monthlyRank: [5, 6, 6, 6, 6, 6],
 	},
 	{
 		name: "Amazon",
@@ -100,9 +100,9 @@ export const aiCompanyData: AICompanyData[] = [
 		doomLevel: "Medium",
 		adoptionRate: "A-",
 		impactLevel: "High",
-		hype: 6500,
+		hype: 7000,
 		rank: 7,
-		monthlyHype: [4000, 4800, 5300, 5700, 6100, 6500],
+		monthlyHype: [4800, 5300, 5700, 6100, 6500, 7000],
 		monthlyRank: [7, 7, 7, 7, 7, 7],
 	},
 	{
@@ -113,9 +113,9 @@ export const aiCompanyData: AICompanyData[] = [
 		doomLevel: "Low",
 		adoptionRate: "B+",
 		impactLevel: "Medium",
-		hype: 6000,
+		hype: 6500,
 		rank: 8,
-		monthlyHype: [3500, 4200, 4800, 5200, 5600, 6000],
+		monthlyHype: [4200, 4800, 5200, 5600, 6000, 6500],
 		monthlyRank: [8, 8, 8, 8, 8, 8],
 	},
 	{
@@ -126,9 +126,9 @@ export const aiCompanyData: AICompanyData[] = [
 		doomLevel: "High",
 		adoptionRate: "B+",
 		impactLevel: "Medium",
-		hype: 5000,
+		hype: 5500,
 		rank: 9,
-		monthlyHype: [3000, 3500, 4000, 4300, 4700, 5000],
+		monthlyHype: [3500, 4000, 4300, 4700, 5000, 5500],
 		monthlyRank: [9, 9, 9, 9, 9, 9],
 	},
 	{
@@ -139,9 +139,9 @@ export const aiCompanyData: AICompanyData[] = [
 		doomLevel: "Low",
 		adoptionRate: "B+",
 		impactLevel: "Medium",
-		hype: 4500,
+		hype: 5000,
 		rank: 10,
-		monthlyHype: [2500, 3000, 3500, 3800, 4200, 4500],
+		monthlyHype: [3000, 3500, 3800, 4200, 4500, 5000],
 		monthlyRank: [10, 10, 10, 10, 10, 10],
 	},
 ];
