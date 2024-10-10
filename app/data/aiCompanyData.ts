@@ -2,7 +2,7 @@ export interface AICompanyData {
 	name: string;
 	userTrust: string;
 	ethics: string;
-	innovation: string;
+	innovationScore: string;
 	adoptionRate: string;
 	hype: number;
 	rank: number;
@@ -17,7 +17,7 @@ export const aiCompanyData: AICompanyData[] = [
 		name: "OpenAI",
 		userTrust: "B",
 		ethics: "B",
-		innovation: "A+",
+		innovationScore: "A+",
 		doomLevel: "High",
 		adoptionRate: "A+",
 		impactLevel: "High",
@@ -30,7 +30,7 @@ export const aiCompanyData: AICompanyData[] = [
 		name: "Google",
 		userTrust: "B+",
 		ethics: "B",
-		innovation: "A",
+		innovationScore: "A",
 		doomLevel: "Medium",
 		adoptionRate: "A",
 		impactLevel: "High",
@@ -43,7 +43,7 @@ export const aiCompanyData: AICompanyData[] = [
 		name: "Microsoft",
 		userTrust: "A-",
 		ethics: "B+",
-		innovation: "A",
+		innovationScore: "A",
 		doomLevel: "Medium",
 		adoptionRate: "A+",
 		impactLevel: "High",
@@ -56,7 +56,7 @@ export const aiCompanyData: AICompanyData[] = [
 		name: "NVIDIA",
 		userTrust: "A-",
 		ethics: "B+",
-		innovation: "A+",
+		innovationScore: "A+",
 		doomLevel: "Medium",
 		adoptionRate: "A+",
 		impactLevel: "High",
@@ -69,7 +69,7 @@ export const aiCompanyData: AICompanyData[] = [
 		name: "Anthropic",
 		userTrust: "A-",
 		ethics: "A",
-		innovation: "A",
+		innovationScore: "A",
 		doomLevel: "Medium",
 		adoptionRate: "A",
 		impactLevel: "High",
@@ -82,7 +82,7 @@ export const aiCompanyData: AICompanyData[] = [
 		name: "DeepMind",
 		userTrust: "A-",
 		ethics: "B+",
-		innovation: "A+",
+		innovationScore: "A+",
 		doomLevel: "High",
 		adoptionRate: "A",
 		impactLevel: "High",
@@ -95,7 +95,7 @@ export const aiCompanyData: AICompanyData[] = [
 		name: "Amazon",
 		userTrust: "B",
 		ethics: "C+",
-		innovation: "A-",
+		innovationScore: "A-",
 		doomLevel: "Medium",
 		adoptionRate: "A-",
 		impactLevel: "High",
@@ -108,7 +108,7 @@ export const aiCompanyData: AICompanyData[] = [
 		name: "Apple",
 		userTrust: "A",
 		ethics: "A-",
-		innovation: "A-",
+		innovationScore: "A-",
 		doomLevel: "Low",
 		adoptionRate: "B+",
 		impactLevel: "Medium",
@@ -121,7 +121,7 @@ export const aiCompanyData: AICompanyData[] = [
 		name: "Meta",
 		userTrust: "C+",
 		ethics: "C",
-		innovation: "A-",
+		innovationScore: "A-",
 		doomLevel: "High",
 		adoptionRate: "B+",
 		impactLevel: "Medium",
@@ -134,7 +134,7 @@ export const aiCompanyData: AICompanyData[] = [
 		name: "IBM",
 		userTrust: "A-",
 		ethics: "A-",
-		innovation: "A-",
+		innovationScore: "A-",
 		doomLevel: "Low",
 		adoptionRate: "B+",
 		impactLevel: "Medium",

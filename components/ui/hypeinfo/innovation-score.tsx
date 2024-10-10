@@ -13,7 +13,7 @@ import {
 	RadialBarChart,
 } from "recharts";
 
-export const description = "A radial chart for Innovation Level";
+export const description = "A radial chart for Innovation Score";
 
 // Default chart data with a dummy score
 const defaultChartData = [
@@ -72,44 +72,44 @@ export function InnovationCard({ companyData }: InnovationCardProps) {
 		? [
 				{
 					score:
-						companyData.innovation === "A+"
+						companyData.innovationScore === "A+"
 							? 10
-							: companyData.innovation === "A"
+							: companyData.innovationScore === "A"
 								? 9
-								: companyData.innovation === "A-"
+								: companyData.innovationScore === "A-"
 									? 8
-									: companyData.innovation === "B+"
+									: companyData.innovationScore === "B+"
 										? 7
-										: companyData.innovation === "B"
+										: companyData.innovationScore === "B"
 											? 6
-											: companyData.innovation === "B-"
+											: companyData.innovationScore === "B-"
 												? 5
-												: companyData.innovation === "C+"
+												: companyData.innovationScore === "C+"
 													? 4
-													: companyData.innovation === "C"
+													: companyData.innovationScore === "C"
 														? 3
-														: companyData.innovation === "C-"
+														: companyData.innovationScore === "C-"
 															? 2
 															: 1, // Default fallback score if not matched
-					symbol: companyData.innovation,
+					symbol: companyData.innovationScore,
 					fill: getColorByScore(
-						companyData.innovation === "A+"
+						companyData.innovationScore === "A+"
 							? 10
-							: companyData.innovation === "A"
+							: companyData.innovationScore === "A"
 								? 9
-								: companyData.innovation === "A-"
+								: companyData.innovationScore === "A-"
 									? 8
-									: companyData.innovation === "B+"
+									: companyData.innovationScore === "B+"
 										? 7
-										: companyData.innovation === "B"
+										: companyData.innovationScore === "B"
 											? 6
-											: companyData.innovation === "B-"
+											: companyData.innovationScore === "B-"
 												? 5
-												: companyData.innovation === "C+"
+												: companyData.innovationScore === "C+"
 													? 4
-													: companyData.innovation === "C"
+													: companyData.innovationScore === "C"
 														? 3
-														: companyData.innovation === "C-"
+														: companyData.innovationScore === "C-"
 															? 2
 															: 1,
 					), // Use dynamic color based on score
