@@ -28,7 +28,7 @@ export const aiCompanyData: AICompanyData[] = [
 			1234, 2345, 4567, 5643, 6754, 7865, 14000, 16000, 17500, 18500, 19000,
 			20000,
 		],
-		monthlyRank: [1, 1, 1, 1, 1, 1],
+		monthlyRank: [1, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1],
 	},
 	{
 		name: "Google",
@@ -44,7 +44,7 @@ export const aiCompanyData: AICompanyData[] = [
 			1234, 2345, 4567, 5643, 6754, 7865, 10500, 11500, 12000, 12500, 13000,
 			14000,
 		],
-		monthlyRank: [2, 2, 2, 2, 2, 2],
+		monthlyRank: [2, 2, 2, 2, 2, 2, 2, 3, 2, 2, 2, 2],
 	},
 	{
 		name: "Microsoft",
@@ -60,7 +60,7 @@ export const aiCompanyData: AICompanyData[] = [
 			1234, 2345, 4567, 5643, 6754, 7865, 9500, 10500, 11000, 11500, 12000,
 			13000,
 		],
-		monthlyRank: [3, 3, 3, 3, 3, 3],
+		monthlyRank: [3, 3, 3, 3, 3, 3, 3, 4, 3, 5, 3, 3],
 	},
 	{
 		name: "NVIDIA",
@@ -76,7 +76,7 @@ export const aiCompanyData: AICompanyData[] = [
 			1234, 2345, 4567, 5643, 6754, 7865, 8500, 9500, 10000, 10500, 11000,
 			12000,
 		],
-		monthlyRank: [4, 4, 4, 4, 4, 4],
+		monthlyRank: [4, 4, 4, 4, 4, 4, 4, 5, 4, 3, 4, 4],
 	},
 	{
 		name: "Anthropic",
@@ -91,7 +91,7 @@ export const aiCompanyData: AICompanyData[] = [
 		monthlyHype: [
 			1234, 2345, 4567, 5643, 6754, 7865, 6500, 7500, 8000, 8500, 9000, 10000,
 		],
-		monthlyRank: [6, 5, 5, 5, 5, 5],
+		monthlyRank: [6, 5, 5, 5, 5, 5, 6, 7, 5, 5, 5, 5],
 	},
 	{
 		name: "DeepMind",
@@ -106,7 +106,7 @@ export const aiCompanyData: AICompanyData[] = [
 		monthlyHype: [
 			1234, 2345, 4567, 5643, 6754, 7865, 6000, 7000, 7500, 8000, 8500, 9500,
 		],
-		monthlyRank: [5, 6, 6, 6, 6, 6],
+		monthlyRank: [5, 6, 6, 6, 6, 6, 5, 8, 7, 6, 5, 6],
 	},
 	{
 		name: "Amazon",
@@ -121,7 +121,7 @@ export const aiCompanyData: AICompanyData[] = [
 		monthlyHype: [
 			1234, 2345, 4567, 5643, 6754, 7865, 4800, 5300, 5700, 6100, 6500, 7000,
 		],
-		monthlyRank: [7, 7, 7, 7, 7, 7],
+		monthlyRank: [7, 7, 7, 7, 7, 7, 8, 7, 8, 9, 7, 7],
 	},
 	{
 		name: "Apple",
@@ -136,7 +136,7 @@ export const aiCompanyData: AICompanyData[] = [
 		monthlyHype: [
 			2234, 2345, 4567, 5643, 6754, 7865, 4200, 4800, 5200, 5600, 6000, 6500,
 		],
-		monthlyRank: [8, 8, 8, 8, 8, 8],
+		monthlyRank: [8, 8, 8, 8, 8, 8, 8, 9, 10, 8, 8, 8],
 	},
 	{
 		name: "Meta",
@@ -151,7 +151,7 @@ export const aiCompanyData: AICompanyData[] = [
 		monthlyHype: [
 			1234, 2345, 4567, 5643, 6754, 7865, 3500, 4000, 4300, 4700, 5000, 5500,
 		],
-		monthlyRank: [9, 9, 9, 9, 9, 9],
+		monthlyRank: [8, 9, 9, 9, 9, 9, 9, 9, 10, 11, 9, 9],
 	},
 	{
 		name: "IBM",
@@ -166,7 +166,7 @@ export const aiCompanyData: AICompanyData[] = [
 		monthlyHype: [
 			1234, 2345, 4567, 5643, 6754, 7865, 3000, 3500, 3800, 4200, 4500, 5000,
 		],
-		monthlyRank: [10, 10, 10, 10, 10, 10],
+		monthlyRank: [10, 10, 10, 11, 12, 10, 10, 10, 14, 13, 12, 10],
 	},
 	{
 		name: "Cohere",
@@ -181,7 +181,7 @@ export const aiCompanyData: AICompanyData[] = [
 		monthlyHype: [
 			1234, 2345, 4567, 5643, 6754, 7865, 2500, 2900, 3100, 3500, 3800, 4200,
 		],
-		monthlyRank: [11, 11, 11, 11, 11, 11],
+		monthlyRank: [11, 10, 11, 11, 11, 12, 13, 11, 11, 11, 15, 11],
 	},
 	{
 		name: "Hugging Face",
@@ -196,7 +196,7 @@ export const aiCompanyData: AICompanyData[] = [
 		monthlyHype: [
 			1234, 2345, 4567, 5643, 6754, 7865, 2600, 2700, 2900, 3100, 3700, 4000,
 		],
-		monthlyRank: [12, 12, 12, 12, 12, 12],
+		monthlyRank: [12, 12, 12, 12, 12, 13, 14, 12, 12, 12, 12, 10],
 	},
 	{
 		name: "Stability AI",
@@ -211,7 +211,7 @@ export const aiCompanyData: AICompanyData[] = [
 		monthlyHype: [
 			1234, 2345, 4567, 5643, 6754, 7865, 2200, 2500, 2800, 3200, 3500, 3800,
 		],
-		monthlyRank: [13, 13, 13, 13, 13, 13],
+		monthlyRank: [13, 13, 10, 13, 13, 15, 16, 13, 13, 13, 13, 9],
 	},
 	{
 		name: "Databricks",
@@ -226,7 +226,7 @@ export const aiCompanyData: AICompanyData[] = [
 		monthlyHype: [
 			1234, 2345, 4567, 5643, 6754, 7865, 2000, 2300, 2600, 3000, 3300, 3600,
 		],
-		monthlyRank: [14, 14, 14, 14, 14, 14],
+		monthlyRank: [14, 14, 14, 14, 14, 14, 15, 16, 17, 18, 12, 10],
 	},
 	{
 		name: "Inflection AI",
@@ -241,7 +241,7 @@ export const aiCompanyData: AICompanyData[] = [
 		monthlyHype: [
 			1234, 2345, 4567, 5643, 6754, 7865, 1800, 2100, 2400, 2800, 3100, 3400,
 		],
-		monthlyRank: [15, 15, 15, 15, 15, 15],
+		monthlyRank: [15, 15, 15, 15, 15, 16, 17, 15, 25, 21, 18, 16],
 	},
 	{
 		name: "Palantir",
@@ -256,7 +256,7 @@ export const aiCompanyData: AICompanyData[] = [
 		monthlyHype: [
 			1234, 2345, 4567, 5643, 6754, 7865, 1600, 1900, 2200, 2600, 2900, 3200,
 		],
-		monthlyRank: [16, 16, 16, 16, 16, 16],
+		monthlyRank: [16, 16, 16, 16, 16, 16, 18, 17, 18, 19, 16, 17],
 	},
 	{
 		name: "Scale AI",
@@ -271,7 +271,7 @@ export const aiCompanyData: AICompanyData[] = [
 		monthlyHype: [
 			1234, 2345, 4567, 5643, 6754, 7865, 1400, 1700, 2000, 2400, 2700, 3000,
 		],
-		monthlyRank: [17, 17, 17, 17, 17, 17],
+		monthlyRank: [17, 17, 17, 17, 17, 17, 19, 18, 19, 20, 17, 18],
 	},
 	{
 		name: "SambaNova",
@@ -286,7 +286,7 @@ export const aiCompanyData: AICompanyData[] = [
 		monthlyHype: [
 			1234, 2345, 4567, 5643, 6754, 7865, 1200, 1500, 1800, 2200, 2500, 2800,
 		],
-		monthlyRank: [18, 18, 18, 18, 18, 18],
+		monthlyRank: [18, 18, 18, 18, 18, 18, 20, 19, 20, 22, 18, 19],
 	},
 	{
 		name: "Adept AI",
@@ -301,7 +301,7 @@ export const aiCompanyData: AICompanyData[] = [
 		monthlyHype: [
 			1234, 2345, 4567, 5643, 6754, 7865, 1000, 1300, 1600, 2000, 2300, 2600,
 		],
-		monthlyRank: [19, 19, 19, 19, 19, 19],
+		monthlyRank: [19, 19, 19, 19, 19, 19, 21, 20, 21, 23, 19, 20],
 	},
 	{
 		name: "Runway",
@@ -316,7 +316,7 @@ export const aiCompanyData: AICompanyData[] = [
 		monthlyHype: [
 			1234, 2345, 4567, 5643, 6754, 7865, 800, 1100, 1400, 1800, 2100, 2400,
 		],
-		monthlyRank: [20, 20, 20, 20, 20, 20],
+		monthlyRank: [20, 20, 20, 20, 20, 20, 22, 21, 22, 24, 20, 21],
 	},
 	{
 		name: "Jasper",
@@ -331,7 +331,7 @@ export const aiCompanyData: AICompanyData[] = [
 		monthlyHype: [
 			1234, 2345, 4567, 5643, 6754, 7865, 600, 900, 1200, 1600, 1900, 2200,
 		],
-		monthlyRank: [21, 21, 21, 21, 21, 21],
+		monthlyRank: [21, 21, 21, 21, 21, 21, 23, 22, 23, 25, 21, 22],
 	},
 	{
 		name: "Midjourney",
@@ -346,6 +346,6 @@ export const aiCompanyData: AICompanyData[] = [
 		monthlyHype: [
 			1234, 2345, 4567, 5643, 6754, 7865, 400, 700, 1000, 1400, 1700, 2000,
 		],
-		monthlyRank: [22, 22, 22, 22, 22, 22],
+		monthlyRank: [22, 22, 22, 22, 22, 22, 24, 23, 24, 26, 22, 23],
 	},
 ];
