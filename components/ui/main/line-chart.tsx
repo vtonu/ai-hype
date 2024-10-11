@@ -89,7 +89,6 @@ export function ComponentOne() {
 		name: string;
 	}
 
-	// Generate fake data for the last 6 months
 	const getFakeData = (): FakeData[] => {
 		const now = new Date(); // Get the current date
 		const fakeData: FakeData[] = []; // Explicitly type the fakeData array
@@ -97,19 +96,16 @@ export function ComponentOne() {
 		if (selectedCompany) {
 			const { monthlyHype, monthlyRank, name } = selectedCompany;
 
-			let lastRank = monthlyRank[5]; // Start from the latest known rank
-			for (let i = 0; i < 6; i++) {
-				const fakeDate = new Date(now.getFullYear(), now.getMonth() - i, 1); // Generate a date for each month
+			// Loop through the last 12 months of data
+			for (let i = 0; i < 12; i++) {
+				// Generate a date for each of the last 12 months
+				const fakeDate = new Date(now.getFullYear(), now.getMonth() - i, 1);
 				const monthString = fakeDate.toISOString().split("T")[0]; // Format date as YYYY-MM-DD
-
-				// Simulate rank fluctuations
-				const fluctuation = Math.floor(Math.random() * 3) - 1; // Randomly -1, 0, or +1
-				lastRank = Math.max(1, Math.min(10, lastRank + fluctuation)); // Keep the rank between 1 and 10
 
 				fakeData.push({
 					date: monthString,
-					hype: monthlyHype[5 - i], // Ensure this array is ordered from oldest to newest
-					rank: lastRank, // Use the fluctuating rank
+					hype: monthlyHype[11 - i], // Ensure this array is ordered from oldest to newest
+					rank: monthlyRank[11 - i], // Use monthlyRank array directly
 					name, // Include company name for reference
 				});
 			}
