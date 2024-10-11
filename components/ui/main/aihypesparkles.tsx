@@ -17,7 +17,10 @@ export function SparklesAI() {
 					particleColor="#228B22"
 				/>
 			</div>
-			<Badge variant="outline">NotebookLM</Badge>
+
+			<Badge variant="outline" className="text-green-500">
+				NotebookLM
+			</Badge>
 		</div>
 	);
 }
