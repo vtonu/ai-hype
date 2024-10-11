@@ -1,1 +1,2 @@
-![screenshot-demo-ai-hype](https://github.com/user-attachments/assets/b18962ba-c4b2-40bb-90bb-717ef0c6fd9f)
+v1.2
+![image](https://github.com/user-attachments/assets/222a97d3-90f2-420e-af34-0c842c3ade05)
