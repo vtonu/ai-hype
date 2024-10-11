@@ -9,8 +9,8 @@ export interface AICompanyData {
 	currentRank: number; // Current rank among companies
 	doomLevel: "High" | "Medium" | "Low"; // Perceived risk of AI-related threats
 	impactLevel: "High" | "Medium" | "Low"; // Social and environmental impact of AI products
-	monthlyHype: number[]; // Hype score over the last 6 months
-	monthlyRank: number[]; // Rank score over the last 6 months
+	monthlyHype: number[]; // Hype score over the last 12 months
+	monthlyRank: number[]; // Rank score over the last 12 months
 }
 
 export const aiCompanyData: AICompanyData[] = [
